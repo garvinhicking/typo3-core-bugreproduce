@@ -1,4 +1,4 @@
-base: 'https://typo3-core-bugreproduce.ddev.site/'
+base: 'https://typo3-core-bugreproduce.ddev.site/typo3_v12/public/'
 languages:
   -
     title: English
