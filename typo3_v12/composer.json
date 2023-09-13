@@ -90,6 +90,7 @@
         "typo3/cms-viewpage": "@dev",
         "typo3/cms-workspaces": "@dev",
         
+        "typo3/cms-styleguide": "@dev",
         "bk2k/bootstrap-package": "@dev"
     },
     "require-dev": {
