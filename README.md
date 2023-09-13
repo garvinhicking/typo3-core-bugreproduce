@@ -37,21 +37,15 @@ These are TDK-specific steps. Now for reproducing a specific problem.
 This repository ships with different templates being able to reproduce
 specific problems.
 
-You can execute a composer script to generate the needed ddev configuration
-(and possibly extensions) for each issue:
+Each issue has its own GIT branch, because several things may differ.
+So you can switch to different branches that reproduce different issues.
 
-```
-composer reproduce:47110815
-```
+*TODO*: (This concept may (should?) change, I have some headaches about rebasing other changes
+to a plethora of branches)
 
-The number stands for the `forge.typo3.org` issue ID.
-
-What that script does is simply copy specific `.ddev/config.yaml` files into
-place, alters your `composer.json` and executes a `composer update`
-afterwards. It also restartes your `ddev` environment, so DO NOT run this
-composer command WITHIN ddev, but only on your host.
-
-You can see the components of each issue in the `issues` subdirectory.
+The different branches use the same ddev project name, so make sure to
+restart ddev whenever you switch branches (that shouldn't happen a lot).
+It is recommended to stop the current ddev project before you switch the branch.
 
 ## Are You Sure?
 
