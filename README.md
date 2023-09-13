@@ -26,6 +26,9 @@ They (you!) need to:
 * Check out the created project (like this one you're looking at)
 * Initialize the ddev installation: `ddev start`
 * Set-up the TYPO3 monorepo: `composer tdk:setup`
+* Use `ddev launch` and log-in to TYPO3
+    * Username: admin
+    * Password: TYPO3-core-bugreproduce
 
 ## Got it. How do actually reproduce a bug now?
 
