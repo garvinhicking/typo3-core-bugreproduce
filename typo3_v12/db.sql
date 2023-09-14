@@ -215,7 +215,7 @@ CREATE TABLE `be_users` (
 
 LOCK TABLES `be_users` WRITE;
 /*!40000 ALTER TABLE `be_users` DISABLE KEYS */;
-INSERT INTO `be_users` VALUES (1,0,1694603059,1694603059,0,0,0,0,NULL,'admin','$argon2i$v=19$m=65536,t=16,p=1$Y1lJbVJDMEpMdi9hUk1Wbg$k0ilmne87QeKvZepXFywT3YsuAN+1MbuZCBLyCla8Ak',NULL,'default',NULL,'',NULL,'','a:6:{s:10:\"moduleData\";a:6:{s:28:\"dashboard/current_dashboard/\";s:40:\"3d03c98ac61143e23e740382fbd8b7563b2e4c69\";s:57:\"TYPO3\\CMS\\Backend\\Utility\\BackendUtility::getUpdateSignal\";a:0:{}s:10:\"FormEngine\";a:2:{i:0;a:3:{s:32:\"696addfecc296b326ff6e9f04c7ff3e1\";a:5:{i:0;s:16:\"New TYPO3 domain\";i:1;a:5:{s:4:\"edit\";a:1:{s:5:\"pages\";a:1:{i:1;s:4:\"edit\";}}s:7:\"defVals\";N;s:12:\"overrideVals\";N;s:11:\"columnsOnly\";N;s:6:\"noView\";N;}i:2;s:28:\"&edit%5Bpages%5D%5B1%5D=edit\";i:3;a:5:{s:5:\"table\";s:5:\"pages\";s:3:\"uid\";i:1;s:3:\"pid\";i:0;s:3:\"cmd\";s:4:\"edit\";s:12:\"deleteAccess\";b:1;}i:4;s:76:\"/typo3/module/web/layout?token=472e99048bc6f13a67a69502fa50599eb8180a13&id=1\";}s:32:\"86205c5935270b8ee413592ec1b62292\";a:5:{i:0;s:8:\"NEW SITE\";i:1;a:5:{s:4:\"edit\";a:1:{s:12:\"sys_template\";a:1:{i:1;s:4:\"edit\";}}s:7:\"defVals\";N;s:12:\"overrideVals\";N;s:11:\"columnsOnly\";N;s:6:\"noView\";N;}i:2;s:35:\"&edit%5Bsys_template%5D%5B1%5D=edit\";i:3;a:5:{s:5:\"table\";s:12:\"sys_template\";s:3:\"uid\";i:1;s:3:\"pid\";i:1;s:3:\"cmd\";s:4:\"edit\";s:12:\"deleteAccess\";b:1;}i:4;s:89:\"/typo3/module/web/typoscript/overview?token=0abbee47af28683d30def309ca35fc78e105aa72&id=1\";}s:32:\"c312013d83c1a6ad7fec8b36a37ba3c8\";a:5:{i:0;s:24:\"Thank you for your work.\";i:1;a:5:{s:4:\"edit\";a:1:{s:10:\"tt_content\";a:1:{i:1;s:4:\"edit\";}}s:7:\"defVals\";N;s:12:\"overrideVals\";N;s:11:\"columnsOnly\";N;s:6:\"noView\";N;}i:2;s:33:\"&edit%5Btt_content%5D%5B1%5D=edit\";i:3;a:5:{s:5:\"table\";s:10:\"tt_content\";s:3:\"uid\";i:1;s:3:\"pid\";i:1;s:3:\"cmd\";s:4:\"edit\";s:12:\"deleteAccess\";b:1;}i:4;s:77:\"/typo3/module/web/layout?token=472e99048bc6f13a67a69502fa50599eb8180a13&id=1&\";}}i:1;s:32:\"c312013d83c1a6ad7fec8b36a37ba3c8\";}s:6:\"web_ts\";a:1:{s:6:\"action\";s:25:\"web_typoscript_infomodify\";}s:25:\"web_typoscript_infomodify\";a:1:{s:23:\"selectedTemplatePerPage\";a:1:{i:1;i:1;}}s:16:\"opendocs::recent\";a:1:{s:32:\"ad6c6673a0ce0bd828f9e86c3bc41bf4\";a:5:{i:0;s:8:\"NEW SITE\";i:1;a:5:{s:4:\"edit\";a:1:{s:12:\"sys_template\";a:1:{i:1;s:4:\"edit\";}}s:7:\"defVals\";N;s:12:\"overrideVals\";N;s:11:\"columnsOnly\";s:6:\"config\";s:6:\"noView\";N;}i:2;s:54:\"&edit%5Bsys_template%5D%5B1%5D=edit&columnsOnly=config\";i:3;a:5:{s:5:\"table\";s:12:\"sys_template\";s:3:\"uid\";i:1;s:3:\"pid\";i:1;s:3:\"cmd\";s:4:\"edit\";s:12:\"deleteAccess\";b:1;}i:4;s:89:\"/typo3/module/web/typoscript/overview?token=0abbee47af28683d30def309ca35fc78e105aa72&id=1\";}}}s:14:\"emailMeAtLogin\";i:0;s:8:\"titleLen\";i:50;s:20:\"edit_docModuleUpload\";s:1:\"1\";s:15:\"moduleSessionID\";a:6:{s:28:\"dashboard/current_dashboard/\";s:40:\"5cc7cba8fd95005312640f5172c96b4584de0328\";s:57:\"TYPO3\\CMS\\Backend\\Utility\\BackendUtility::getUpdateSignal\";s:40:\"5cc7cba8fd95005312640f5172c96b4584de0328\";s:10:\"FormEngine\";s:40:\"5cc7cba8fd95005312640f5172c96b4584de0328\";s:6:\"web_ts\";s:40:\"5cc7cba8fd95005312640f5172c96b4584de0328\";s:25:\"web_typoscript_infomodify\";s:40:\"5cc7cba8fd95005312640f5172c96b4584de0328\";s:16:\"opendocs::recent\";s:40:\"5cc7cba8fd95005312640f5172c96b4584de0328\";}s:17:\"BackendComponents\";a:1:{s:6:\"States\";a:1:{s:8:\"Pagetree\";a:1:{s:9:\"stateHash\";a:1:{s:3:\"0_0\";s:1:\"1\";}}}}}',NULL,NULL,NULL,0,NULL,NULL,1694603076,0,'admin@example.com',1,0,'',0);
+INSERT INTO `be_users` VALUES (1,0,1694603059,1694603059,0,0,0,0,NULL,'admin','$argon2i$v=19$m=65536,t=16,p=1$Y1lJbVJDMEpMdi9hUk1Wbg$k0ilmne87QeKvZepXFywT3YsuAN+1MbuZCBLyCla8Ak',NULL,'default',NULL,'',NULL,'','a:6:{s:10:\"moduleData\";a:8:{s:28:\"dashboard/current_dashboard/\";s:40:\"3d03c98ac61143e23e740382fbd8b7563b2e4c69\";s:57:\"TYPO3\\CMS\\Backend\\Utility\\BackendUtility::getUpdateSignal\";a:0:{}s:10:\"FormEngine\";a:2:{i:0;a:1:{s:32:\"deac478137dd48a97e299bd046412e21\";a:5:{i:0;s:0:\"\";i:1;a:5:{s:4:\"edit\";a:1:{s:10:\"tt_content\";a:1:{i:2;s:4:\"edit\";}}s:7:\"defVals\";N;s:12:\"overrideVals\";N;s:11:\"columnsOnly\";N;s:6:\"noView\";N;}i:2;s:33:\"&edit%5Btt_content%5D%5B2%5D=edit\";i:3;a:5:{s:5:\"table\";s:10:\"tt_content\";s:3:\"uid\";i:2;s:3:\"pid\";i:1;s:3:\"cmd\";s:4:\"edit\";s:12:\"deleteAccess\";b:1;}i:4;s:93:\"/typo3_v12/public/typo3/module/web/layout?token=94b44f3511a2a32aa1c57228e4ad87b0b0083a5f&id=1\";}}i:1;s:32:\"e75e4b380817b8a1ddc5c45d5025cb40\";}s:6:\"web_ts\";a:1:{s:6:\"action\";s:29:\"web_typoscript_constanteditor\";}s:25:\"web_typoscript_infomodify\";a:1:{s:23:\"selectedTemplatePerPage\";a:2:{i:1;i:1;i:2;i:2;}}s:16:\"opendocs::recent\";a:2:{s:32:\"e75e4b380817b8a1ddc5c45d5025cb40\";a:5:{i:0;s:4:\"+ext\";i:1;a:5:{s:4:\"edit\";a:1:{s:12:\"sys_template\";a:1:{i:2;s:4:\"edit\";}}s:7:\"defVals\";N;s:12:\"overrideVals\";N;s:11:\"columnsOnly\";s:9:\"constants\";s:6:\"noView\";N;}i:2;s:57:\"&edit%5Bsys_template%5D%5B2%5D=edit&columnsOnly=constants\";i:3;a:5:{s:5:\"table\";s:12:\"sys_template\";s:3:\"uid\";i:2;s:3:\"pid\";i:2;s:3:\"cmd\";s:4:\"edit\";s:12:\"deleteAccess\";b:1;}i:4;s:106:\"/typo3_v12/public/typo3/module/web/typoscript/overview?token=7203296fe409138c0e6cd9f1b4834e517c7a03d5&id=2\";}s:32:\"ad6c6673a0ce0bd828f9e86c3bc41bf4\";a:5:{i:0;s:8:\"NEW SITE\";i:1;a:5:{s:4:\"edit\";a:1:{s:12:\"sys_template\";a:1:{i:1;s:4:\"edit\";}}s:7:\"defVals\";N;s:12:\"overrideVals\";N;s:11:\"columnsOnly\";s:6:\"config\";s:6:\"noView\";N;}i:2;s:54:\"&edit%5Bsys_template%5D%5B1%5D=edit&columnsOnly=config\";i:3;a:5:{s:5:\"table\";s:12:\"sys_template\";s:3:\"uid\";i:1;s:3:\"pid\";i:1;s:3:\"cmd\";s:4:\"edit\";s:12:\"deleteAccess\";b:1;}i:4;s:89:\"/typo3/module/web/typoscript/overview?token=0abbee47af28683d30def309ca35fc78e105aa72&id=1\";}}s:9:\"clipboard\";a:5:{s:6:\"normal\";a:2:{s:2:\"el\";a:0:{}s:4:\"mode\";s:0:\"\";}s:5:\"tab_1\";a:0:{}s:5:\"tab_2\";a:0:{}s:5:\"tab_3\";a:0:{}s:7:\"current\";s:6:\"normal\";}s:29:\"web_typoscript_constanteditor\";a:2:{s:23:\"selectedTemplatePerPage\";a:1:{i:2;i:2;}s:16:\"selectedCategory\";s:23:\"bootstrap package: logo\";}}s:14:\"emailMeAtLogin\";i:0;s:8:\"titleLen\";i:50;s:20:\"edit_docModuleUpload\";s:1:\"1\";s:15:\"moduleSessionID\";a:8:{s:28:\"dashboard/current_dashboard/\";s:40:\"5cc7cba8fd95005312640f5172c96b4584de0328\";s:57:\"TYPO3\\CMS\\Backend\\Utility\\BackendUtility::getUpdateSignal\";s:40:\"b9680d93806ff617fcf94f6092bb6fade4e65bac\";s:10:\"FormEngine\";s:40:\"b9680d93806ff617fcf94f6092bb6fade4e65bac\";s:6:\"web_ts\";s:40:\"b9680d93806ff617fcf94f6092bb6fade4e65bac\";s:25:\"web_typoscript_infomodify\";s:40:\"b9680d93806ff617fcf94f6092bb6fade4e65bac\";s:16:\"opendocs::recent\";s:40:\"b9680d93806ff617fcf94f6092bb6fade4e65bac\";s:9:\"clipboard\";s:40:\"b9680d93806ff617fcf94f6092bb6fade4e65bac\";s:29:\"web_typoscript_constanteditor\";s:40:\"b9680d93806ff617fcf94f6092bb6fade4e65bac\";}s:17:\"BackendComponents\";a:1:{s:6:\"States\";a:1:{s:8:\"Pagetree\";a:1:{s:9:\"stateHash\";a:2:{s:3:\"0_0\";s:1:\"1\";s:3:\"0_1\";s:1:\"1\";}}}}}',NULL,NULL,NULL,0,NULL,NULL,1694678160,0,'admin@example.com',1,0,'',0);
 /*!40000 ALTER TABLE `be_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -389,7 +389,7 @@ CREATE TABLE `cache_pages` (
   `content` longblob DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `cache_id` (`identifier`(180),`expires`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -415,7 +415,7 @@ CREATE TABLE `cache_pages_tags` (
   PRIMARY KEY (`id`),
   KEY `cache_id` (`identifier`(191)),
   KEY `cache_tag` (`tag`(191))
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -788,7 +788,7 @@ CREATE TABLE `index_grlist` (
   PRIMARY KEY (`uniqid`),
   KEY `joinkey` (`phash`,`hash_gr_list`),
   KEY `phash_grouping` (`phash_x`,`hash_gr_list`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -894,7 +894,7 @@ CREATE TABLE `index_section` (
   KEY `page_id` (`page_id`),
   KEY `rl0` (`rl0`,`rl1`,`phash`),
   KEY `rl0_2` (`rl0`,`phash`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1056,7 +1056,7 @@ CREATE TABLE `pages` (
   KEY `parent` (`pid`,`deleted`,`hidden`),
   KEY `translation_source` (`l10n_source`),
   KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1065,7 +1065,7 @@ CREATE TABLE `pages` (
 
 LOCK TABLES `pages` WRITE;
 /*!40000 ALTER TABLE `pages` DISABLE KEYS */;
-INSERT INTO `pages` VALUES (1,0,1694604307,1694604292,0,0,0,0,'',256,NULL,0,0,0,0,NULL,0,'{\"doktype\":\"\",\"title\":\"\",\"slug\":\"\",\"nav_title\":\"\",\"subtitle\":\"\",\"nav_icon_set\":\"\",\"nav_icon\":\"\",\"seo_title\":\"\",\"description\":\"\",\"no_index\":\"\",\"no_follow\":\"\",\"canonical_link\":\"\",\"sitemap_changefreq\":\"\",\"sitemap_priority\":\"\",\"og_title\":\"\",\"og_description\":\"\",\"og_image\":\"\",\"twitter_title\":\"\",\"twitter_description\":\"\",\"twitter_image\":\"\",\"twitter_card\":\"\",\"abstract\":\"\",\"keywords\":\"\",\"author\":\"\",\"author_email\":\"\",\"lastUpdated\":\"\",\"layout\":\"\",\"newUntil\":\"\",\"backend_layout\":\"\",\"backend_layout_next_level\":\"\",\"thumbnail\":\"\",\"content_from_pid\":\"\",\"target\":\"\",\"cache_timeout\":\"\",\"cache_tags\":\"\",\"is_siteroot\":\"\",\"no_search\":\"\",\"php_tree_stop\":\"\",\"module\":\"\",\"media\":\"\",\"tsconfig_includes\":\"\",\"TSconfig\":\"\",\"l18n_cfg\":\"\",\"hidden\":\"\",\"nav_hide\":\"\",\"starttime\":\"\",\"endtime\":\"\",\"extendToSubpages\":\"\",\"fe_group\":\"\",\"editlock\":\"\",\"categories\":\"\",\"rowDescription\":\"\"}',0,0,0,0,1,1,31,31,0,'New TYPO3 domain',1,NULL,'',0,0,'',0,'',NULL,0,'',NULL,1694604307,NULL,'','','',0,0,0,'','',NULL,0,0,0,'/',0,0,0,'',0,0,0,0,1,0,0,0,0,'','',NULL,'',NULL,'summary','',0.5,'','','',0,0);
+INSERT INTO `pages` VALUES (1,0,1694604307,1694604292,0,0,0,0,'',256,NULL,0,0,0,0,NULL,0,'{\"doktype\":\"\",\"title\":\"\",\"slug\":\"\",\"nav_title\":\"\",\"subtitle\":\"\",\"nav_icon_set\":\"\",\"nav_icon\":\"\",\"seo_title\":\"\",\"description\":\"\",\"no_index\":\"\",\"no_follow\":\"\",\"canonical_link\":\"\",\"sitemap_changefreq\":\"\",\"sitemap_priority\":\"\",\"og_title\":\"\",\"og_description\":\"\",\"og_image\":\"\",\"twitter_title\":\"\",\"twitter_description\":\"\",\"twitter_image\":\"\",\"twitter_card\":\"\",\"abstract\":\"\",\"keywords\":\"\",\"author\":\"\",\"author_email\":\"\",\"lastUpdated\":\"\",\"layout\":\"\",\"newUntil\":\"\",\"backend_layout\":\"\",\"backend_layout_next_level\":\"\",\"thumbnail\":\"\",\"content_from_pid\":\"\",\"target\":\"\",\"cache_timeout\":\"\",\"cache_tags\":\"\",\"is_siteroot\":\"\",\"no_search\":\"\",\"php_tree_stop\":\"\",\"module\":\"\",\"media\":\"\",\"tsconfig_includes\":\"\",\"TSconfig\":\"\",\"l18n_cfg\":\"\",\"hidden\":\"\",\"nav_hide\":\"\",\"starttime\":\"\",\"endtime\":\"\",\"extendToSubpages\":\"\",\"fe_group\":\"\",\"editlock\":\"\",\"categories\":\"\",\"rowDescription\":\"\"}',0,0,0,0,1,1,31,31,0,'New TYPO3 domain',1,NULL,'',0,0,'',0,'',NULL,0,'',NULL,1694604307,NULL,'','','',0,0,0,'','',NULL,0,0,0,'/',0,0,0,'',0,0,0,0,1,0,0,0,0,'','',NULL,'',NULL,'summary','',0.5,'','','',0,0),(2,1,1694681287,1694681269,0,0,0,0,'0',256,NULL,0,0,0,0,NULL,0,'{\"hidden\":\"\"}',0,0,0,0,1,1,31,31,0,'Plugin-Issue image.uri',1,NULL,'',0,0,'',0,'',NULL,0,'',NULL,1694681287,NULL,'','','',0,0,0,'','',NULL,0,0,0,'/plugin-issue-imageuri',0,0,0,'',0,0,0,0,0,0,0,0,0,'','',NULL,'',NULL,'summary','',0.5,'','','',0,0);
 /*!40000 ALTER TABLE `pages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1551,7 +1551,7 @@ CREATE TABLE `sys_history` (
   PRIMARY KEY (`uid`),
   KEY `recordident_1` (`tablename`(100),`recuid`),
   KEY `recordident_2` (`tablename`(100),`tstamp`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1616,7 +1616,7 @@ CREATE TABLE `sys_lockedrecords` (
   `feuserid` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`uid`),
   KEY `event` (`userid`,`tstamp`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1670,7 +1670,7 @@ CREATE TABLE `sys_log` (
   KEY `channel` (`channel`),
   KEY `level` (`level`),
   KEY `parent` (`pid`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1908,7 +1908,7 @@ CREATE TABLE `sys_registry` (
 
 LOCK TABLES `sys_registry` WRITE;
 /*!40000 ALTER TABLE `sys_registry` DISABLE KEYS */;
-INSERT INTO `sys_registry` VALUES (1,'installUpdate','TYPO3\\CMS\\Install\\Updates\\BackendGroupsExplicitAllowDenyMigration','i:1;'),(2,'installUpdate','TYPO3\\CMS\\Install\\Updates\\BackendModulePermissionMigration','i:1;'),(3,'installUpdate','TYPO3\\CMS\\Install\\Updates\\FeLoginModeExtractionUpdate','i:1;'),(4,'installUpdate','TYPO3\\CMS\\Install\\Updates\\MigrateSiteSettingsConfigUpdate','i:1;'),(5,'installUpdate','TYPO3\\CMS\\Install\\Updates\\PagesRecyclerDoktypeMigration','i:1;'),(6,'installUpdate','TYPO3\\CMS\\Install\\Updates\\PasswordPolicyForFrontendUsersUpdate','i:1;'),(7,'installUpdate','TYPO3\\CMS\\Install\\Updates\\SysFileCollectionIdentifierMigration','i:1;'),(8,'installUpdate','TYPO3\\CMS\\Install\\Updates\\SysFileMountIdentifierMigration','i:1;'),(9,'installUpdate','TYPO3\\CMS\\Install\\Updates\\SysLogSerializationUpdate','i:1;'),(10,'installUpdate','TYPO3\\CMS\\Install\\Updates\\SysTemplateNoWorkspaceMigration','i:1;'),(11,'installUpdateRows','rowUpdatersDone','a:1:{i:0;s:69:\"TYPO3\\CMS\\Install\\Updates\\RowUpdater\\SysRedirectRootPageMoveMigration\";}'),(12,'core','formProtectionSessionToken:1','s:64:\"8783666b8c639c8623f9fc117b7d3f6d85a2a66bd922ea5a4776803edfb18e1c\";');
+INSERT INTO `sys_registry` VALUES (1,'installUpdate','TYPO3\\CMS\\Install\\Updates\\BackendGroupsExplicitAllowDenyMigration','i:1;'),(2,'installUpdate','TYPO3\\CMS\\Install\\Updates\\BackendModulePermissionMigration','i:1;'),(3,'installUpdate','TYPO3\\CMS\\Install\\Updates\\FeLoginModeExtractionUpdate','i:1;'),(4,'installUpdate','TYPO3\\CMS\\Install\\Updates\\MigrateSiteSettingsConfigUpdate','i:1;'),(5,'installUpdate','TYPO3\\CMS\\Install\\Updates\\PagesRecyclerDoktypeMigration','i:1;'),(6,'installUpdate','TYPO3\\CMS\\Install\\Updates\\PasswordPolicyForFrontendUsersUpdate','i:1;'),(7,'installUpdate','TYPO3\\CMS\\Install\\Updates\\SysFileCollectionIdentifierMigration','i:1;'),(8,'installUpdate','TYPO3\\CMS\\Install\\Updates\\SysFileMountIdentifierMigration','i:1;'),(9,'installUpdate','TYPO3\\CMS\\Install\\Updates\\SysLogSerializationUpdate','i:1;'),(10,'installUpdate','TYPO3\\CMS\\Install\\Updates\\SysTemplateNoWorkspaceMigration','i:1;'),(11,'installUpdateRows','rowUpdatersDone','a:1:{i:0;s:69:\"TYPO3\\CMS\\Install\\Updates\\RowUpdater\\SysRedirectRootPageMoveMigration\";}'),(12,'core','formProtectionSessionToken:1','s:64:\"42962db246a1ada8a46670695671924e0ca6b04be464003b0a5a7df706566e44\";');
 /*!40000 ALTER TABLE `sys_registry` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1944,7 +1944,7 @@ CREATE TABLE `sys_template` (
   PRIMARY KEY (`uid`),
   KEY `roottemplate` (`deleted`,`hidden`,`root`),
   KEY `parent` (`pid`,`deleted`,`hidden`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1953,7 +1953,7 @@ CREATE TABLE `sys_template` (
 
 LOCK TABLES `sys_template` WRITE;
 /*!40000 ALTER TABLE `sys_template` DISABLE KEYS */;
-INSERT INTO `sys_template` VALUES (1,1,1694604347,1694604330,0,0,0,0,256,NULL,0,'NEW SITE','EXT:bootstrap_package/Configuration/TypoScript',NULL,'','',0,1,3,0,0);
+INSERT INTO `sys_template` VALUES (1,1,1694604347,1694604330,0,0,0,0,256,NULL,0,'NEW SITE','EXT:bootstrap_package/Configuration/TypoScript',NULL,'','',0,1,3,0,0),(2,2,1694681882,1694681303,0,0,0,0,256,NULL,0,'+ext',NULL,'\npage.logo.file = \npage.logo.fileInverted = ',NULL,'',0,0,0,0,0);
 /*!40000 ALTER TABLE `sys_template` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2159,7 +2159,7 @@ CREATE TABLE `tt_content` (
   KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`),
   KEY `language` (`l18n_parent`,`sys_language_uid`),
   KEY `translation_source` (`l10n_source`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2168,7 +2168,7 @@ CREATE TABLE `tt_content` (
 
 LOCK TABLES `tt_content` WRITE;
 /*!40000 ALTER TABLE `tt_content` DISABLE KEYS */;
-INSERT INTO `tt_content` VALUES (1,'',1,1694604369,1694604369,0,0,0,0,'',256,0,0,0,0,NULL,0,'',0,0,0,0,'text','Thank you for your work.','','<p>Much appreciated.</p>',0,0,0,0,1,0,'default',0,'','',NULL,NULL,0,'','','0','',NULL,'','','',0,0,NULL,'','','','',NULL,124,0,0,0,NULL,0,0,0,0,0,0,0,1,0,0,0,0,0,'','',NULL,'1.3333333333333',10,'','','','default',NULL,'','',0,'','default','default','#FFFFFF','#333333','','','',0,0,0,0,0,0,'default','','none',0,NULL,2);
+INSERT INTO `tt_content` VALUES (1,'',1,1694604369,1694604369,0,0,0,0,'',256,0,0,0,0,NULL,0,'',0,0,0,0,'text','Thank you for your work.','','<p>Much appreciated.</p>',0,0,0,0,1,0,'default',0,'','',NULL,NULL,0,'','','0','',NULL,'','','',0,0,NULL,'','','','',NULL,124,0,0,0,NULL,0,0,0,0,0,0,0,1,0,0,0,0,0,'','',NULL,'1.3333333333333',10,'','','','default',NULL,'','',0,'','default','default','#FFFFFF','#333333','','','',0,0,0,0,0,0,'default','','none',0,NULL,2),(2,'',2,1694681284,1694678189,0,0,0,0,'',256,0,0,0,0,NULL,0,'{\"colPos\":\"\",\"sys_language_uid\":\"\"}',0,0,0,0,'list','','',NULL,0,0,0,0,1,0,'default',0,'','',NULL,'',0,'','','0','ghreproduceassets_corebugreproduceassets',NULL,'','','',0,0,NULL,'','','','',NULL,124,0,0,0,NULL,0,0,0,0,0,0,0,1,0,0,0,0,0,'','',NULL,'1.3333333333333',10,'','','','default',NULL,'','',0,'','default','default','#FFFFFF','#333333','','','',0,0,0,0,0,0,'default','','none',0,NULL,2);
 /*!40000 ALTER TABLE `tt_content` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2671,4 +2671,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-13 11:28:44
+-- Dump completed on 2023-09-14  9:13:17

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "612e3435dcff6fecd27680dcbabd41d2",
+    "content-hash": "34986d7d581a8c1b04c9495fc7bbe3c7",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1020,6 +1020,38 @@
                 "source": "https://github.com/firebase/php-jwt/tree/v6.8.1"
             },
             "time": "2023-07-14T18:33:00+00:00"
+        },
+        {
+            "name": "garvinhicking/reproduce-assets",
+            "version": "1.0.1",
+            "dist": {
+                "type": "path",
+                "url": "packages/gh_reproduce_assets",
+                "reference": "40c8e306d79e0d2ac052650716647d4c6dc5572b"
+            },
+            "require": {
+                "typo3/cms-core": "^13.0.0"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "gh_reproduce_assets"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GarvinHicking\\CoreBugReproduceAssets\\": "Classes"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Garvin Hicking",
+                    "role": "Developer"
+                }
+            ],
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -11398,7 +11430,8 @@
         "typo3/cms-viewpage": 20,
         "typo3/cms-workspaces": 20,
         "typo3/cms-styleguide": 20,
-        "bk2k/bootstrap-package": 20
+        "bk2k/bootstrap-package": 20,
+        "garvinhicking/reproduce-assets": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
