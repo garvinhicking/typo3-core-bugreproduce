@@ -20,7 +20,6 @@
             "@tdk:clone",
             "@tdk:set-git-config",
             "@tdk:enable-hooks",
-            "@tdk:ddev-config",
             "@tdk:set-commit-template"
         ],
         "tdk:clone": "Ochorocho\\Tdk\\Scripts\\GitScript::cloneRepository",
