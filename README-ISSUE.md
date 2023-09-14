@@ -12,8 +12,6 @@ To reproduce:
 * Check out the repository with this branch (you're halfway there, if you read this)
 * Run: `ddev start`
 * Run: `ddev exec 'cd typo3_v12 && composer install && composer tdk:setup'`
-    * IMPORTANT: Answer "n" when TDK asks for creating a ddev config. This
-      repository already provides it.
 * Run: `ddev import-db --file=typo3_v12/db.sql`
 * Open in browser: `https://typo3-core-reproducebug.ddev.site/typo3_v12/public/typo3/index.php`
     * Username: admin
