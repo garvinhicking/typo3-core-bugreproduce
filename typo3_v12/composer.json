@@ -20,7 +20,8 @@
             "@tdk:clone",
             "@tdk:set-git-config",
             "@tdk:enable-hooks",
-            "@tdk:set-commit-template"
+            "@tdk:set-commit-template",
+            "cp htaccess-template public/.htaccess"
         ],
         "tdk:clone": "Ochorocho\\Tdk\\Scripts\\GitScript::cloneRepository",
         "tdk:clear": "Ochorocho\\Tdk\\Scripts\\CommonScript::removeFilesAndFolders",
