@@ -20,8 +20,8 @@
             "@tdk:clone",
             "@tdk:set-git-config",
             "@tdk:enable-hooks",
-            "@tdk:ddev-config",
-            "@tdk:set-commit-template"
+            "@tdk:set-commit-template",
+            "cp htaccess-template public/.htaccess"
         ],
         "tdk:clone": "Ochorocho\\Tdk\\Scripts\\GitScript::cloneRepository",
         "tdk:clear": "Ochorocho\\Tdk\\Scripts\\CommonScript::removeFilesAndFolders",
@@ -90,7 +90,10 @@
         "typo3/cms-viewpage": "@dev",
         "typo3/cms-workspaces": "@dev",
         
-        "bk2k/bootstrap-package": "@dev"
+        "typo3/cms-styleguide": "@dev",
+        "bk2k/bootstrap-package": "@dev",
+        
+        "garvinhicking/reproduce-assets": "@dev"
     },
     "require-dev": {
         "codeception/codeception": "*",

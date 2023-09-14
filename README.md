@@ -24,6 +24,7 @@ with other people.
 They (you!) need to:
 
 * Check out the created project (like this one you're looking at)
+* Initialize composer: `composer install`
 * Initialize the ddev installation: `ddev start`
 * Set-up the TYPO3 monorepo: `composer tdk:setup`
 * Use `ddev launch` and log-in to TYPO3

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9c86e173729af0fb0f9642d6049a6181",
+    "content-hash": "34986d7d581a8c1b04c9495fc7bbe3c7",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1020,6 +1020,38 @@
                 "source": "https://github.com/firebase/php-jwt/tree/v6.8.1"
             },
             "time": "2023-07-14T18:33:00+00:00"
+        },
+        {
+            "name": "garvinhicking/reproduce-assets",
+            "version": "1.0.1",
+            "dist": {
+                "type": "path",
+                "url": "packages/gh_reproduce_assets",
+                "reference": "40c8e306d79e0d2ac052650716647d4c6dc5572b"
+            },
+            "require": {
+                "typo3/cms-core": "^13.0.0"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "gh_reproduce_assets"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GarvinHicking\\CoreBugReproduceAssets\\": "Classes"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Garvin Hicking",
+                    "role": "Developer"
+                }
+            ],
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -7167,6 +7199,78 @@
             }
         },
         {
+            "name": "typo3/cms-styleguide",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3/styleguide.git",
+                "reference": "69f94f71bf05c08e5c6e9ee0b15ee2b28c71a8de"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3/styleguide/zipball/69f94f71bf05c08e5c6e9ee0b15ee2b28c71a8de",
+                "reference": "69f94f71bf05c08e5c6e9ee0b15ee2b28c71a8de",
+                "shasum": ""
+            },
+            "require-dev": {
+                "codeception/codeception": "^5.0",
+                "codeception/module-asserts": "^3.0",
+                "codeception/module-cli": "^2.0",
+                "codeception/module-webdriver": "^4.0",
+                "friendsofphp/php-cs-fixer": "^3.16.0",
+                "phpstan/phpstan": "^1.10.14",
+                "typo3/cms-core": "~13.0@dev",
+                "typo3/cms-frontend": "~13.0@dev",
+                "typo3/cms-install": "~13.0@dev",
+                "typo3/testing-framework": "dev-main"
+            },
+            "default-branch": true,
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "app-dir": ".Build",
+                    "web-dir": ".Build/Web",
+                    "extension-key": "styleguide"
+                },
+                "branch-alias": {
+                    "dev-main": "13.x.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TYPO3\\CMS\\Styleguide\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "TYPO3 CMS Core Team",
+                    "homepage": "https://forge.typo3.org/projects/typo3cms-core",
+                    "role": "Developer"
+                },
+                {
+                    "name": "The TYPO3 Community",
+                    "homepage": "https://typo3.org/community/",
+                    "role": "Contributor"
+                }
+            ],
+            "description": "TYPO3 extension to showcase TYPO3 Backend capabilities",
+            "homepage": "https://github.com/TYPO3/styleguide",
+            "keywords": [
+                "style guide",
+                "typo3",
+                "typo3 backend"
+            ],
+            "support": {
+                "issues": "https://github.com/TYPO3/styleguide/issues",
+                "source": "https://github.com/TYPO3/styleguide/tree/main"
+            },
+            "time": "2023-09-10T08:38:21+00:00"
+        },
+        {
             "name": "typo3/cms-sys-note",
             "version": "dev-main",
             "dist": {
@@ -11325,7 +11429,9 @@
         "typo3/cms-tstemplate": 20,
         "typo3/cms-viewpage": 20,
         "typo3/cms-workspaces": 20,
-        "bk2k/bootstrap-package": 20
+        "typo3/cms-styleguide": 20,
+        "bk2k/bootstrap-package": 20,
+        "garvinhicking/reproduce-assets": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
