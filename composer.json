@@ -19,8 +19,7 @@
         "post-create-project-cmd": [
             "@tdk:post-vanilla"
         ],
-        "tdk:post-vanilla": [
-        ],
+        "tdk:post-vanilla": [],
         "tdk:post": [
             "@tdk:help",
             "Ochorocho\\Tdk\\Scripts\\MessageScript::done"
@@ -47,7 +46,6 @@
         "tdk:set-git-config": "Ochorocho\\Tdk\\Scripts\\GitScript::setGitConfig",
         "tdk:apply-patch": "Ochorocho\\Tdk\\Scripts\\GitScript::applyPatch",
         "tdk:checkout": "Ochorocho\\Tdk\\Scripts\\GitScript::checkoutBranch",
-        
         "ddev:export-db": "ddev export-db --gzip=false --file ./db.sql"
     },
     "repositories": {
@@ -62,7 +60,9 @@
         "packagist": {
             "type": "composer",
             "url": "https://packagist.org",
-            "exclude": ["typo3/cms-styleguide"]
+            "exclude": [
+                "typo3/cms-styleguide"
+            ]
         }
     },
     "autoload-dev": {
@@ -127,6 +127,22 @@
             "typo3/cms-composer-installers": true,
             "cweagans/composer-patches": true,
             "gilbertsoft/typo3-core-patches": true
+        }
+    },
+    "extra": {
+        "patches": {
+            "typo3/cms-impexp": {
+                "Enable Export/Import of page translations": "patches/typo3-cms-impexp-review-71374.patch"
+            }
+        },
+        "gilbertsoft/typo3-core-patches": {
+            "applied-changes": {
+                "71374": {
+                    "packages": [
+                        "typo3/cms-impexp"
+                    ]
+                }
+            }
         }
     }
 }
