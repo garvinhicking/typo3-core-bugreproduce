@@ -29,7 +29,14 @@ To update to the latest version of said patch, you can re-run this
 command (maybe need to remove the `vendor` directory first to force
 re-loading and patching all sources).
 
-After checkout out the repository perform these steps:
+You probably already did this:
+
+```
+git clone --branch issue_94616 git@github.com:garvinhicking/typo3-core-bugreproduce.git
+cd typo3-core-bugreproduce
+```
+
+After checkout out of the repository perform these steps:
 
 * `ddev start`
 * `ddev composer tdk:install`
