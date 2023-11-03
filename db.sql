@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.6.14-MariaDB, for debian-linux-gnu (aarch64)
+-- MariaDB dump 10.19  Distrib 10.6.15-MariaDB, for debian-linux-gnu (aarch64)
 --
 -- Host: localhost    Database: db
 -- ------------------------------------------------------
--- Server version	10.6.14-MariaDB-1:10.6.14+maria~ubu2004-log
+-- Server version	10.6.15-MariaDB-1:10.6.15+maria~ubu2004-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -37,7 +37,7 @@ CREATE TABLE `backend_layout` (
   `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
   `t3ver_stage` int(11) NOT NULL DEFAULT 0,
   `title` varchar(255) NOT NULL DEFAULT '',
-  `config` text NOT NULL,
+  `config` longtext DEFAULT NULL,
   `icon` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`uid`),
   KEY `parent` (`pid`,`deleted`,`hidden`),
@@ -123,6 +123,7 @@ CREATE TABLE `be_groups` (
   `subgroup` text DEFAULT NULL,
   `category_perms` longtext DEFAULT NULL,
   `workspace_perms` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `tx_styleguide_isdemorecord` smallint(5) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`uid`),
   KEY `parent` (`pid`,`deleted`,`hidden`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
@@ -203,10 +204,11 @@ CREATE TABLE `be_users` (
   `options` smallint(5) unsigned NOT NULL DEFAULT 0,
   `password_reset_token` varchar(100) NOT NULL DEFAULT '',
   `workspace_perms` smallint(6) NOT NULL DEFAULT 0,
+  `tx_styleguide_isdemorecord` smallint(5) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`uid`),
   KEY `username` (`username`),
   KEY `parent` (`pid`,`deleted`,`disable`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -215,7 +217,7 @@ CREATE TABLE `be_users` (
 
 LOCK TABLES `be_users` WRITE;
 /*!40000 ALTER TABLE `be_users` DISABLE KEYS */;
-INSERT INTO `be_users` VALUES (1,0,1694603059,1694603059,0,0,0,0,NULL,'admin','$argon2i$v=19$m=65536,t=16,p=1$Y1lJbVJDMEpMdi9hUk1Wbg$k0ilmne87QeKvZepXFywT3YsuAN+1MbuZCBLyCla8Ak',NULL,'default',NULL,'',NULL,'','a:6:{s:10:\"moduleData\";a:8:{s:28:\"dashboard/current_dashboard/\";s:40:\"3d03c98ac61143e23e740382fbd8b7563b2e4c69\";s:57:\"TYPO3\\CMS\\Backend\\Utility\\BackendUtility::getUpdateSignal\";a:0:{}s:10:\"FormEngine\";a:2:{i:0;a:1:{s:32:\"deac478137dd48a97e299bd046412e21\";a:5:{i:0;s:0:\"\";i:1;a:5:{s:4:\"edit\";a:1:{s:10:\"tt_content\";a:1:{i:2;s:4:\"edit\";}}s:7:\"defVals\";N;s:12:\"overrideVals\";N;s:11:\"columnsOnly\";N;s:6:\"noView\";N;}i:2;s:33:\"&edit%5Btt_content%5D%5B2%5D=edit\";i:3;a:5:{s:5:\"table\";s:10:\"tt_content\";s:3:\"uid\";i:2;s:3:\"pid\";i:1;s:3:\"cmd\";s:4:\"edit\";s:12:\"deleteAccess\";b:1;}i:4;s:93:\"/typo3_v12/public/typo3/module/web/layout?token=94b44f3511a2a32aa1c57228e4ad87b0b0083a5f&id=1\";}}i:1;s:32:\"e75e4b380817b8a1ddc5c45d5025cb40\";}s:6:\"web_ts\";a:1:{s:6:\"action\";s:29:\"web_typoscript_constanteditor\";}s:25:\"web_typoscript_infomodify\";a:1:{s:23:\"selectedTemplatePerPage\";a:2:{i:1;i:1;i:2;i:2;}}s:16:\"opendocs::recent\";a:2:{s:32:\"e75e4b380817b8a1ddc5c45d5025cb40\";a:5:{i:0;s:4:\"+ext\";i:1;a:5:{s:4:\"edit\";a:1:{s:12:\"sys_template\";a:1:{i:2;s:4:\"edit\";}}s:7:\"defVals\";N;s:12:\"overrideVals\";N;s:11:\"columnsOnly\";s:9:\"constants\";s:6:\"noView\";N;}i:2;s:57:\"&edit%5Bsys_template%5D%5B2%5D=edit&columnsOnly=constants\";i:3;a:5:{s:5:\"table\";s:12:\"sys_template\";s:3:\"uid\";i:2;s:3:\"pid\";i:2;s:3:\"cmd\";s:4:\"edit\";s:12:\"deleteAccess\";b:1;}i:4;s:106:\"/typo3_v12/public/typo3/module/web/typoscript/overview?token=7203296fe409138c0e6cd9f1b4834e517c7a03d5&id=2\";}s:32:\"ad6c6673a0ce0bd828f9e86c3bc41bf4\";a:5:{i:0;s:8:\"NEW SITE\";i:1;a:5:{s:4:\"edit\";a:1:{s:12:\"sys_template\";a:1:{i:1;s:4:\"edit\";}}s:7:\"defVals\";N;s:12:\"overrideVals\";N;s:11:\"columnsOnly\";s:6:\"config\";s:6:\"noView\";N;}i:2;s:54:\"&edit%5Bsys_template%5D%5B1%5D=edit&columnsOnly=config\";i:3;a:5:{s:5:\"table\";s:12:\"sys_template\";s:3:\"uid\";i:1;s:3:\"pid\";i:1;s:3:\"cmd\";s:4:\"edit\";s:12:\"deleteAccess\";b:1;}i:4;s:89:\"/typo3/module/web/typoscript/overview?token=0abbee47af28683d30def309ca35fc78e105aa72&id=1\";}}s:9:\"clipboard\";a:5:{s:6:\"normal\";a:2:{s:2:\"el\";a:0:{}s:4:\"mode\";s:0:\"\";}s:5:\"tab_1\";a:0:{}s:5:\"tab_2\";a:0:{}s:5:\"tab_3\";a:0:{}s:7:\"current\";s:6:\"normal\";}s:29:\"web_typoscript_constanteditor\";a:2:{s:23:\"selectedTemplatePerPage\";a:1:{i:2;i:2;}s:16:\"selectedCategory\";s:23:\"bootstrap package: logo\";}}s:14:\"emailMeAtLogin\";i:0;s:8:\"titleLen\";i:50;s:20:\"edit_docModuleUpload\";s:1:\"1\";s:15:\"moduleSessionID\";a:8:{s:28:\"dashboard/current_dashboard/\";s:40:\"5cc7cba8fd95005312640f5172c96b4584de0328\";s:57:\"TYPO3\\CMS\\Backend\\Utility\\BackendUtility::getUpdateSignal\";s:40:\"b9680d93806ff617fcf94f6092bb6fade4e65bac\";s:10:\"FormEngine\";s:40:\"b9680d93806ff617fcf94f6092bb6fade4e65bac\";s:6:\"web_ts\";s:40:\"b9680d93806ff617fcf94f6092bb6fade4e65bac\";s:25:\"web_typoscript_infomodify\";s:40:\"b9680d93806ff617fcf94f6092bb6fade4e65bac\";s:16:\"opendocs::recent\";s:40:\"b9680d93806ff617fcf94f6092bb6fade4e65bac\";s:9:\"clipboard\";s:40:\"b9680d93806ff617fcf94f6092bb6fade4e65bac\";s:29:\"web_typoscript_constanteditor\";s:40:\"b9680d93806ff617fcf94f6092bb6fade4e65bac\";}s:17:\"BackendComponents\";a:1:{s:6:\"States\";a:1:{s:8:\"Pagetree\";a:1:{s:9:\"stateHash\";a:2:{s:3:\"0_0\";s:1:\"1\";s:3:\"0_1\";s:1:\"1\";}}}}}',NULL,NULL,NULL,0,NULL,NULL,1694678160,0,'admin@example.com',1,0,'',0);
+INSERT INTO `be_users` VALUES (1,0,1694603059,1694603059,0,0,0,0,NULL,'admin','$argon2i$v=19$m=65536,t=16,p=1$Y1lJbVJDMEpMdi9hUk1Wbg$k0ilmne87QeKvZepXFywT3YsuAN+1MbuZCBLyCla8Ak',NULL,'default',NULL,'',NULL,'','a:6:{s:10:\"moduleData\";a:10:{s:28:\"dashboard/current_dashboard/\";s:40:\"3d03c98ac61143e23e740382fbd8b7563b2e4c69\";s:57:\"TYPO3\\CMS\\Backend\\Utility\\BackendUtility::getUpdateSignal\";a:0:{}s:10:\"FormEngine\";a:2:{i:0;a:0:{}i:1;s:32:\"c31c3d00814edbf9b2ddab640af3f55d\";}s:6:\"web_ts\";a:1:{s:6:\"action\";s:29:\"web_typoscript_constanteditor\";}s:25:\"web_typoscript_infomodify\";a:1:{s:23:\"selectedTemplatePerPage\";a:2:{i:1;i:1;i:2;i:2;}}s:16:\"opendocs::recent\";a:8:{s:32:\"c31c3d00814edbf9b2ddab640af3f55d\";a:5:{i:0;s:27:\"This should not be visible.\";i:1;a:5:{s:4:\"edit\";a:1:{s:10:\"tt_content\";a:1:{i:14;s:4:\"edit\";}}s:7:\"defVals\";N;s:12:\"overrideVals\";N;s:11:\"columnsOnly\";N;s:6:\"noView\";N;}i:2;s:34:\"&edit%5Btt_content%5D%5B14%5D=edit\";i:3;a:5:{s:5:\"table\";s:10:\"tt_content\";s:3:\"uid\";i:14;s:3:\"pid\";i:8;s:3:\"cmd\";s:4:\"edit\";s:12:\"deleteAccess\";b:1;}i:4;s:98:\"/typo3/module/web/layout?token=39a07a5d484d9c8304faae21ba0006116dc4af4c&id=8&function=2&language=1\";}s:32:\"ca1d9f585ca31e6d709268bfa0021f7e\";a:5:{i:0;s:29:\"Nur deutscher Inhalt (German)\";i:1;a:5:{s:4:\"edit\";a:1:{s:10:\"tt_content\";a:1:{i:13;s:4:\"edit\";}}s:7:\"defVals\";N;s:12:\"overrideVals\";N;s:11:\"columnsOnly\";N;s:6:\"noView\";N;}i:2;s:34:\"&edit%5Btt_content%5D%5B13%5D=edit\";i:3;a:5:{s:5:\"table\";s:10:\"tt_content\";s:3:\"uid\";i:13;s:3:\"pid\";i:8;s:3:\"cmd\";s:4:\"edit\";s:12:\"deleteAccess\";b:1;}i:4;s:98:\"/typo3/module/web/layout?token=39a07a5d484d9c8304faae21ba0006116dc4af4c&id=8&function=2&language=1\";}s:32:\"2e601193a72eed4b8478b7ceb9fa05c9\";a:5:{i:0;s:21:\"Subpage (only german)\";i:1;a:5:{s:4:\"edit\";a:1:{s:5:\"pages\";a:1:{i:8;s:4:\"edit\";}}s:7:\"defVals\";N;s:12:\"overrideVals\";a:1:{s:5:\"pages\";a:1:{s:16:\"sys_language_uid\";s:1:\"0\";}}s:11:\"columnsOnly\";N;s:6:\"noView\";N;}i:2;s:76:\"&edit%5Bpages%5D%5B8%5D=edit&overrideVals%5Bpages%5D%5Bsys_language_uid%5D=0\";i:3;a:5:{s:5:\"table\";s:5:\"pages\";s:3:\"uid\";i:8;s:3:\"pid\";i:1;s:3:\"cmd\";s:4:\"edit\";s:12:\"deleteAccess\";b:1;}i:4;s:76:\"/typo3/module/web/layout?token=39a07a5d484d9c8304faae21ba0006116dc4af4c&id=8\";}s:32:\"61765c6a3de2e0ba09d6230397278147\";a:5:{i:0;s:24:\"Dansk free mode (Danish)\";i:1;a:5:{s:4:\"edit\";a:1:{s:10:\"tt_content\";a:1:{i:12;s:4:\"edit\";}}s:7:\"defVals\";N;s:12:\"overrideVals\";N;s:11:\"columnsOnly\";N;s:6:\"noView\";N;}i:2;s:34:\"&edit%5Btt_content%5D%5B12%5D=edit\";i:3;a:5:{s:5:\"table\";s:10:\"tt_content\";s:3:\"uid\";i:12;s:3:\"pid\";i:6;s:3:\"cmd\";s:4:\"edit\";s:12:\"deleteAccess\";b:1;}i:4;s:99:\"/typo3/module/web/layout?token=39a07a5d484d9c8304faae21ba0006116dc4af4c&id=6&function=2&language=-1\";}s:32:\"9c43855926e54a70d4d0a190cb54db8c\";a:5:{i:0;s:27:\"Francais free mode (French)\";i:1;a:5:{s:4:\"edit\";a:1:{s:10:\"tt_content\";a:1:{i:11;s:4:\"edit\";}}s:7:\"defVals\";N;s:12:\"overrideVals\";N;s:11:\"columnsOnly\";N;s:6:\"noView\";N;}i:2;s:34:\"&edit%5Btt_content%5D%5B11%5D=edit\";i:3;a:5:{s:5:\"table\";s:10:\"tt_content\";s:3:\"uid\";i:11;s:3:\"pid\";i:6;s:3:\"cmd\";s:4:\"edit\";s:12:\"deleteAccess\";b:1;}i:4;s:99:\"/typo3/module/web/layout?token=39a07a5d484d9c8304faae21ba0006116dc4af4c&id=6&function=2&language=-1\";}s:32:\"ffbd6ae78a9aa555f88d6295c30fb80c\";a:5:{i:0;s:21:\"Deutsch, freier Modus\";i:1;a:5:{s:4:\"edit\";a:1:{s:10:\"tt_content\";a:1:{i:10;s:4:\"edit\";}}s:7:\"defVals\";N;s:12:\"overrideVals\";N;s:11:\"columnsOnly\";N;s:6:\"noView\";N;}i:2;s:34:\"&edit%5Btt_content%5D%5B10%5D=edit\";i:3;a:5:{s:5:\"table\";s:10:\"tt_content\";s:3:\"uid\";i:10;s:3:\"pid\";i:6;s:3:\"cmd\";s:4:\"edit\";s:12:\"deleteAccess\";b:1;}i:4;s:99:\"/typo3/module/web/layout?token=39a07a5d484d9c8304faae21ba0006116dc4af4c&id=6&function=2&language=-1\";}s:32:\"ea5808446ef89a93a3ae0c95ac46d0d0\";a:5:{i:0;s:15:\"English content\";i:1;a:5:{s:4:\"edit\";a:1:{s:10:\"tt_content\";a:1:{i:9;s:4:\"edit\";}}s:7:\"defVals\";N;s:12:\"overrideVals\";N;s:11:\"columnsOnly\";N;s:6:\"noView\";N;}i:2;s:33:\"&edit%5Btt_content%5D%5B9%5D=edit\";i:3;a:5:{s:5:\"table\";s:10:\"tt_content\";s:3:\"uid\";i:9;s:3:\"pid\";i:6;s:3:\"cmd\";s:4:\"edit\";s:12:\"deleteAccess\";b:1;}i:4;s:99:\"/typo3/module/web/layout?token=39a07a5d484d9c8304faae21ba0006116dc4af4c&id=6&function=2&language=-1\";}s:32:\"b319b8465d4df4ca5b9bc7bcce5c08f7\";a:5:{i:0;s:42:\"[Translate to Danish:] Subpage (copy mode)\";i:1;a:5:{s:4:\"edit\";a:1:{s:5:\"pages\";a:1:{i:14;s:4:\"edit\";}}s:7:\"defVals\";N;s:12:\"overrideVals\";N;s:11:\"columnsOnly\";N;s:6:\"noView\";N;}i:2;s:29:\"&edit%5Bpages%5D%5B14%5D=edit\";i:3;a:5:{s:5:\"table\";s:5:\"pages\";s:3:\"uid\";i:14;s:3:\"pid\";i:1;s:3:\"cmd\";s:4:\"edit\";s:12:\"deleteAccess\";b:1;}i:4;s:76:\"/typo3/module/web/layout?token=39a07a5d484d9c8304faae21ba0006116dc4af4c&id=6\";}}s:9:\"clipboard\";a:5:{s:6:\"normal\";a:2:{s:2:\"el\";a:0:{}s:4:\"mode\";s:0:\"\";}s:5:\"tab_1\";a:0:{}s:5:\"tab_2\";a:0:{}s:5:\"tab_3\";a:0:{}s:7:\"current\";s:6:\"normal\";}s:29:\"web_typoscript_constanteditor\";a:2:{s:23:\"selectedTemplatePerPage\";a:1:{i:2;i:2;}s:16:\"selectedCategory\";s:23:\"bootstrap package: logo\";}s:10:\"web_layout\";a:3:{s:8:\"function\";s:1:\"2\";s:8:\"language\";s:1:\"1\";s:10:\"showHidden\";b:1;}s:38:\"tools_ExtensionmanagerExtensionmanager\";a:1:{s:6:\"filter\";s:0:\"\";}}s:14:\"emailMeAtLogin\";i:0;s:8:\"titleLen\";i:50;s:20:\"edit_docModuleUpload\";s:1:\"1\";s:15:\"moduleSessionID\";a:10:{s:28:\"dashboard/current_dashboard/\";s:40:\"5cc7cba8fd95005312640f5172c96b4584de0328\";s:57:\"TYPO3\\CMS\\Backend\\Utility\\BackendUtility::getUpdateSignal\";s:40:\"b039aab4299a92d15d61721c7e2f2ea451f1070f\";s:10:\"FormEngine\";s:40:\"b039aab4299a92d15d61721c7e2f2ea451f1070f\";s:6:\"web_ts\";s:40:\"b9680d93806ff617fcf94f6092bb6fade4e65bac\";s:25:\"web_typoscript_infomodify\";s:40:\"b9680d93806ff617fcf94f6092bb6fade4e65bac\";s:16:\"opendocs::recent\";s:40:\"b039aab4299a92d15d61721c7e2f2ea451f1070f\";s:9:\"clipboard\";s:40:\"b9680d93806ff617fcf94f6092bb6fade4e65bac\";s:29:\"web_typoscript_constanteditor\";s:40:\"b9680d93806ff617fcf94f6092bb6fade4e65bac\";s:10:\"web_layout\";s:40:\"b039aab4299a92d15d61721c7e2f2ea451f1070f\";s:38:\"tools_ExtensionmanagerExtensionmanager\";s:40:\"b039aab4299a92d15d61721c7e2f2ea451f1070f\";}s:17:\"BackendComponents\";a:1:{s:6:\"States\";a:1:{s:8:\"Pagetree\";a:1:{s:9:\"stateHash\";a:2:{s:3:\"0_0\";s:1:\"1\";s:3:\"0_1\";s:1:\"1\";}}}}}',NULL,NULL,NULL,0,NULL,NULL,1699001383,0,'admin@example.com',1,0,'',0,0),(2,0,1699003915,1699003915,0,0,0,0,NULL,'_cli_','$argon2i$v=19$m=65536,t=16,p=1$d2NyZlhpSmovQThQVUYwMQ$k+rcQ5V9yjvESBP0BabQb0HYwL1sA5Ne35OhfwK6+W8',NULL,'default',NULL,'',NULL,'','a:4:{s:10:\"moduleData\";a:0:{}s:14:\"emailMeAtLogin\";i:0;s:8:\"titleLen\";i:50;s:20:\"edit_docModuleUpload\";s:1:\"1\";}',NULL,NULL,NULL,0,NULL,NULL,0,0,'',1,0,'',0,0);
 /*!40000 ALTER TABLE `be_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -576,6 +578,7 @@ CREATE TABLE `fe_groups` (
   `title` varchar(50) NOT NULL DEFAULT '',
   `subgroup` tinytext DEFAULT NULL,
   `felogin_redirectPid` tinytext DEFAULT NULL,
+  `tx_styleguide_containsdemo` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`uid`),
   KEY `parent` (`pid`,`deleted`,`hidden`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
@@ -646,7 +649,7 @@ CREATE TABLE `fe_users` (
   `first_name` varchar(50) NOT NULL DEFAULT '',
   `middle_name` varchar(50) NOT NULL DEFAULT '',
   `last_name` varchar(50) NOT NULL DEFAULT '',
-  `address` varchar(255) NOT NULL DEFAULT '',
+  `address` longtext DEFAULT NULL,
   `telephone` varchar(30) NOT NULL DEFAULT '',
   `fax` varchar(30) NOT NULL DEFAULT '',
   `uc` blob DEFAULT NULL,
@@ -660,6 +663,7 @@ CREATE TABLE `fe_users` (
   `mfa` mediumblob DEFAULT NULL,
   `felogin_redirectPid` tinytext DEFAULT NULL,
   `felogin_forgotHash` varchar(80) DEFAULT '',
+  `tx_styleguide_containsdemo` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`uid`),
   KEY `parent` (`pid`,`username`(100)),
   KEY `username` (`username`(100)),
@@ -1049,6 +1053,7 @@ CREATE TABLE `pages` (
   `nav_icon_identifier` varchar(255) NOT NULL DEFAULT '',
   `nav_icon` int(10) unsigned DEFAULT 0,
   `thumbnail` int(10) unsigned DEFAULT 0,
+  `tx_styleguide_containsdemo` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`uid`),
   KEY `determineSiteRoot` (`is_siteroot`),
   KEY `language_identifier` (`l10n_parent`,`sys_language_uid`),
@@ -1056,7 +1061,7 @@ CREATE TABLE `pages` (
   KEY `parent` (`pid`,`deleted`,`hidden`),
   KEY `translation_source` (`l10n_source`),
   KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1065,7 +1070,7 @@ CREATE TABLE `pages` (
 
 LOCK TABLES `pages` WRITE;
 /*!40000 ALTER TABLE `pages` DISABLE KEYS */;
-INSERT INTO `pages` VALUES (1,0,1694604307,1694604292,0,0,0,0,'',256,NULL,0,0,0,0,NULL,0,'{\"doktype\":\"\",\"title\":\"\",\"slug\":\"\",\"nav_title\":\"\",\"subtitle\":\"\",\"nav_icon_set\":\"\",\"nav_icon\":\"\",\"seo_title\":\"\",\"description\":\"\",\"no_index\":\"\",\"no_follow\":\"\",\"canonical_link\":\"\",\"sitemap_changefreq\":\"\",\"sitemap_priority\":\"\",\"og_title\":\"\",\"og_description\":\"\",\"og_image\":\"\",\"twitter_title\":\"\",\"twitter_description\":\"\",\"twitter_image\":\"\",\"twitter_card\":\"\",\"abstract\":\"\",\"keywords\":\"\",\"author\":\"\",\"author_email\":\"\",\"lastUpdated\":\"\",\"layout\":\"\",\"newUntil\":\"\",\"backend_layout\":\"\",\"backend_layout_next_level\":\"\",\"thumbnail\":\"\",\"content_from_pid\":\"\",\"target\":\"\",\"cache_timeout\":\"\",\"cache_tags\":\"\",\"is_siteroot\":\"\",\"no_search\":\"\",\"php_tree_stop\":\"\",\"module\":\"\",\"media\":\"\",\"tsconfig_includes\":\"\",\"TSconfig\":\"\",\"l18n_cfg\":\"\",\"hidden\":\"\",\"nav_hide\":\"\",\"starttime\":\"\",\"endtime\":\"\",\"extendToSubpages\":\"\",\"fe_group\":\"\",\"editlock\":\"\",\"categories\":\"\",\"rowDescription\":\"\"}',0,0,0,0,1,1,31,31,0,'New TYPO3 domain',1,NULL,'',0,0,'',0,'',NULL,0,'',NULL,1694604307,NULL,'','','',0,0,0,'','',NULL,0,0,0,'/',0,0,0,'',0,0,0,0,1,0,0,0,0,'','',NULL,'',NULL,'summary','',0.5,'','','',0,0),(2,1,1694681287,1694681269,0,0,0,0,'0',256,NULL,0,0,0,0,NULL,0,'{\"hidden\":\"\"}',0,0,0,0,1,1,31,31,0,'Plugin-Issue image.uri',1,NULL,'',0,0,'',0,'',NULL,0,'',NULL,1694681287,NULL,'','','',0,0,0,'','',NULL,0,0,0,'/plugin-issue-imageuri',0,0,0,'',0,0,0,0,0,0,0,0,0,'','',NULL,'',NULL,'summary','',0.5,'','','',0,0);
+INSERT INTO `pages` VALUES (1,0,1699001460,1694604292,0,0,0,0,'',256,NULL,0,0,0,0,NULL,0,'{\"title\":\"\"}',0,0,0,0,1,1,31,31,0,'Homepage (English)',1,NULL,'',0,0,'',0,'',NULL,0,'',NULL,1699001460,NULL,'','','',0,0,0,'','',NULL,0,0,0,'/',0,0,0,'',0,0,0,0,1,0,0,0,0,'','',NULL,'',NULL,'summary','',0.5,'','','',0,0,''),(2,1,1699001725,1694681269,1,0,0,0,'0',256,NULL,0,0,0,0,NULL,0,'{\"hidden\":\"\"}',0,0,0,0,1,1,31,31,0,'Plugin-Issue image.uri',1,NULL,'',0,0,'',0,'',NULL,0,'',NULL,1694681287,NULL,'','','',0,0,0,'','',NULL,0,0,0,'/plugin-issue-imageuri',0,0,0,'',0,0,0,0,0,0,0,0,0,'','',NULL,'',NULL,'summary','',0.5,'','','',0,0,''),(3,0,1699001734,1699001429,0,0,0,0,'',256,NULL,0,1,1,1,'{\"starttime\":\"parent\",\"endtime\":\"parent\",\"nav_hide\":\"parent\",\"url\":\"parent\",\"lastUpdated\":\"parent\",\"newUntil\":\"parent\",\"no_search\":\"parent\",\"shortcut\":\"parent\",\"shortcut_mode\":\"parent\",\"content_from_pid\":\"parent\",\"author\":\"parent\",\"author_email\":\"parent\",\"media\":\"parent\",\"og_image\":\"parent\",\"twitter_image\":\"parent\"}',0,'{\"doktype\":\"1\",\"slug\":\"\\/\",\"hidden\":\"0\",\"starttime\":\"0\",\"endtime\":\"0\",\"l10n_parent\":\"0\",\"categories\":\"0\",\"l10n_diffsource\":\"{\\\"doktype\\\":\\\"\\\",\\\"title\\\":\\\"\\\",\\\"slug\\\":\\\"\\\",\\\"nav_title\\\":\\\"\\\",\\\"subtitle\\\":\\\"\\\",\\\"nav_icon_set\\\":\\\"\\\",\\\"nav_icon\\\":\\\"\\\",\\\"seo_title\\\":\\\"\\\",\\\"description\\\":\\\"\\\",\\\"no_index\\\":\\\"\\\",\\\"no_follow\\\":\\\"\\\",\\\"canonical_link\\\":\\\"\\\",\\\"sitemap_changefreq\\\":\\\"\\\",\\\"sitemap_priority\\\":\\\"\\\",\\\"og_title\\\":\\\"\\\",\\\"og_description\\\":\\\"\\\",\\\"og_image\\\":\\\"\\\",\\\"twitter_title\\\":\\\"\\\",\\\"twitter_description\\\":\\\"\\\",\\\"twitter_image\\\":\\\"\\\",\\\"twitter_card\\\":\\\"\\\",\\\"abstract\\\":\\\"\\\",\\\"keywords\\\":\\\"\\\",\\\"author\\\":\\\"\\\",\\\"author_email\\\":\\\"\\\",\\\"lastUpdated\\\":\\\"\\\",\\\"layout\\\":\\\"\\\",\\\"newUntil\\\":\\\"\\\",\\\"backend_layout\\\":\\\"\\\",\\\"backend_layout_next_level\\\":\\\"\\\",\\\"thumbnail\\\":\\\"\\\",\\\"content_from_pid\\\":\\\"\\\",\\\"target\\\":\\\"\\\",\\\"cache_timeout\\\":\\\"\\\",\\\"cache_tags\\\":\\\"\\\",\\\"is_siteroot\\\":\\\"\\\",\\\"no_search\\\":\\\"\\\",\\\"php_tree_stop\\\":\\\"\\\",\\\"module\\\":\\\"\\\",\\\"media\\\":\\\"\\\",\\\"tsconfig_includes\\\":\\\"\\\",\\\"TSconfig\\\":\\\"\\\",\\\"l18n_cfg\\\":\\\"\\\",\\\"hidden\\\":\\\"\\\",\\\"nav_hide\\\":\\\"\\\",\\\"starttime\\\":\\\"\\\",\\\"endtime\\\":\\\"\\\",\\\"extendToSubpages\\\":\\\"\\\",\\\"fe_group\\\":\\\"\\\",\\\"editlock\\\":\\\"\\\",\\\"categories\\\":\\\"\\\",\\\"rowDescription\\\":\\\"\\\"}\",\"layout\":\"0\",\"lastUpdated\":\"0\",\"newUntil\":\"0\",\"cache_timeout\":\"0\",\"shortcut\":\"0\",\"shortcut_mode\":\"0\",\"content_from_pid\":\"0\",\"mount_pid\":\"0\",\"module\":\"\",\"sitemap_priority\":\"0.5\",\"twitter_card\":\"summary\",\"t3_origuid\":\"0\",\"sys_language_uid\":\"0\",\"l10n_source\":\"0\",\"title\":\"New TYPO3 domain\",\"nav_hide\":\"0\",\"url\":\"\",\"no_search\":\"0\",\"author\":\"\",\"author_email\":\"\",\"media\":\"0\",\"og_image\":\"0\",\"twitter_image\":\"0\",\"TSconfig\":\"\",\"php_tree_stop\":\"0\",\"editlock\":\"0\",\"fe_group\":\"\",\"extendToSubpages\":\"0\",\"target\":\"\",\"cache_tags\":\"\",\"is_siteroot\":\"1\",\"mount_pid_ol\":\"0\",\"l18n_cfg\":\"0\",\"backend_layout\":\"\",\"backend_layout_next_level\":\"\",\"tsconfig_includes\":\"\",\"no_index\":\"0\",\"no_follow\":\"0\",\"nav_icon_set\":\"\",\"nav_icon_identifier\":\"\",\"nav_icon\":\"0\",\"thumbnail\":\"0\",\"nav_title\":\"\",\"subtitle\":\"\",\"seo_title\":\"\",\"description\":\"\",\"canonical_link\":\"\",\"sitemap_changefreq\":\"\",\"og_title\":\"\",\"og_description\":\"\",\"twitter_title\":\"\",\"twitter_description\":\"\",\"abstract\":\"\",\"keywords\":\"\",\"rowDescription\":\"\"}',0,0,0,0,1,1,31,31,0,'Startseite (Deutsch)',1,NULL,'',0,0,'',0,'',NULL,0,'',NULL,0,NULL,'','','',0,0,0,'','','',0,0,0,'/',0,0,0,'',0,0,0,0,1,0,0,0,0,'','',NULL,'',NULL,'summary','',0.5,'','','',0,0,''),(4,0,1699001737,1699001467,0,0,0,0,'',256,NULL,0,2,1,1,'{\"starttime\":\"parent\",\"endtime\":\"parent\",\"nav_hide\":\"parent\",\"url\":\"parent\",\"lastUpdated\":\"parent\",\"newUntil\":\"parent\",\"no_search\":\"parent\",\"shortcut\":\"parent\",\"shortcut_mode\":\"parent\",\"content_from_pid\":\"parent\",\"author\":\"parent\",\"author_email\":\"parent\",\"media\":\"parent\",\"og_image\":\"parent\",\"twitter_image\":\"parent\"}',0,'{\"doktype\":\"1\",\"slug\":\"\\/\",\"hidden\":\"0\",\"starttime\":\"0\",\"endtime\":\"0\",\"l10n_parent\":\"0\",\"categories\":\"0\",\"l10n_diffsource\":\"{\\\"title\\\":\\\"\\\"}\",\"layout\":\"0\",\"lastUpdated\":\"0\",\"newUntil\":\"0\",\"cache_timeout\":\"0\",\"shortcut\":\"0\",\"shortcut_mode\":\"0\",\"content_from_pid\":\"0\",\"mount_pid\":\"0\",\"module\":\"\",\"sitemap_priority\":\"0.5\",\"twitter_card\":\"summary\",\"t3_origuid\":\"0\",\"sys_language_uid\":\"0\",\"l10n_source\":\"0\",\"title\":\"Homepage (English)\",\"nav_hide\":\"0\",\"url\":\"\",\"no_search\":\"0\",\"author\":\"\",\"author_email\":\"\",\"media\":\"0\",\"og_image\":\"0\",\"twitter_image\":\"0\",\"TSconfig\":\"\",\"php_tree_stop\":\"0\",\"editlock\":\"0\",\"fe_group\":\"\",\"extendToSubpages\":\"0\",\"target\":\"\",\"cache_tags\":\"\",\"is_siteroot\":\"1\",\"mount_pid_ol\":\"0\",\"l18n_cfg\":\"0\",\"backend_layout\":\"\",\"backend_layout_next_level\":\"\",\"tsconfig_includes\":\"\",\"no_index\":\"0\",\"no_follow\":\"0\",\"nav_icon_set\":\"\",\"nav_icon_identifier\":\"\",\"nav_icon\":\"0\",\"thumbnail\":\"0\",\"nav_title\":\"\",\"subtitle\":\"\",\"seo_title\":\"\",\"description\":\"\",\"canonical_link\":\"\",\"sitemap_changefreq\":\"\",\"og_title\":\"\",\"og_description\":\"\",\"twitter_title\":\"\",\"twitter_description\":\"\",\"abstract\":\"\",\"keywords\":\"\",\"rowDescription\":\"\"}',0,0,0,0,1,1,31,31,0,'Page d\'accueil (French)',1,NULL,'',0,0,'',0,'',NULL,0,'',NULL,0,NULL,'','','',0,0,0,'','','',0,0,0,'/',0,0,0,'',0,0,0,0,1,0,0,0,0,'','',NULL,'',NULL,'summary','',0.5,'','','',0,0,''),(5,0,1699001741,1699001496,0,0,0,0,'',256,NULL,0,3,1,1,'{\"starttime\":\"parent\",\"endtime\":\"parent\",\"nav_hide\":\"parent\",\"url\":\"parent\",\"lastUpdated\":\"parent\",\"newUntil\":\"parent\",\"no_search\":\"parent\",\"shortcut\":\"parent\",\"shortcut_mode\":\"parent\",\"content_from_pid\":\"parent\",\"author\":\"parent\",\"author_email\":\"parent\",\"media\":\"parent\",\"og_image\":\"parent\",\"twitter_image\":\"parent\"}',0,'{\"doktype\":\"1\",\"slug\":\"\\/\",\"hidden\":\"0\",\"starttime\":\"0\",\"endtime\":\"0\",\"l10n_parent\":\"0\",\"categories\":\"0\",\"l10n_diffsource\":\"{\\\"title\\\":\\\"\\\"}\",\"layout\":\"0\",\"lastUpdated\":\"0\",\"newUntil\":\"0\",\"cache_timeout\":\"0\",\"shortcut\":\"0\",\"shortcut_mode\":\"0\",\"content_from_pid\":\"0\",\"mount_pid\":\"0\",\"module\":\"\",\"sitemap_priority\":\"0.5\",\"twitter_card\":\"summary\",\"t3_origuid\":\"0\",\"sys_language_uid\":\"0\",\"l10n_source\":\"0\",\"title\":\"Homepage (English)\",\"nav_hide\":\"0\",\"url\":\"\",\"no_search\":\"0\",\"author\":\"\",\"author_email\":\"\",\"media\":\"0\",\"og_image\":\"0\",\"twitter_image\":\"0\",\"TSconfig\":\"\",\"php_tree_stop\":\"0\",\"editlock\":\"0\",\"fe_group\":\"\",\"extendToSubpages\":\"0\",\"target\":\"\",\"cache_tags\":\"\",\"is_siteroot\":\"1\",\"mount_pid_ol\":\"0\",\"l18n_cfg\":\"0\",\"backend_layout\":\"\",\"backend_layout_next_level\":\"\",\"tsconfig_includes\":\"\",\"no_index\":\"0\",\"no_follow\":\"0\",\"nav_icon_set\":\"\",\"nav_icon_identifier\":\"\",\"nav_icon\":\"0\",\"thumbnail\":\"0\",\"nav_title\":\"\",\"subtitle\":\"\",\"seo_title\":\"\",\"description\":\"\",\"canonical_link\":\"\",\"sitemap_changefreq\":\"\",\"og_title\":\"\",\"og_description\":\"\",\"twitter_title\":\"\",\"twitter_description\":\"\",\"abstract\":\"\",\"keywords\":\"\",\"rowDescription\":\"\"}',0,0,0,0,1,1,31,31,0,'Hjemmeside (Danish)',1,NULL,'',0,0,'',0,'',NULL,0,'',NULL,0,NULL,'','','',0,0,0,'','','',0,0,0,'/',0,0,0,'',0,0,0,0,1,0,0,0,0,'','',NULL,'',NULL,'summary','',0.5,'','','',0,0,''),(6,1,1699001755,1699001695,0,0,0,0,'0',128,NULL,0,0,0,0,NULL,0,'{\"hidden\":\"\"}',0,0,0,0,1,1,31,31,0,'Subpage (copy mode)',1,NULL,'',0,0,'',0,'',NULL,0,'',NULL,1699001755,NULL,'','','',0,0,0,'','',NULL,0,0,0,'/subpage-copy-mode',0,0,0,'',0,0,0,0,0,0,0,0,0,'','',NULL,'',NULL,'summary','',0.5,'','','',0,0,''),(7,1,1699001758,1699001701,0,0,0,0,'0',192,NULL,0,0,0,0,NULL,0,'{\"hidden\":\"\"}',0,0,0,0,1,1,31,31,0,'Subpage (not all translated)',1,NULL,'',0,0,'',0,'',NULL,0,'',NULL,1699001758,NULL,'','','',0,0,0,'','',NULL,0,0,0,'/subpage-not-all-translated',0,0,0,'',0,0,0,0,0,0,0,0,0,'','',NULL,'',NULL,'summary','',0.5,'','','',0,0,''),(8,1,1699002375,1699001706,0,0,0,0,'',224,NULL,0,0,0,0,NULL,0,'{\"hidden\":\"\"}',0,0,0,0,1,1,31,31,0,'Subpage (only german)',1,NULL,'',0,0,'',0,'',NULL,0,'',NULL,0,NULL,'','','',0,0,0,'','',NULL,0,0,0,'/subpage-only-german',0,0,0,'',0,0,0,0,0,1,0,0,0,'','',NULL,'',NULL,'summary','',0.5,'','','',0,0,''),(9,1,1699001762,1699001717,0,0,0,0,'0',240,NULL,0,0,0,0,NULL,0,'{\"hidden\":\"\"}',0,0,0,0,1,1,31,31,0,'Subpage (only default)',1,NULL,'',0,0,'',0,'',NULL,0,'',NULL,1699001762,NULL,'','','',0,0,0,'','',NULL,0,0,0,'/subpage-only-default',0,0,0,'',0,0,0,0,0,0,0,0,0,'','',NULL,'',NULL,'summary','',0.5,'','','',0,0,''),(10,1,1699002370,1699001784,0,0,0,0,'',224,NULL,0,1,8,8,'{\"starttime\":\"parent\",\"endtime\":\"parent\",\"nav_hide\":\"parent\",\"url\":\"parent\",\"lastUpdated\":\"parent\",\"newUntil\":\"parent\",\"no_search\":\"parent\",\"shortcut\":\"parent\",\"shortcut_mode\":\"parent\",\"content_from_pid\":\"parent\",\"author\":\"parent\",\"author_email\":\"parent\",\"media\":\"parent\",\"og_image\":\"parent\",\"twitter_image\":\"parent\"}',0,'{\"doktype\":\"1\",\"slug\":\"\\/subpage-only-german\",\"hidden\":\"1\",\"starttime\":\"0\",\"endtime\":\"0\",\"l10n_parent\":\"0\",\"categories\":\"0\",\"l10n_diffsource\":\"{\\\"hidden\\\":\\\"\\\"}\",\"layout\":\"0\",\"lastUpdated\":\"0\",\"newUntil\":\"0\",\"cache_timeout\":\"0\",\"shortcut\":\"0\",\"shortcut_mode\":\"0\",\"content_from_pid\":\"0\",\"mount_pid\":\"0\",\"module\":\"\",\"sitemap_priority\":\"0.5\",\"twitter_card\":\"summary\",\"t3_origuid\":\"0\",\"sys_language_uid\":\"0\",\"l10n_source\":\"0\",\"title\":\"Subpage (only german)\",\"nav_hide\":\"0\",\"url\":\"\",\"no_search\":\"0\",\"author\":\"\",\"author_email\":\"\",\"media\":\"0\",\"og_image\":\"0\",\"twitter_image\":\"0\",\"TSconfig\":\"\",\"php_tree_stop\":\"0\",\"editlock\":\"0\",\"fe_group\":\"\",\"extendToSubpages\":\"0\",\"target\":\"\",\"cache_tags\":\"\",\"is_siteroot\":\"0\",\"mount_pid_ol\":\"0\",\"l18n_cfg\":\"1\",\"backend_layout\":\"\",\"backend_layout_next_level\":\"\",\"tsconfig_includes\":\"\",\"no_index\":\"0\",\"no_follow\":\"0\",\"nav_icon_set\":\"\",\"nav_icon_identifier\":\"\",\"nav_icon\":\"0\",\"thumbnail\":\"0\",\"nav_title\":\"\",\"subtitle\":\"\",\"seo_title\":\"\",\"description\":\"\",\"canonical_link\":\"\",\"sitemap_changefreq\":\"\",\"og_title\":\"\",\"og_description\":\"\",\"twitter_title\":\"\",\"twitter_description\":\"\",\"abstract\":\"\",\"keywords\":\"\",\"rowDescription\":\"\"}',0,0,0,0,1,1,31,31,0,'Unterseite, nur Deutsch (German)',1,NULL,'',0,0,'',0,'',NULL,0,'',NULL,1699002370,NULL,'','','',0,0,0,'','','',0,0,0,'/translate-to-german-subpage-only-german',0,0,0,'',0,0,0,0,0,1,0,0,0,'','',NULL,'',NULL,'summary','',0.5,'','','',0,0,''),(11,1,1699001846,1699001829,0,0,0,0,'',192,NULL,0,1,7,7,'{\"starttime\":\"parent\",\"endtime\":\"parent\",\"nav_hide\":\"parent\",\"url\":\"parent\",\"lastUpdated\":\"parent\",\"newUntil\":\"parent\",\"no_search\":\"parent\",\"shortcut\":\"parent\",\"shortcut_mode\":\"parent\",\"content_from_pid\":\"parent\",\"author\":\"parent\",\"author_email\":\"parent\",\"media\":\"parent\",\"og_image\":\"parent\",\"twitter_image\":\"parent\"}',0,'{\"doktype\":\"1\",\"slug\":\"\\/subpage-not-all-translated\",\"hidden\":\"0\",\"starttime\":\"0\",\"endtime\":\"0\",\"l10n_parent\":\"0\",\"categories\":\"0\",\"l10n_diffsource\":\"{\\\"hidden\\\":\\\"\\\"}\",\"layout\":\"0\",\"lastUpdated\":\"0\",\"newUntil\":\"0\",\"cache_timeout\":\"0\",\"shortcut\":\"0\",\"shortcut_mode\":\"0\",\"content_from_pid\":\"0\",\"mount_pid\":\"0\",\"module\":\"\",\"sitemap_priority\":\"0.5\",\"twitter_card\":\"summary\",\"t3_origuid\":\"0\",\"sys_language_uid\":\"0\",\"l10n_source\":\"0\",\"title\":\"Subpage (not all translated)\",\"nav_hide\":\"0\",\"url\":\"\",\"no_search\":\"0\",\"author\":\"\",\"author_email\":\"\",\"media\":\"0\",\"og_image\":\"0\",\"twitter_image\":\"0\",\"TSconfig\":\"\",\"php_tree_stop\":\"0\",\"editlock\":\"0\",\"fe_group\":\"0\",\"extendToSubpages\":\"0\",\"target\":\"\",\"cache_tags\":\"\",\"is_siteroot\":\"0\",\"mount_pid_ol\":\"0\",\"l18n_cfg\":\"0\",\"backend_layout\":\"\",\"backend_layout_next_level\":\"\",\"tsconfig_includes\":\"\",\"no_index\":\"0\",\"no_follow\":\"0\",\"nav_icon_set\":\"\",\"nav_icon_identifier\":\"\",\"nav_icon\":\"0\",\"thumbnail\":\"0\",\"nav_title\":\"\",\"subtitle\":\"\",\"seo_title\":\"\",\"description\":\"\",\"canonical_link\":\"\",\"sitemap_changefreq\":\"\",\"og_title\":\"\",\"og_description\":\"\",\"twitter_title\":\"\",\"twitter_description\":\"\",\"abstract\":\"\",\"keywords\":\"\",\"rowDescription\":\"\"}',0,0,0,0,1,1,31,31,0,'Nur Englisch und Deutsch (German)',1,NULL,'',0,0,'',0,'',NULL,0,'',NULL,1699001846,NULL,'','','',0,0,0,'','','',0,0,0,'/translate-to-german-subpage-not-all-translated',0,0,0,'',0,0,0,0,0,0,0,0,0,'','',NULL,'',NULL,'summary','',0.5,'','','',0,0,''),(12,1,1699001922,1699001889,0,0,0,0,'',128,NULL,0,1,6,6,'{\"starttime\":\"parent\",\"endtime\":\"parent\",\"nav_hide\":\"parent\",\"url\":\"parent\",\"lastUpdated\":\"parent\",\"newUntil\":\"parent\",\"no_search\":\"parent\",\"shortcut\":\"parent\",\"shortcut_mode\":\"parent\",\"content_from_pid\":\"parent\",\"author\":\"parent\",\"author_email\":\"parent\",\"media\":\"parent\",\"og_image\":\"parent\",\"twitter_image\":\"parent\"}',0,'{\"doktype\":\"1\",\"slug\":\"\\/subpage-copy-mode\",\"hidden\":\"0\",\"starttime\":\"0\",\"endtime\":\"0\",\"l10n_parent\":\"0\",\"categories\":\"0\",\"l10n_diffsource\":\"{\\\"hidden\\\":\\\"\\\"}\",\"layout\":\"0\",\"lastUpdated\":\"0\",\"newUntil\":\"0\",\"cache_timeout\":\"0\",\"shortcut\":\"0\",\"shortcut_mode\":\"0\",\"content_from_pid\":\"0\",\"mount_pid\":\"0\",\"module\":\"\",\"sitemap_priority\":\"0.5\",\"twitter_card\":\"summary\",\"t3_origuid\":\"0\",\"sys_language_uid\":\"0\",\"l10n_source\":\"0\",\"title\":\"Subpage (copy mode)\",\"nav_hide\":\"0\",\"url\":\"\",\"no_search\":\"0\",\"author\":\"\",\"author_email\":\"\",\"media\":\"0\",\"og_image\":\"0\",\"twitter_image\":\"0\",\"TSconfig\":\"\",\"php_tree_stop\":\"0\",\"editlock\":\"0\",\"fe_group\":\"0\",\"extendToSubpages\":\"0\",\"target\":\"\",\"cache_tags\":\"\",\"is_siteroot\":\"0\",\"mount_pid_ol\":\"0\",\"l18n_cfg\":\"0\",\"backend_layout\":\"\",\"backend_layout_next_level\":\"\",\"tsconfig_includes\":\"\",\"no_index\":\"0\",\"no_follow\":\"0\",\"nav_icon_set\":\"\",\"nav_icon_identifier\":\"\",\"nav_icon\":\"0\",\"thumbnail\":\"0\",\"nav_title\":\"\",\"subtitle\":\"\",\"seo_title\":\"\",\"description\":\"\",\"canonical_link\":\"\",\"sitemap_changefreq\":\"\",\"og_title\":\"\",\"og_description\":\"\",\"twitter_title\":\"\",\"twitter_description\":\"\",\"abstract\":\"\",\"keywords\":\"\",\"rowDescription\":\"\"}',0,0,0,0,1,1,31,31,0,'Unterseite (Kopiermodus) (German)',1,NULL,'',0,0,'',0,'',NULL,0,'',NULL,1699001922,NULL,'','','',0,0,0,'','','',0,0,0,'/translate-to-german-subpage-copy-mode',0,0,0,'',0,0,0,0,0,0,0,0,0,'','',NULL,'',NULL,'summary','',0.5,'','','',0,0,''),(13,1,1699001924,1699001902,0,0,0,0,'',128,NULL,0,2,6,6,'{\"starttime\":\"parent\",\"endtime\":\"parent\",\"nav_hide\":\"parent\",\"url\":\"parent\",\"lastUpdated\":\"parent\",\"newUntil\":\"parent\",\"no_search\":\"parent\",\"shortcut\":\"parent\",\"shortcut_mode\":\"parent\",\"content_from_pid\":\"parent\",\"author\":\"parent\",\"author_email\":\"parent\",\"media\":\"parent\",\"og_image\":\"parent\",\"twitter_image\":\"parent\"}',0,'{\"doktype\":\"1\",\"slug\":\"\\/subpage-copy-mode\",\"hidden\":\"0\",\"starttime\":\"0\",\"endtime\":\"0\",\"l10n_parent\":\"0\",\"categories\":\"0\",\"l10n_diffsource\":\"{\\\"hidden\\\":\\\"\\\"}\",\"layout\":\"0\",\"lastUpdated\":\"0\",\"newUntil\":\"0\",\"cache_timeout\":\"0\",\"shortcut\":\"0\",\"shortcut_mode\":\"0\",\"content_from_pid\":\"0\",\"mount_pid\":\"0\",\"module\":\"\",\"sitemap_priority\":\"0.5\",\"twitter_card\":\"summary\",\"t3_origuid\":\"0\",\"sys_language_uid\":\"0\",\"l10n_source\":\"0\",\"title\":\"Subpage (copy mode)\",\"nav_hide\":\"0\",\"url\":\"\",\"no_search\":\"0\",\"author\":\"\",\"author_email\":\"\",\"media\":\"0\",\"og_image\":\"0\",\"twitter_image\":\"0\",\"TSconfig\":\"\",\"php_tree_stop\":\"0\",\"editlock\":\"0\",\"fe_group\":\"0\",\"extendToSubpages\":\"0\",\"target\":\"\",\"cache_tags\":\"\",\"is_siteroot\":\"0\",\"mount_pid_ol\":\"0\",\"l18n_cfg\":\"0\",\"backend_layout\":\"\",\"backend_layout_next_level\":\"\",\"tsconfig_includes\":\"\",\"no_index\":\"0\",\"no_follow\":\"0\",\"nav_icon_set\":\"\",\"nav_icon_identifier\":\"\",\"nav_icon\":\"0\",\"thumbnail\":\"0\",\"nav_title\":\"\",\"subtitle\":\"\",\"seo_title\":\"\",\"description\":\"\",\"canonical_link\":\"\",\"sitemap_changefreq\":\"\",\"og_title\":\"\",\"og_description\":\"\",\"twitter_title\":\"\",\"twitter_description\":\"\",\"abstract\":\"\",\"keywords\":\"\",\"rowDescription\":\"\"}',0,0,0,0,1,1,31,31,0,'Subsite (French)',1,NULL,'',0,0,'',0,'',NULL,0,'',NULL,0,NULL,'','','',0,0,0,'','','',0,0,0,'/translate-to-french-subpage-copy-mode',0,0,0,'',0,0,0,0,0,0,0,0,0,'','',NULL,'',NULL,'summary','',0.5,'','','',0,0,''),(14,1,1699001926,1699001910,0,0,0,0,'',128,NULL,0,3,6,6,'{\"starttime\":\"parent\",\"endtime\":\"parent\",\"nav_hide\":\"parent\",\"url\":\"parent\",\"lastUpdated\":\"parent\",\"newUntil\":\"parent\",\"no_search\":\"parent\",\"shortcut\":\"parent\",\"shortcut_mode\":\"parent\",\"content_from_pid\":\"parent\",\"author\":\"parent\",\"author_email\":\"parent\",\"media\":\"parent\",\"og_image\":\"parent\",\"twitter_image\":\"parent\"}',0,'{\"doktype\":\"1\",\"slug\":\"\\/subpage-copy-mode\",\"hidden\":\"0\",\"starttime\":\"0\",\"endtime\":\"0\",\"l10n_parent\":\"0\",\"categories\":\"0\",\"l10n_diffsource\":\"{\\\"hidden\\\":\\\"\\\"}\",\"layout\":\"0\",\"lastUpdated\":\"0\",\"newUntil\":\"0\",\"cache_timeout\":\"0\",\"shortcut\":\"0\",\"shortcut_mode\":\"0\",\"content_from_pid\":\"0\",\"mount_pid\":\"0\",\"module\":\"\",\"sitemap_priority\":\"0.5\",\"twitter_card\":\"summary\",\"t3_origuid\":\"0\",\"sys_language_uid\":\"0\",\"l10n_source\":\"0\",\"title\":\"Subpage (copy mode)\",\"nav_hide\":\"0\",\"url\":\"\",\"no_search\":\"0\",\"author\":\"\",\"author_email\":\"\",\"media\":\"0\",\"og_image\":\"0\",\"twitter_image\":\"0\",\"TSconfig\":\"\",\"php_tree_stop\":\"0\",\"editlock\":\"0\",\"fe_group\":\"0\",\"extendToSubpages\":\"0\",\"target\":\"\",\"cache_tags\":\"\",\"is_siteroot\":\"0\",\"mount_pid_ol\":\"0\",\"l18n_cfg\":\"0\",\"backend_layout\":\"\",\"backend_layout_next_level\":\"\",\"tsconfig_includes\":\"\",\"no_index\":\"0\",\"no_follow\":\"0\",\"nav_icon_set\":\"\",\"nav_icon_identifier\":\"\",\"nav_icon\":\"0\",\"thumbnail\":\"0\",\"nav_title\":\"\",\"subtitle\":\"\",\"seo_title\":\"\",\"description\":\"\",\"canonical_link\":\"\",\"sitemap_changefreq\":\"\",\"og_title\":\"\",\"og_description\":\"\",\"twitter_title\":\"\",\"twitter_description\":\"\",\"abstract\":\"\",\"keywords\":\"\",\"rowDescription\":\"\"}',0,0,0,0,1,1,31,31,0,'Subsite (Danish)',1,NULL,'',0,0,'',0,'',NULL,0,'',NULL,0,NULL,'','','',0,0,0,'','','',0,0,0,'/translate-to-danish-subpage-copy-mode',0,0,0,'',0,0,0,0,0,0,0,0,0,'','',NULL,'',NULL,'summary','',0.5,'','','',0,0,'');
 /*!40000 ALTER TABLE `pages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1216,7 +1221,7 @@ CREATE TABLE `sys_file` (
   `last_indexed` int(11) NOT NULL DEFAULT 0,
   `storage` int(11) NOT NULL DEFAULT 0,
   `type` varchar(10) NOT NULL DEFAULT '',
-  `metadata` int(11) NOT NULL DEFAULT 0,
+  `metadata` int(10) unsigned NOT NULL DEFAULT 0,
   `identifier` text DEFAULT NULL,
   `identifier_hash` varchar(40) NOT NULL DEFAULT '',
   `folder_hash` varchar(40) NOT NULL DEFAULT '',
@@ -1224,7 +1229,7 @@ CREATE TABLE `sys_file` (
   `mime_type` varchar(255) NOT NULL DEFAULT '',
   `name` tinytext DEFAULT NULL,
   `sha1` varchar(40) NOT NULL DEFAULT '',
-  `size` bigint(20) unsigned NOT NULL DEFAULT 0,
+  `size` int(11) NOT NULL DEFAULT 0,
   `creation_date` int(11) NOT NULL DEFAULT 0,
   `modification_date` int(11) NOT NULL DEFAULT 0,
   `missing` smallint(5) unsigned NOT NULL DEFAULT 0,
@@ -1343,7 +1348,7 @@ CREATE TABLE `sys_file_metadata` (
   `ranking` int(10) unsigned DEFAULT 0,
   `note` text DEFAULT NULL,
   `unit` varchar(3) DEFAULT '',
-  `duration` double DEFAULT 0,
+  `duration` int(11) NOT NULL DEFAULT 0,
   `color_space` varchar(4) DEFAULT '',
   `pages` int(10) unsigned DEFAULT 0,
   `language` varchar(12) DEFAULT '',
@@ -1435,8 +1440,8 @@ CREATE TABLE `sys_file_reference` (
   `title` tinytext DEFAULT NULL,
   `description` text DEFAULT NULL,
   `alternative` text DEFAULT NULL,
-  `link` varchar(1024) NOT NULL DEFAULT '',
-  `crop` varchar(4000) NOT NULL DEFAULT '',
+  `link` varchar(2048) NOT NULL DEFAULT '',
+  `crop` longtext DEFAULT NULL,
   `autoplay` smallint(5) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`uid`),
   KEY `tablenames_fieldname` (`tablenames`(32),`fieldname`(12)),
@@ -1585,7 +1590,9 @@ CREATE TABLE `sys_http_report` (
   KEY `type_scope` (`type`,`scope`),
   KEY `created` (`created`),
   KEY `changed` (`changed`),
-  KEY `request_time` (`request_time`)
+  KEY `request_time` (`request_time`),
+  KEY `summary_created` (`summary`,`created`),
+  KEY `all_conditions` (`type`,`status`,`scope`,`summary`,`request_time`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1616,7 +1623,7 @@ CREATE TABLE `sys_lockedrecords` (
   `feuserid` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`uid`),
   KEY `event` (`userid`,`tstamp`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1882,6 +1889,7 @@ CREATE TABLE `sys_refindex` (
 
 LOCK TABLES `sys_refindex` WRITE;
 /*!40000 ALTER TABLE `sys_refindex` DISABLE KEYS */;
+INSERT INTO `sys_refindex` VALUES ('0953cd2814ae4205e7e917df26ac6921','pages',5,'l10n_parent','','','',0,0,'pages',1,''),('38a58a56c2e0e0aed55352dc83d80498','pages',14,'l10n_parent','','','',0,0,'pages',6,''),('4394148e0fd8e4616b141feca0d15865','tt_content',8,'l18n_parent','','','',0,0,'tt_content',7,''),('5767d619dad8dd483d88954de631ab3d','tt_content',3,'l18n_parent','','','',0,0,'tt_content',1,''),('7618d6f6b41f5a436c729d931d7a516d','pages',3,'l10n_parent','','','',0,0,'pages',1,''),('87b9596a06ac6693f976bbc67a81c949','pages',12,'l10n_parent','','','',0,0,'pages',6,''),('9039d2edd769c4f4007cdddf25059d9d','tt_content',4,'l18n_parent','','','',0,0,'tt_content',1,''),('a9458bc23c70cf38b0076ce1382c9ac4','pages',13,'l10n_parent','','','',0,0,'pages',6,''),('b4a731e469408bf4851fe8b9a0f6a43b','pages',11,'l10n_parent','','','',0,0,'pages',7,''),('cc23296fb4c5d9a82aa9819b81468be9','pages',4,'l10n_parent','','','',0,0,'pages',1,''),('cea612ec918f2157404378be90948e95','pages',10,'l10n_parent','','','',0,0,'pages',8,''),('fff9e2c26d3f134cf92b487d9ff64476','tt_content',5,'l18n_parent','','','',0,0,'tt_content',1,'');
 /*!40000 ALTER TABLE `sys_refindex` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1899,7 +1907,7 @@ CREATE TABLE `sys_registry` (
   `entry_value` mediumblob DEFAULT NULL,
   PRIMARY KEY (`uid`),
   UNIQUE KEY `entry_identifier` (`entry_namespace`,`entry_key`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1908,7 +1916,7 @@ CREATE TABLE `sys_registry` (
 
 LOCK TABLES `sys_registry` WRITE;
 /*!40000 ALTER TABLE `sys_registry` DISABLE KEYS */;
-INSERT INTO `sys_registry` VALUES (1,'installUpdate','TYPO3\\CMS\\Install\\Updates\\BackendGroupsExplicitAllowDenyMigration','i:1;'),(2,'installUpdate','TYPO3\\CMS\\Install\\Updates\\BackendModulePermissionMigration','i:1;'),(3,'installUpdate','TYPO3\\CMS\\Install\\Updates\\FeLoginModeExtractionUpdate','i:1;'),(4,'installUpdate','TYPO3\\CMS\\Install\\Updates\\MigrateSiteSettingsConfigUpdate','i:1;'),(5,'installUpdate','TYPO3\\CMS\\Install\\Updates\\PagesRecyclerDoktypeMigration','i:1;'),(6,'installUpdate','TYPO3\\CMS\\Install\\Updates\\PasswordPolicyForFrontendUsersUpdate','i:1;'),(7,'installUpdate','TYPO3\\CMS\\Install\\Updates\\SysFileCollectionIdentifierMigration','i:1;'),(8,'installUpdate','TYPO3\\CMS\\Install\\Updates\\SysFileMountIdentifierMigration','i:1;'),(9,'installUpdate','TYPO3\\CMS\\Install\\Updates\\SysLogSerializationUpdate','i:1;'),(10,'installUpdate','TYPO3\\CMS\\Install\\Updates\\SysTemplateNoWorkspaceMigration','i:1;'),(11,'installUpdateRows','rowUpdatersDone','a:1:{i:0;s:69:\"TYPO3\\CMS\\Install\\Updates\\RowUpdater\\SysRedirectRootPageMoveMigration\";}'),(12,'core','formProtectionSessionToken:1','s:64:\"42962db246a1ada8a46670695671924e0ca6b04be464003b0a5a7df706566e44\";');
+INSERT INTO `sys_registry` VALUES (1,'installUpdate','TYPO3\\CMS\\Install\\Updates\\BackendGroupsExplicitAllowDenyMigration','i:1;'),(2,'installUpdate','TYPO3\\CMS\\Install\\Updates\\BackendModulePermissionMigration','i:1;'),(3,'installUpdate','TYPO3\\CMS\\Install\\Updates\\FeLoginModeExtractionUpdate','i:1;'),(4,'installUpdate','TYPO3\\CMS\\Install\\Updates\\MigrateSiteSettingsConfigUpdate','i:1;'),(5,'installUpdate','TYPO3\\CMS\\Install\\Updates\\PagesRecyclerDoktypeMigration','i:1;'),(6,'installUpdate','TYPO3\\CMS\\Install\\Updates\\PasswordPolicyForFrontendUsersUpdate','i:1;'),(7,'installUpdate','TYPO3\\CMS\\Install\\Updates\\SysFileCollectionIdentifierMigration','i:1;'),(8,'installUpdate','TYPO3\\CMS\\Install\\Updates\\SysFileMountIdentifierMigration','i:1;'),(9,'installUpdate','TYPO3\\CMS\\Install\\Updates\\SysLogSerializationUpdate','i:1;'),(10,'installUpdate','TYPO3\\CMS\\Install\\Updates\\SysTemplateNoWorkspaceMigration','i:1;'),(11,'installUpdateRows','rowUpdatersDone','a:1:{i:0;s:69:\"TYPO3\\CMS\\Install\\Updates\\RowUpdater\\SysRedirectRootPageMoveMigration\";}'),(12,'core','formProtectionSessionToken:1','s:64:\"2edcd118a68aed2c440c0389aca07ca14928505b72487bdb31ed5872a3d8d664\";'),(13,'extensionDataImport','typo3/cms-core/ext_tables_static+adt.sql','s:0:\"\";'),(14,'extensionDataImport','typo3/cms-scheduler/ext_tables_static+adt.sql','s:0:\"\";'),(15,'extensionDataImport','typo3/cms-extbase/ext_tables_static+adt.sql','s:0:\"\";'),(16,'extensionDataImport','typo3/cms-fluid/ext_tables_static+adt.sql','s:0:\"\";'),(17,'extensionDataImport','typo3/cms-install/ext_tables_static+adt.sql','s:0:\"\";'),(18,'extensionDataImport','typo3/cms-backend/ext_tables_static+adt.sql','s:0:\"\";'),(19,'extensionDataImport','typo3/cms-frontend/ext_tables_static+adt.sql','s:0:\"\";'),(20,'extensionDataImport','typo3/cms-adminpanel/ext_tables_static+adt.sql','s:0:\"\";'),(21,'extensionDataImport','typo3/cms-dashboard/ext_tables_static+adt.sql','s:0:\"\";'),(22,'extensionDataImport','typo3/cms-filelist/ext_tables_static+adt.sql','s:0:\"\";'),(23,'extensionDataImport','typo3/cms-impexp/ext_tables_static+adt.sql','s:0:\"\";'),(24,'extensionDataImport','typo3/cms-lowlevel/ext_tables_static+adt.sql','s:0:\"\";'),(25,'extensionDataImport','typo3/cms-form/ext_tables_static+adt.sql','s:0:\"\";'),(26,'extensionDataImport','typo3/cms-fluid-styled-content/ext_tables_static+adt.sql','s:0:\"\";'),(27,'extensionDataImport','typo3/cms-reports/ext_tables_static+adt.sql','s:0:\"\";'),(28,'extensionDataImport','typo3/cms-redirects/ext_tables_static+adt.sql','s:0:\"\";'),(29,'extensionDataImport','typo3/cms-seo/ext_tables_static+adt.sql','s:0:\"\";'),(30,'extensionDataImport','typo3/cms-info/ext_tables_static+adt.sql','s:0:\"\";'),(31,'extensionDataImport','typo3/cms-linkvalidator/ext_tables_static+adt.sql','s:0:\"\";'),(32,'extensionDataImport','typo3/cms-indexed-search/ext_tables_static+adt.sql','s:0:\"\";'),(33,'extensionDataImport','typo3/cms-recycler/ext_tables_static+adt.sql','s:0:\"\";'),(34,'extensionDataImport','typo3/cms-setup/ext_tables_static+adt.sql','s:0:\"\";'),(35,'extensionDataImport','typo3/cms-rte-ckeditor/ext_tables_static+adt.sql','s:0:\"\";'),(36,'extensionDataImport','typo3/cms-belog/ext_tables_static+adt.sql','s:0:\"\";'),(37,'extensionDataImport','typo3/cms-beuser/ext_tables_static+adt.sql','s:0:\"\";'),(38,'extensionDataImport','typo3/cms-extensionmanager/ext_tables_static+adt.sql','s:0:\"\";'),(39,'extensionDataImport','typo3/cms-felogin/ext_tables_static+adt.sql','s:0:\"\";'),(40,'extensionDataImport','typo3/cms-filemetadata/ext_tables_static+adt.sql','s:0:\"\";'),(41,'extensionDataImport','typo3/cms-opendocs/ext_tables_static+adt.sql','s:0:\"\";'),(42,'extensionDataImport','typo3/cms-sys-note/ext_tables_static+adt.sql','s:0:\"\";'),(43,'extensionDataImport','typo3/cms-t3editor/ext_tables_static+adt.sql','s:0:\"\";'),(44,'extensionDataImport','typo3/cms-tstemplate/ext_tables_static+adt.sql','s:0:\"\";'),(45,'extensionDataImport','typo3/cms-viewpage/ext_tables_static+adt.sql','s:0:\"\";'),(46,'extensionDataImport','typo3/cms-workspaces/ext_tables_static+adt.sql','s:0:\"\";'),(47,'extensionDataImport','bk2k/bootstrap-package/ext_tables_static+adt.sql','s:0:\"\";');
 /*!40000 ALTER TABLE `sys_registry` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1953,7 +1961,7 @@ CREATE TABLE `sys_template` (
 
 LOCK TABLES `sys_template` WRITE;
 /*!40000 ALTER TABLE `sys_template` DISABLE KEYS */;
-INSERT INTO `sys_template` VALUES (1,1,1694604347,1694604330,0,0,0,0,256,NULL,0,'NEW SITE','EXT:bootstrap_package/Configuration/TypoScript',NULL,'','',0,1,3,0,0),(2,2,1694681882,1694681303,0,0,0,0,256,NULL,0,'+ext',NULL,'\npage.logo.file = \npage.logo.fileInverted = ',NULL,'',0,0,0,0,0);
+INSERT INTO `sys_template` VALUES (1,1,1694604347,1694604330,0,0,0,0,256,NULL,0,'NEW SITE','EXT:bootstrap_package/Configuration/TypoScript',NULL,'','',0,1,3,0,0),(2,2,1699001725,1694681303,1,0,0,0,256,NULL,0,'+ext',NULL,'\npage.logo.file = \npage.logo.fileInverted = ',NULL,'',0,0,0,0,0);
 /*!40000 ALTER TABLE `sys_template` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1971,16 +1979,16 @@ CREATE TABLE `sys_workspace` (
   `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
   `description` text DEFAULT NULL,
   `title` varchar(30) NOT NULL DEFAULT '',
-  `adminusers` varchar(4000) NOT NULL DEFAULT '',
-  `members` varchar(4000) NOT NULL DEFAULT '',
+  `adminusers` longtext DEFAULT NULL,
+  `members` longtext DEFAULT NULL,
   `db_mountpoints` text DEFAULT NULL,
   `file_mountpoints` text DEFAULT NULL,
   `previewlink_lifetime` int(11) NOT NULL DEFAULT 0,
-  `custom_stages` int(11) NOT NULL DEFAULT 0,
+  `custom_stages` int(10) unsigned NOT NULL DEFAULT 0,
   `stagechg_notification` smallint(6) NOT NULL DEFAULT 0,
-  `edit_notification_defaults` varchar(255) NOT NULL DEFAULT '',
-  `publish_notification_defaults` varchar(255) NOT NULL DEFAULT '',
-  `execute_notification_defaults` varchar(255) NOT NULL DEFAULT '',
+  `edit_notification_defaults` longtext DEFAULT NULL,
+  `publish_notification_defaults` longtext DEFAULT NULL,
+  `execute_notification_defaults` longtext DEFAULT NULL,
   `publish_time` int(11) NOT NULL DEFAULT 0,
   `freeze` smallint(5) unsigned NOT NULL DEFAULT 0,
   `live_edit` smallint(5) unsigned NOT NULL DEFAULT 0,
@@ -2019,11 +2027,10 @@ CREATE TABLE `sys_workspace_stage` (
   `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
   `sorting` int(11) NOT NULL DEFAULT 0,
   `title` varchar(30) NOT NULL DEFAULT '',
-  `responsible_persons` varchar(255) NOT NULL DEFAULT '',
+  `responsible_persons` longtext DEFAULT NULL,
   `default_mailcomment` text DEFAULT NULL,
-  `parentid` int(11) NOT NULL DEFAULT 0,
-  `parenttable` varchar(255) NOT NULL DEFAULT '',
-  `notification_defaults` varchar(255) NOT NULL DEFAULT '',
+  `parentid` int(10) unsigned NOT NULL DEFAULT 0,
+  `notification_defaults` longtext DEFAULT NULL,
   `allow_notificaton_settings` smallint(5) unsigned NOT NULL DEFAULT 0,
   `notification_preselection` smallint(5) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`uid`),
@@ -2088,7 +2095,7 @@ CREATE TABLE `tt_content` (
   `pages` text DEFAULT NULL,
   `colPos` int(10) unsigned NOT NULL DEFAULT 0,
   `subheader` varchar(255) NOT NULL DEFAULT '',
-  `header_link` varchar(1024) NOT NULL DEFAULT '',
+  `header_link` varchar(2048) NOT NULL DEFAULT '',
   `header_layout` varchar(30) NOT NULL DEFAULT '0',
   `list_type` varchar(255) NOT NULL DEFAULT '',
   `file_collections` text DEFAULT NULL,
@@ -2154,12 +2161,13 @@ CREATE TABLE `tt_content` (
   `background_image` int(10) unsigned DEFAULT 0,
   `background_image_options` mediumtext DEFAULT NULL,
   `subitems_header_layout` int(10) unsigned NOT NULL DEFAULT 4,
+  `tx_styleguide_containsdemo` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`uid`),
   KEY `parent` (`pid`,`sorting`),
   KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`),
   KEY `language` (`l18n_parent`,`sys_language_uid`),
   KEY `translation_source` (`l10n_source`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2168,7 +2176,7 @@ CREATE TABLE `tt_content` (
 
 LOCK TABLES `tt_content` WRITE;
 /*!40000 ALTER TABLE `tt_content` DISABLE KEYS */;
-INSERT INTO `tt_content` VALUES (1,'',1,1694604369,1694604369,0,0,0,0,'',256,0,0,0,0,NULL,0,'',0,0,0,0,'text','Thank you for your work.','','<p>Much appreciated.</p>',0,0,0,0,1,0,'default',0,'','',NULL,NULL,0,'','','0','',NULL,'','','',0,0,NULL,'','','','',NULL,124,0,0,0,NULL,0,0,0,0,0,0,0,1,0,0,0,0,0,'','',NULL,'1.3333333333333',10,'','','','default',NULL,'','',0,'','default','default','#FFFFFF','#333333','','','',0,0,0,0,0,0,'default','','none',0,NULL,2),(2,'',2,1694681284,1694678189,0,0,0,0,'',256,0,0,0,0,NULL,0,'{\"colPos\":\"\",\"sys_language_uid\":\"\"}',0,0,0,0,'list','','',NULL,0,0,0,0,1,0,'default',0,'','',NULL,'',0,'','','0','ghreproduceassets_corebugreproduceassets',NULL,'','','',0,0,NULL,'','','','',NULL,124,0,0,0,NULL,0,0,0,0,0,0,0,1,0,0,0,0,0,'','',NULL,'1.3333333333333',10,'','','','default',NULL,'','',0,'','default','default','#FFFFFF','#333333','','','',0,0,0,0,0,0,'default','','none',0,NULL,2);
+INSERT INTO `tt_content` VALUES (1,'',1,1694604369,1694604369,0,0,0,0,'',256,0,0,0,0,NULL,0,'',0,0,0,0,'text','Thank you for your work.','','<p>Much appreciated.</p>',0,0,0,0,1,0,'default',0,'','',NULL,NULL,0,'','','0','',NULL,'','','',0,0,NULL,'','','','',NULL,124,0,0,0,NULL,0,0,0,0,0,0,0,1,0,0,0,0,0,'','',NULL,'1.3333333333333',10,'','','','default',NULL,'','',0,'','default','default','#FFFFFF','#333333','','','',0,0,0,0,0,0,'default','','none',0,NULL,2,''),(2,'',2,1699001725,1694678189,1,0,0,0,'',256,0,0,0,0,NULL,0,'{\"colPos\":\"\",\"sys_language_uid\":\"\"}',0,0,0,0,'list','','',NULL,0,0,0,0,1,0,'default',0,'','',NULL,'',0,'','','0','ghreproduceassets_corebugreproduceassets',NULL,'','','',0,0,NULL,'','','','',NULL,124,0,0,0,NULL,0,0,0,0,0,0,0,1,0,0,0,0,0,'','',NULL,'1.3333333333333',10,'','','','default',NULL,'','',0,'','default','default','#FFFFFF','#333333','','','',0,0,0,0,0,0,'default','','none',0,NULL,2,''),(3,'',1,1699001609,1699001591,0,0,0,0,'',512,0,1,1,1,NULL,1,'{\"CType\":\"text\",\"starttime\":\"0\",\"endtime\":\"0\",\"categories\":\"0\",\"l18n_parent\":\"0\",\"layout\":\"0\",\"frame_class\":\"default\",\"space_before_class\":\"\",\"space_after_class\":\"\",\"bullets_type\":\"0\",\"colPos\":\"0\",\"date\":\"0\",\"header_layout\":\"0\",\"header_position\":\"\",\"imagewidth\":\"0\",\"imageheight\":\"0\",\"imageorient\":\"0\",\"imagecols\":\"1\",\"cols\":\"0\",\"recursive\":\"0\",\"list_type\":\"\",\"target\":\"\",\"sectionIndex\":\"1\",\"accessibility_title\":\"\",\"accessibility_bypass_text\":\"\",\"l18n_diffsource\":\"\",\"table_class\":\"\",\"table_delimiter\":\"124\",\"table_enclosure\":\"0\",\"table_header_position\":\"0\",\"table_tfoot\":\"0\",\"uploads_description\":\"0\",\"uploads_type\":\"0\",\"icon_type\":\"default\",\"icon_color\":\"#FFFFFF\",\"icon_background\":\"#333333\",\"items_per_page\":\"10\",\"subitems_header_layout\":\"2\",\"t3_origuid\":\"0\",\"rowDescription\":\"\",\"hidden\":\"0\",\"fe_group\":\"\",\"editlock\":\"0\",\"sys_language_uid\":\"0\",\"l10n_source\":\"0\",\"header\":\"Thank you for your work.\",\"bodytext\":\"<p>Much appreciated.<\\/p>\",\"records\":\"\",\"pages\":\"\",\"subheader\":\"\",\"header_link\":\"\",\"file_collections\":\"\",\"filelink_sorting\":\"\",\"filelink_sorting_direction\":\"\",\"pi_flexform\":\"\",\"category_field\":\"\",\"table_caption\":\"\",\"selected_categories\":\"\",\"image\":\"0\",\"assets\":\"0\",\"media\":\"0\",\"imageborder\":\"0\",\"image_zoom\":\"0\",\"filelink_size\":\"0\",\"linkToTop\":\"0\",\"accessibility_bypass\":\"0\",\"tx_impexp_origuid\":\"0\",\"teaser\":\"\",\"readmore_label\":\"\",\"quote_source\":\"\",\"quote_link\":\"\",\"panel_class\":\"default\",\"file_folder\":\"\",\"icon_position\":\"\",\"icon_size\":\"default\",\"external_media_title\":\"\",\"external_media_source\":\"\",\"external_media_ratio\":\"\",\"tx_bootstrappackage_card_group_item\":\"0\",\"tx_bootstrappackage_carousel_item\":\"0\",\"tx_bootstrappackage_accordion_item\":\"0\",\"tx_bootstrappackage_icon_group_item\":\"0\",\"tx_bootstrappackage_tab_item\":\"0\",\"tx_bootstrappackage_timeline_item\":\"0\",\"icon_set\":\"\",\"icon\":\"\",\"icon_file\":\"0\",\"header_class\":\"\",\"subheader_class\":\"\",\"frame_layout\":\"default\",\"frame_options\":\"\",\"background_color_class\":\"none\",\"background_image\":\"0\",\"background_image_options\":\"\",\"aspect_ratio\":\"1.3333333333333\"}',0,0,0,0,'text','Danke für die Arbeit (German)','','<p>Tolle Leistung.</p>',0,0,0,0,1,0,'default',0,'','','','',0,'','','0','','','','','',0,0,NULL,'','','','',NULL,124,0,0,0,'0',0,0,0,0,0,0,0,1,0,0,0,0,0,'','',NULL,'1.3333333333333',10,'','','','default','','','',0,'','default','default','#FFFFFF','#333333','','','',0,0,0,0,0,0,'default','','none',0,NULL,2,''),(4,'',1,1699001646,1699001621,0,0,0,0,'',384,0,2,1,1,NULL,1,'{\"CType\":\"text\",\"starttime\":\"0\",\"endtime\":\"0\",\"categories\":\"0\",\"l18n_parent\":\"0\",\"layout\":\"0\",\"frame_class\":\"default\",\"space_before_class\":\"\",\"space_after_class\":\"\",\"bullets_type\":\"0\",\"colPos\":\"0\",\"date\":\"0\",\"header_layout\":\"0\",\"header_position\":\"\",\"imagewidth\":\"0\",\"imageheight\":\"0\",\"imageorient\":\"0\",\"imagecols\":\"1\",\"cols\":\"0\",\"recursive\":\"0\",\"list_type\":\"\",\"target\":\"\",\"sectionIndex\":\"1\",\"accessibility_title\":\"\",\"accessibility_bypass_text\":\"\",\"l18n_diffsource\":\"\",\"table_class\":\"\",\"table_delimiter\":\"124\",\"table_enclosure\":\"0\",\"table_header_position\":\"0\",\"table_tfoot\":\"0\",\"uploads_description\":\"0\",\"uploads_type\":\"0\",\"icon_type\":\"default\",\"icon_color\":\"#FFFFFF\",\"icon_background\":\"#333333\",\"items_per_page\":\"10\",\"subitems_header_layout\":\"2\",\"t3_origuid\":\"0\",\"rowDescription\":\"\",\"hidden\":\"0\",\"fe_group\":\"\",\"editlock\":\"0\",\"sys_language_uid\":\"0\",\"l10n_source\":\"0\",\"header\":\"Thank you for your work.\",\"bodytext\":\"<p>Much appreciated.<\\/p>\",\"records\":\"\",\"pages\":\"\",\"subheader\":\"\",\"header_link\":\"\",\"file_collections\":\"\",\"filelink_sorting\":\"\",\"filelink_sorting_direction\":\"\",\"pi_flexform\":\"\",\"category_field\":\"\",\"table_caption\":\"\",\"selected_categories\":\"\",\"image\":\"0\",\"assets\":\"0\",\"media\":\"0\",\"imageborder\":\"0\",\"image_zoom\":\"0\",\"filelink_size\":\"0\",\"linkToTop\":\"0\",\"accessibility_bypass\":\"0\",\"tx_impexp_origuid\":\"0\",\"teaser\":\"\",\"readmore_label\":\"\",\"quote_source\":\"\",\"quote_link\":\"\",\"panel_class\":\"default\",\"file_folder\":\"\",\"icon_position\":\"\",\"icon_size\":\"default\",\"external_media_title\":\"\",\"external_media_source\":\"\",\"external_media_ratio\":\"\",\"tx_bootstrappackage_card_group_item\":\"0\",\"tx_bootstrappackage_carousel_item\":\"0\",\"tx_bootstrappackage_accordion_item\":\"0\",\"tx_bootstrappackage_icon_group_item\":\"0\",\"tx_bootstrappackage_tab_item\":\"0\",\"tx_bootstrappackage_timeline_item\":\"0\",\"icon_set\":\"\",\"icon\":\"\",\"icon_file\":\"0\",\"header_class\":\"\",\"subheader_class\":\"\",\"frame_layout\":\"default\",\"frame_options\":\"\",\"background_color_class\":\"none\",\"background_image\":\"0\",\"background_image_options\":\"\",\"aspect_ratio\":\"1.3333333333333\"}',0,0,0,0,'text','Merci pour le travail (French)','','<p>C\'est la vie.</p>',0,0,0,0,1,0,'default',0,'','','','',0,'','','0','','','','','',0,0,NULL,'','','','',NULL,124,0,0,0,'0',0,0,0,0,0,0,0,1,0,0,0,0,0,'','',NULL,'1.3333333333333',10,'','','','default','','','',0,'','default','default','#FFFFFF','#333333','','','',0,0,0,0,0,0,'default','','none',0,NULL,2,''),(5,'',1,1699001683,1699001667,0,0,0,0,'',320,0,3,1,1,NULL,1,'{\"CType\":\"text\",\"starttime\":\"0\",\"endtime\":\"0\",\"categories\":\"0\",\"l18n_parent\":\"0\",\"layout\":\"0\",\"frame_class\":\"default\",\"space_before_class\":\"\",\"space_after_class\":\"\",\"bullets_type\":\"0\",\"colPos\":\"0\",\"date\":\"0\",\"header_layout\":\"0\",\"header_position\":\"\",\"imagewidth\":\"0\",\"imageheight\":\"0\",\"imageorient\":\"0\",\"imagecols\":\"1\",\"cols\":\"0\",\"recursive\":\"0\",\"list_type\":\"\",\"target\":\"\",\"sectionIndex\":\"1\",\"accessibility_title\":\"\",\"accessibility_bypass_text\":\"\",\"l18n_diffsource\":\"\",\"table_class\":\"\",\"table_delimiter\":\"124\",\"table_enclosure\":\"0\",\"table_header_position\":\"0\",\"table_tfoot\":\"0\",\"uploads_description\":\"0\",\"uploads_type\":\"0\",\"icon_type\":\"default\",\"icon_color\":\"#FFFFFF\",\"icon_background\":\"#333333\",\"items_per_page\":\"10\",\"subitems_header_layout\":\"2\",\"t3_origuid\":\"0\",\"rowDescription\":\"\",\"hidden\":\"0\",\"fe_group\":\"\",\"editlock\":\"0\",\"sys_language_uid\":\"0\",\"l10n_source\":\"0\",\"header\":\"Thank you for your work.\",\"bodytext\":\"<p>Much appreciated.<\\/p>\",\"records\":\"\",\"pages\":\"\",\"subheader\":\"\",\"header_link\":\"\",\"file_collections\":\"\",\"filelink_sorting\":\"\",\"filelink_sorting_direction\":\"\",\"pi_flexform\":\"\",\"category_field\":\"\",\"table_caption\":\"\",\"selected_categories\":\"\",\"image\":\"0\",\"assets\":\"0\",\"media\":\"0\",\"imageborder\":\"0\",\"image_zoom\":\"0\",\"filelink_size\":\"0\",\"linkToTop\":\"0\",\"accessibility_bypass\":\"0\",\"tx_impexp_origuid\":\"0\",\"teaser\":\"\",\"readmore_label\":\"\",\"quote_source\":\"\",\"quote_link\":\"\",\"panel_class\":\"default\",\"file_folder\":\"\",\"icon_position\":\"\",\"icon_size\":\"default\",\"external_media_title\":\"\",\"external_media_source\":\"\",\"external_media_ratio\":\"\",\"tx_bootstrappackage_card_group_item\":\"0\",\"tx_bootstrappackage_carousel_item\":\"0\",\"tx_bootstrappackage_accordion_item\":\"0\",\"tx_bootstrappackage_icon_group_item\":\"0\",\"tx_bootstrappackage_tab_item\":\"0\",\"tx_bootstrappackage_timeline_item\":\"0\",\"icon_set\":\"\",\"icon\":\"\",\"icon_file\":\"0\",\"header_class\":\"\",\"subheader_class\":\"\",\"frame_layout\":\"default\",\"frame_options\":\"\",\"background_color_class\":\"none\",\"background_image\":\"0\",\"background_image_options\":\"\",\"aspect_ratio\":\"1.3333333333333\"}',0,0,0,0,'text',' Tak for arbejdet (Danish)','','<p>Tuk.</p>',0,0,0,0,1,0,'default',0,'','','','',0,'','','0','','','','','',0,0,NULL,'','','','',NULL,124,0,0,0,'0',0,0,0,0,0,0,0,1,0,0,0,0,0,'','',NULL,'1.3333333333333',10,'','','','default','','','',0,'','default','default','#FFFFFF','#333333','','','',0,0,0,0,0,0,'default','','none',0,NULL,2,''),(6,'',9,1699001777,1699001777,0,0,0,0,'',256,0,0,0,0,NULL,0,'',0,0,0,0,'header','Only english (Default) content here.','',NULL,0,0,0,0,1,0,'default',0,'','',NULL,NULL,0,'','','0','',NULL,'','','',0,0,NULL,'','','','',NULL,124,0,0,0,NULL,0,0,0,0,0,0,0,1,0,0,0,0,0,'','',NULL,'1.3333333333333',10,'','','','default',NULL,'','',0,'','default','default','#FFFFFF','#333333','','','',0,0,0,0,0,0,'default','','none',0,'<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\" ?>\n<T3FlexForms>\n    <data>\n        <sheet index=\"sDEF\">\n            <language index=\"lDEF\">\n                <field index=\"behaviour\">\n                    <value index=\"vDEF\">cover</value>\n                </field>\n                <field index=\"parallax\">\n                    <value index=\"vDEF\">0</value>\n                </field>\n                <field index=\"fade\">\n                    <value index=\"vDEF\">0</value>\n                </field>\n                <field index=\"filter\">\n                    <value index=\"vDEF\"></value>\n                </field>\n            </language>\n        </sheet>\n    </data>\n</T3FlexForms>',2,''),(7,'',7,1699001825,1699001825,0,0,0,0,'',256,0,0,0,0,NULL,0,'',0,0,0,0,'header','Only english + german (English)','',NULL,0,0,0,0,1,0,'default',0,'','',NULL,NULL,0,'','','0','',NULL,'','','',0,0,NULL,'','','','',NULL,124,0,0,0,NULL,0,0,0,0,0,0,0,1,0,0,0,0,0,'','',NULL,'1.3333333333333',10,'','','','default',NULL,'','',0,'','default','default','#FFFFFF','#333333','','','',0,0,0,0,0,0,'default','','none',0,'<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\" ?>\n<T3FlexForms>\n    <data>\n        <sheet index=\"sDEF\">\n            <language index=\"lDEF\">\n                <field index=\"behaviour\">\n                    <value index=\"vDEF\">cover</value>\n                </field>\n                <field index=\"parallax\">\n                    <value index=\"vDEF\">0</value>\n                </field>\n                <field index=\"fade\">\n                    <value index=\"vDEF\">0</value>\n                </field>\n                <field index=\"filter\">\n                    <value index=\"vDEF\"></value>\n                </field>\n            </language>\n        </sheet>\n    </data>\n</T3FlexForms>',2,''),(8,'',7,1699001880,1699001862,0,0,0,0,'',512,0,1,7,7,NULL,7,'{\"CType\":\"header\",\"starttime\":\"0\",\"endtime\":\"0\",\"categories\":\"0\",\"l18n_parent\":\"0\",\"layout\":\"0\",\"frame_class\":\"default\",\"space_before_class\":\"\",\"space_after_class\":\"\",\"bullets_type\":\"0\",\"colPos\":\"0\",\"date\":\"0\",\"header_layout\":\"0\",\"header_position\":\"\",\"imagewidth\":\"0\",\"imageheight\":\"0\",\"imageorient\":\"0\",\"imagecols\":\"1\",\"cols\":\"0\",\"recursive\":\"0\",\"list_type\":\"\",\"target\":\"\",\"sectionIndex\":\"1\",\"accessibility_title\":\"\",\"accessibility_bypass_text\":\"\",\"l18n_diffsource\":\"\",\"table_class\":\"\",\"table_delimiter\":\"124\",\"table_enclosure\":\"0\",\"table_header_position\":\"0\",\"table_tfoot\":\"0\",\"uploads_description\":\"0\",\"uploads_type\":\"0\",\"icon_type\":\"default\",\"icon_color\":\"#FFFFFF\",\"icon_background\":\"#333333\",\"items_per_page\":\"10\",\"subitems_header_layout\":\"2\",\"t3_origuid\":\"0\",\"rowDescription\":\"\",\"hidden\":\"0\",\"fe_group\":\"\",\"editlock\":\"0\",\"sys_language_uid\":\"0\",\"l10n_source\":\"0\",\"header\":\"Only english + german (English)\",\"bodytext\":\"\",\"records\":\"\",\"pages\":\"\",\"subheader\":\"\",\"header_link\":\"\",\"file_collections\":\"\",\"filelink_sorting\":\"\",\"filelink_sorting_direction\":\"\",\"pi_flexform\":\"\",\"category_field\":\"\",\"table_caption\":\"\",\"selected_categories\":\"\",\"image\":\"0\",\"assets\":\"0\",\"media\":\"0\",\"imageborder\":\"0\",\"image_zoom\":\"0\",\"filelink_size\":\"0\",\"linkToTop\":\"0\",\"accessibility_bypass\":\"0\",\"tx_impexp_origuid\":\"0\",\"teaser\":\"\",\"readmore_label\":\"\",\"quote_source\":\"\",\"quote_link\":\"\",\"panel_class\":\"default\",\"file_folder\":\"\",\"icon_position\":\"\",\"icon_size\":\"default\",\"external_media_title\":\"\",\"external_media_source\":\"\",\"external_media_ratio\":\"\",\"tx_bootstrappackage_card_group_item\":\"0\",\"tx_bootstrappackage_carousel_item\":\"0\",\"tx_bootstrappackage_accordion_item\":\"0\",\"tx_bootstrappackage_icon_group_item\":\"0\",\"tx_bootstrappackage_tab_item\":\"0\",\"tx_bootstrappackage_timeline_item\":\"0\",\"icon_set\":\"\",\"icon\":\"\",\"icon_file\":\"0\",\"header_class\":\"\",\"subheader_class\":\"\",\"frame_layout\":\"default\",\"frame_options\":\"\",\"background_color_class\":\"none\",\"background_image\":\"0\",\"background_image_options\":\"<?xml version=\\\"1.0\\\" encoding=\\\"utf-8\\\" standalone=\\\"yes\\\" ?>\\n<T3FlexForms>\\n    <data>\\n        <sheet index=\\\"sDEF\\\">\\n            <language index=\\\"lDEF\\\">\\n                <field index=\\\"behaviour\\\">\\n                    <value index=\\\"vDEF\\\">cover<\\/value>\\n                <\\/field>\\n                <field index=\\\"parallax\\\">\\n                    <value index=\\\"vDEF\\\">0<\\/value>\\n                <\\/field>\\n                <field index=\\\"fade\\\">\\n                    <value index=\\\"vDEF\\\">0<\\/value>\\n                <\\/field>\\n                <field index=\\\"filter\\\">\\n                    <value index=\\\"vDEF\\\"><\\/value>\\n                <\\/field>\\n            <\\/language>\\n        <\\/sheet>\\n    <\\/data>\\n<\\/T3FlexForms>\",\"aspect_ratio\":\"1.3333333333333\"}',0,0,0,0,'header','Nur Englisch + Deutsch (Deutsch)','',NULL,0,0,0,0,1,0,'default',0,'','','','',0,'','','0','','','','','',0,0,NULL,'','','','',NULL,124,0,0,0,'0',0,0,0,0,0,0,0,1,0,0,0,0,0,'','',NULL,'1.3333333333333',10,'','','','default','','','',0,'','default','default','#FFFFFF','#333333','','','',0,0,0,0,0,0,'default','','none',0,'<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\" ?>\n<T3FlexForms>\n    <data>\n        <sheet index=\"sDEF\">\n            <language index=\"lDEF\">\n                <field index=\"behaviour\">\n                    <value index=\"vDEF\">cover</value>\n                </field>\n                <field index=\"parallax\">\n                    <value index=\"vDEF\">0</value>\n                </field>\n                <field index=\"fade\">\n                    <value index=\"vDEF\">0</value>\n                </field>\n                <field index=\"filter\">\n                    <value index=\"vDEF\"></value>\n                </field>\n            </language>\n        </sheet>\n    </data>\n</T3FlexForms>',2,''),(9,'',6,1699001933,1699001933,0,0,0,0,'',256,0,0,0,0,NULL,0,'',0,0,0,0,'header','English content','',NULL,0,0,0,0,1,0,'default',0,'','',NULL,NULL,0,'','','0','',NULL,'','','',0,0,NULL,'','','','',NULL,124,0,0,0,NULL,0,0,0,0,0,0,0,1,0,0,0,0,0,'','',NULL,'1.3333333333333',10,'','','','default',NULL,'','',0,'','default','default','#FFFFFF','#333333','','','',0,0,0,0,0,0,'default','','none',0,'<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\" ?>\n<T3FlexForms>\n    <data>\n        <sheet index=\"sDEF\">\n            <language index=\"lDEF\">\n                <field index=\"behaviour\">\n                    <value index=\"vDEF\">cover</value>\n                </field>\n                <field index=\"parallax\">\n                    <value index=\"vDEF\">0</value>\n                </field>\n                <field index=\"fade\">\n                    <value index=\"vDEF\">0</value>\n                </field>\n                <field index=\"filter\">\n                    <value index=\"vDEF\"></value>\n                </field>\n            </language>\n        </sheet>\n    </data>\n</T3FlexForms>',2,''),(10,'',6,1699001942,1699001942,0,0,0,0,'',128,0,1,0,0,NULL,0,'',0,0,0,0,'header','Deutsch, freier Modus','',NULL,0,0,0,0,1,0,'default',0,'','',NULL,NULL,0,'','','0','',NULL,'','','',0,0,NULL,'','','','',NULL,124,0,0,0,NULL,0,0,0,0,0,0,0,1,0,0,0,0,0,'','',NULL,'1.3333333333333',10,'','','','default',NULL,'','',0,'','default','default','#FFFFFF','#333333','','','',0,0,0,0,0,0,'default','','none',0,'<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\" ?>\n<T3FlexForms>\n    <data>\n        <sheet index=\"sDEF\">\n            <language index=\"lDEF\">\n                <field index=\"behaviour\">\n                    <value index=\"vDEF\">cover</value>\n                </field>\n                <field index=\"parallax\">\n                    <value index=\"vDEF\">0</value>\n                </field>\n                <field index=\"fade\">\n                    <value index=\"vDEF\">0</value>\n                </field>\n                <field index=\"filter\">\n                    <value index=\"vDEF\"></value>\n                </field>\n            </language>\n        </sheet>\n    </data>\n</T3FlexForms>',2,''),(11,'',6,1699001956,1699001956,0,0,0,0,'',64,0,2,0,0,NULL,0,'',0,0,0,0,'header','Francais free mode (French)','',NULL,0,0,0,0,1,0,'default',0,'','',NULL,NULL,0,'','','0','',NULL,'','','',0,0,NULL,'','','','',NULL,124,0,0,0,NULL,0,0,0,0,0,0,0,1,0,0,0,0,0,'','',NULL,'1.3333333333333',10,'','','','default',NULL,'','',0,'','default','default','#FFFFFF','#333333','','','',0,0,0,0,0,0,'default','','none',0,'<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\" ?>\n<T3FlexForms>\n    <data>\n        <sheet index=\"sDEF\">\n            <language index=\"lDEF\">\n                <field index=\"behaviour\">\n                    <value index=\"vDEF\">cover</value>\n                </field>\n                <field index=\"parallax\">\n                    <value index=\"vDEF\">0</value>\n                </field>\n                <field index=\"fade\">\n                    <value index=\"vDEF\">0</value>\n                </field>\n                <field index=\"filter\">\n                    <value index=\"vDEF\"></value>\n                </field>\n            </language>\n        </sheet>\n    </data>\n</T3FlexForms>',2,''),(12,'',6,1699001970,1699001970,0,0,0,0,'',32,0,3,0,0,NULL,0,'',0,0,0,0,'header','Dansk free mode (Danish)','',NULL,0,0,0,0,1,0,'default',0,'','',NULL,NULL,0,'','','0','',NULL,'','','',0,0,NULL,'','','','',NULL,124,0,0,0,NULL,0,0,0,0,0,0,0,1,0,0,0,0,0,'','',NULL,'1.3333333333333',10,'','','','default',NULL,'','',0,'','default','default','#FFFFFF','#333333','','','',0,0,0,0,0,0,'default','','none',0,'<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\" ?>\n<T3FlexForms>\n    <data>\n        <sheet index=\"sDEF\">\n            <language index=\"lDEF\">\n                <field index=\"behaviour\">\n                    <value index=\"vDEF\">cover</value>\n                </field>\n                <field index=\"parallax\">\n                    <value index=\"vDEF\">0</value>\n                </field>\n                <field index=\"fade\">\n                    <value index=\"vDEF\">0</value>\n                </field>\n                <field index=\"filter\">\n                    <value index=\"vDEF\"></value>\n                </field>\n            </language>\n        </sheet>\n    </data>\n</T3FlexForms>',2,''),(13,'',8,1699002434,1699002434,0,0,0,0,'',256,0,1,0,0,NULL,0,'',0,0,0,0,'header','Nur deutscher Inhalt (German)','',NULL,0,0,0,0,1,0,'default',0,'','',NULL,NULL,0,'','','0','',NULL,'','','',0,0,NULL,'','','','',NULL,124,0,0,0,NULL,0,0,0,0,0,0,0,1,0,0,0,0,0,'','',NULL,'1.3333333333333',10,'','','','default',NULL,'','',0,'','default','default','#FFFFFF','#333333','','','',0,0,0,0,0,0,'default','','none',0,'<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\" ?>\n<T3FlexForms>\n    <data>\n        <sheet index=\"sDEF\">\n            <language index=\"lDEF\">\n                <field index=\"behaviour\">\n                    <value index=\"vDEF\">cover</value>\n                </field>\n                <field index=\"parallax\">\n                    <value index=\"vDEF\">0</value>\n                </field>\n                <field index=\"fade\">\n                    <value index=\"vDEF\">0</value>\n                </field>\n                <field index=\"filter\">\n                    <value index=\"vDEF\"></value>\n                </field>\n            </language>\n        </sheet>\n    </data>\n</T3FlexForms>',2,''),(14,'',8,1699002444,1699002444,0,0,0,0,'',128,0,0,0,0,NULL,0,'',0,0,0,0,'header','This should not be visible.','',NULL,0,0,0,0,1,0,'default',0,'','',NULL,NULL,0,'','','0','',NULL,'','','',0,0,NULL,'','','','',NULL,124,0,0,0,NULL,0,0,0,0,0,0,0,1,0,0,0,0,0,'','',NULL,'1.3333333333333',10,'','','','default',NULL,'','',0,'','default','default','#FFFFFF','#333333','','','',0,0,0,0,0,0,'default','','none',0,'<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\" ?>\n<T3FlexForms>\n    <data>\n        <sheet index=\"sDEF\">\n            <language index=\"lDEF\">\n                <field index=\"behaviour\">\n                    <value index=\"vDEF\">cover</value>\n                </field>\n                <field index=\"parallax\">\n                    <value index=\"vDEF\">0</value>\n                </field>\n                <field index=\"fade\">\n                    <value index=\"vDEF\">0</value>\n                </field>\n                <field index=\"filter\">\n                    <value index=\"vDEF\"></value>\n                </field>\n            </language>\n        </sheet>\n    </data>\n</T3FlexForms>',2,'');
 /*!40000 ALTER TABLE `tt_content` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2495,9 +2503,9 @@ CREATE TABLE `tx_extensionmanager_domain_model_extension` (
   `downloadcounter` int(10) unsigned NOT NULL DEFAULT 0,
   `title` varchar(150) NOT NULL DEFAULT '',
   `description` mediumtext DEFAULT NULL,
-  `state` int(11) NOT NULL DEFAULT 0,
+  `state` int(10) unsigned NOT NULL DEFAULT 0,
   `review_state` int(11) NOT NULL DEFAULT 0,
-  `category` int(11) NOT NULL DEFAULT 0,
+  `category` int(10) unsigned NOT NULL DEFAULT 0,
   `serialized_dependencies` mediumtext DEFAULT NULL,
   `author_name` varchar(255) NOT NULL DEFAULT '',
   `author_email` varchar(255) NOT NULL DEFAULT '',
@@ -2661,6 +2669,3419 @@ LOCK TABLES `tx_scheduler_task_group` WRITE;
 /*!40000 ALTER TABLE `tx_scheduler_task_group` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tx_scheduler_task_group` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_ctrl_common`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_ctrl_common`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_ctrl_common` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `starttime` int(10) unsigned NOT NULL DEFAULT 0,
+  `endtime` int(10) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `description` text DEFAULT NULL,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `title` text DEFAULT NULL,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_ctrl_common`
+--
+
+LOCK TABLES `tx_styleguide_ctrl_common` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_ctrl_common` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_ctrl_common` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_ctrl_minimal`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_ctrl_minimal`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_ctrl_minimal` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `title` text DEFAULT NULL,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_ctrl_minimal`
+--
+
+LOCK TABLES `tx_styleguide_ctrl_minimal` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_ctrl_minimal` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_ctrl_minimal` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_displaycond`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_displaycond`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_displaycond` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `input_1` text DEFAULT NULL,
+  `input_2` text DEFAULT NULL,
+  `input_4` text DEFAULT NULL,
+  `input_5` text DEFAULT NULL,
+  `input_6` text DEFAULT NULL,
+  `input_7` text DEFAULT NULL,
+  `input_8` text DEFAULT NULL,
+  `input_9` text DEFAULT NULL,
+  `input_10` text DEFAULT NULL,
+  `input_11` text DEFAULT NULL,
+  `input_12` text DEFAULT NULL,
+  `input_13` text DEFAULT NULL,
+  `input_16` text DEFAULT NULL,
+  `input_17` text DEFAULT NULL,
+  `input_18` text DEFAULT NULL,
+  `input_19` text DEFAULT NULL,
+  `input_20` text DEFAULT NULL,
+  `select_1` text DEFAULT NULL,
+  `select_2` text DEFAULT NULL,
+  `select_3` text DEFAULT NULL,
+  `select_4` text DEFAULT NULL,
+  `checkbox_1` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `flex_1` longtext DEFAULT NULL,
+  `flex_2` longtext DEFAULT NULL,
+  `flex_3` longtext DEFAULT NULL,
+  `number_1` int(11) NOT NULL DEFAULT 0,
+  `number_2` int(11) NOT NULL DEFAULT 0,
+  `number_3` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_displaycond`
+--
+
+LOCK TABLES `tx_styleguide_displaycond` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_displaycond` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_displaycond` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_elements_basic`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_elements_basic`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_elements_basic` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `input_1` text DEFAULT NULL,
+  `input_2` text DEFAULT NULL,
+  `input_3` text DEFAULT NULL,
+  `input_4` text DEFAULT NULL,
+  `input_5` text DEFAULT NULL,
+  `input_10` text DEFAULT NULL,
+  `input_11` text DEFAULT NULL,
+  `input_12` text DEFAULT NULL,
+  `input_13` text DEFAULT NULL,
+  `input_14` text DEFAULT NULL,
+  `input_15` text DEFAULT NULL,
+  `input_19` text DEFAULT NULL,
+  `input_21` text DEFAULT NULL,
+  `input_22` text DEFAULT NULL,
+  `input_23` text DEFAULT NULL,
+  `input_24` text DEFAULT NULL,
+  `input_26` text DEFAULT NULL,
+  `input_27` text DEFAULT NULL,
+  `input_28` text DEFAULT NULL,
+  `input_33` text DEFAULT NULL,
+  `input_35` text DEFAULT NULL,
+  `input_36` text DEFAULT NULL,
+  `input_40` text DEFAULT NULL,
+  `input_41` text DEFAULT NULL,
+  `input_42` text DEFAULT NULL,
+  `input_43` text DEFAULT NULL,
+  `text_12` text DEFAULT NULL,
+  `none_1` text DEFAULT NULL,
+  `none_2` text DEFAULT NULL,
+  `none_3` text DEFAULT NULL,
+  `passthrough_1` text DEFAULT NULL,
+  `passthrough_2` text DEFAULT NULL,
+  `user_1` text DEFAULT NULL,
+  `user_2` text DEFAULT NULL,
+  `unknown_1` text DEFAULT NULL,
+  `inputdatetime_1` int(11) NOT NULL DEFAULT 0,
+  `inputdatetime_2` date DEFAULT NULL,
+  `inputdatetime_3` int(11) NOT NULL DEFAULT 0,
+  `inputdatetime_4` datetime DEFAULT NULL,
+  `inputdatetime_5` int(11) NOT NULL DEFAULT 0,
+  `inputdatetime_6` int(11) NOT NULL DEFAULT 0,
+  `inputdatetime_7` int(11) NOT NULL DEFAULT 0,
+  `inputdatetime_8` int(11) NOT NULL DEFAULT 0,
+  `inputdatetime_9` int(11) NOT NULL DEFAULT 0,
+  `inputdatetime_10` int(11) NOT NULL DEFAULT 0,
+  `inputdatetime_11` int(11) NOT NULL DEFAULT 0,
+  `inputdatetime_12` time DEFAULT NULL,
+  `inputdatetime_13` time DEFAULT NULL,
+  `inputdatetime_21` int(11) DEFAULT 0,
+  `inputdatetime_22` date DEFAULT NULL,
+  `inputdatetime_23` int(11) DEFAULT 0,
+  `inputdatetime_24` datetime DEFAULT NULL,
+  `inputdatetime_25` int(11) DEFAULT 0,
+  `inputdatetime_26` int(11) DEFAULT 0,
+  `inputdatetime_27` int(11) DEFAULT 0,
+  `inputdatetime_28` int(11) DEFAULT 0,
+  `inputdatetime_29` int(11) DEFAULT 0,
+  `inputdatetime_30` int(11) DEFAULT 0,
+  `inputdatetime_31` int(11) DEFAULT 0,
+  `inputdatetime_32` time DEFAULT NULL,
+  `inputdatetime_33` time DEFAULT NULL,
+  `email_1` varchar(255) NOT NULL DEFAULT '',
+  `email_2` varchar(255) NOT NULL DEFAULT '',
+  `email_3` varchar(255) DEFAULT NULL,
+  `email_4` varchar(255) DEFAULT NULL,
+  `checkbox_1` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_2` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_3` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_4` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_6` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_7` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_8` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_9` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_10` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_11` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_12` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_13` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_14` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_15` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_16` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_17` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_18` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_19` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_20` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_21` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_24` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_25` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_26` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `language_1` int(11) NOT NULL DEFAULT 0,
+  `flex_1` longtext DEFAULT NULL,
+  `text_1` longtext DEFAULT NULL,
+  `text_2` longtext DEFAULT NULL,
+  `text_3` longtext DEFAULT NULL,
+  `text_4` longtext DEFAULT NULL,
+  `text_5` longtext DEFAULT NULL,
+  `text_6` longtext DEFAULT NULL,
+  `text_7` longtext DEFAULT NULL,
+  `text_9` longtext DEFAULT NULL,
+  `text_10` longtext DEFAULT NULL,
+  `text_11` longtext DEFAULT NULL,
+  `text_13` longtext DEFAULT NULL,
+  `text_14` longtext DEFAULT NULL,
+  `text_15` longtext DEFAULT NULL,
+  `text_16` longtext DEFAULT NULL,
+  `text_17` longtext DEFAULT NULL,
+  `text_18` longtext DEFAULT NULL,
+  `text_19` longtext DEFAULT NULL,
+  `text_20` longtext DEFAULT NULL,
+  `password_1` varchar(255) NOT NULL DEFAULT '',
+  `password_2` varchar(255) NOT NULL DEFAULT '',
+  `password_3` varchar(255) NOT NULL DEFAULT '',
+  `password_4` varchar(255) NOT NULL DEFAULT '',
+  `password_5` varchar(255) NOT NULL DEFAULT '',
+  `password_6` varchar(255) NOT NULL DEFAULT '',
+  `password_7` varchar(255) NOT NULL DEFAULT '',
+  `password_8` varchar(255) DEFAULT NULL,
+  `color_1` varchar(7) NOT NULL DEFAULT '',
+  `color_2` varchar(7) NOT NULL DEFAULT '',
+  `color_3` varchar(7) NOT NULL DEFAULT '',
+  `color_4` varchar(7) DEFAULT NULL,
+  `radio_1` smallint(6) NOT NULL DEFAULT 0,
+  `radio_2` smallint(6) NOT NULL DEFAULT 0,
+  `radio_3` smallint(6) NOT NULL DEFAULT 0,
+  `radio_4` varchar(255) NOT NULL DEFAULT '',
+  `radio_5` varchar(255) NOT NULL DEFAULT '',
+  `radio_6` smallint(6) NOT NULL DEFAULT 0,
+  `link_1` varchar(2048) NOT NULL DEFAULT '',
+  `link_2` varchar(2048) NOT NULL DEFAULT '',
+  `link_3` varchar(2048) NOT NULL DEFAULT '',
+  `link_4` varchar(2048) NOT NULL DEFAULT '',
+  `link_5` varchar(2048) NOT NULL DEFAULT '',
+  `number_1` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `number_2` int(11) NOT NULL DEFAULT 0,
+  `number_3` int(11) NOT NULL DEFAULT 0,
+  `number_4` int(11) NOT NULL DEFAULT 0,
+  `number_5` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `number_7` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_elements_basic`
+--
+
+LOCK TABLES `tx_styleguide_elements_basic` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_elements_basic` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_elements_basic` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_elements_folder`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_elements_folder`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_elements_folder` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `folder_1` longtext DEFAULT NULL,
+  `folder_2` longtext DEFAULT NULL,
+  `folder_3` longtext DEFAULT NULL,
+  `flex_1` longtext DEFAULT NULL,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_elements_folder`
+--
+
+LOCK TABLES `tx_styleguide_elements_folder` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_elements_folder` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_elements_folder` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_elements_group`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_elements_group`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_elements_group` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `group_db_1` longtext DEFAULT NULL,
+  `group_db_2` longtext DEFAULT NULL,
+  `group_db_9` longtext DEFAULT NULL,
+  `group_db_3` longtext DEFAULT NULL,
+  `group_db_8` longtext DEFAULT NULL,
+  `group_db_11` longtext DEFAULT NULL,
+  `group_db_4` longtext DEFAULT NULL,
+  `group_db_5` longtext DEFAULT NULL,
+  `group_db_7` longtext DEFAULT NULL,
+  `group_db_10` longtext DEFAULT NULL,
+  `group_requestUpdate_1` longtext DEFAULT NULL,
+  `flex_1` longtext DEFAULT NULL,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_elements_group`
+--
+
+LOCK TABLES `tx_styleguide_elements_group` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_elements_group` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_elements_group` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_elements_imagemanipulation`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_elements_imagemanipulation`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_elements_imagemanipulation` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `crop_1` longtext DEFAULT NULL,
+  `crop_2` longtext DEFAULT NULL,
+  `crop_4` longtext DEFAULT NULL,
+  `crop_3` longtext DEFAULT NULL,
+  `crop_5` longtext DEFAULT NULL,
+  `crop_6` longtext DEFAULT NULL,
+  `crop_7` longtext DEFAULT NULL,
+  `crop_8` longtext DEFAULT NULL,
+  `group_db_1` longtext DEFAULT NULL,
+  `group_db_2` longtext DEFAULT NULL,
+  `group_db_3` longtext DEFAULT NULL,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_elements_imagemanipulation`
+--
+
+LOCK TABLES `tx_styleguide_elements_imagemanipulation` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_elements_imagemanipulation` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_elements_imagemanipulation` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_elements_rte`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_elements_rte`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_elements_rte` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `input_palette_1` text DEFAULT NULL,
+  `rte_palette_1` text DEFAULT NULL,
+  `rte_flex_1` longtext DEFAULT NULL,
+  `rte_1` longtext DEFAULT NULL,
+  `rte_2` longtext DEFAULT NULL,
+  `rte_3` longtext DEFAULT NULL,
+  `rte_4` longtext DEFAULT NULL,
+  `rte_5` longtext DEFAULT NULL,
+  `rte_inline_1` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_elements_rte`
+--
+
+LOCK TABLES `tx_styleguide_elements_rte` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_elements_rte` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_elements_rte` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_elements_rte_flex_1_inline_1_child`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_elements_rte_flex_1_inline_1_child`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_elements_rte_flex_1_inline_1_child` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `parentid` int(11) NOT NULL DEFAULT 0,
+  `parenttable` text DEFAULT NULL,
+  `rte_1` longtext DEFAULT NULL,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_elements_rte_flex_1_inline_1_child`
+--
+
+LOCK TABLES `tx_styleguide_elements_rte_flex_1_inline_1_child` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_elements_rte_flex_1_inline_1_child` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_elements_rte_flex_1_inline_1_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_elements_rte_inline_1_child`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_elements_rte_inline_1_child`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_elements_rte_inline_1_child` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `parentid` int(10) unsigned NOT NULL DEFAULT 0,
+  `parenttable` varchar(255) NOT NULL DEFAULT '',
+  `rte_1` longtext DEFAULT NULL,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_elements_rte_inline_1_child`
+--
+
+LOCK TABLES `tx_styleguide_elements_rte_inline_1_child` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_elements_rte_inline_1_child` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_elements_rte_inline_1_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_elements_select`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_elements_select`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_elements_select` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `select_single_1` text DEFAULT NULL,
+  `select_single_2` text DEFAULT NULL,
+  `select_single_3` text DEFAULT NULL,
+  `select_single_4` text DEFAULT NULL,
+  `select_single_5` text DEFAULT NULL,
+  `select_single_7` text DEFAULT NULL,
+  `select_single_8` text DEFAULT NULL,
+  `select_single_10` text DEFAULT NULL,
+  `select_single_11` text DEFAULT NULL,
+  `select_single_12` text DEFAULT NULL,
+  `select_single_13` text DEFAULT NULL,
+  `select_single_14` text DEFAULT NULL,
+  `select_single_15` text DEFAULT NULL,
+  `select_single_16` text DEFAULT NULL,
+  `select_single_17` text DEFAULT NULL,
+  `select_single_18` text DEFAULT NULL,
+  `select_single_19` text DEFAULT NULL,
+  `select_single_20` text DEFAULT NULL,
+  `select_singlebox_1` text DEFAULT NULL,
+  `select_singlebox_2` text DEFAULT NULL,
+  `select_singlebox_3` text DEFAULT NULL,
+  `select_checkbox_1` text DEFAULT NULL,
+  `select_checkbox_2` text DEFAULT NULL,
+  `select_checkbox_3` text DEFAULT NULL,
+  `select_checkbox_4` text DEFAULT NULL,
+  `select_checkbox_5` text DEFAULT NULL,
+  `select_checkbox_6` text DEFAULT NULL,
+  `select_checkbox_7` text DEFAULT NULL,
+  `select_multiplesidebyside_1` text DEFAULT NULL,
+  `select_multiplesidebyside_2` text DEFAULT NULL,
+  `select_multiplesidebyside_3` text DEFAULT NULL,
+  `select_multiplesidebyside_5` text DEFAULT NULL,
+  `select_multiplesidebyside_6` text DEFAULT NULL,
+  `select_multiplesidebyside_7` text DEFAULT NULL,
+  `select_multiplesidebyside_8` text DEFAULT NULL,
+  `select_multiplesidebyside_9` text DEFAULT NULL,
+  `select_multiplesidebyside_10` text DEFAULT NULL,
+  `select_tree_1` text DEFAULT NULL,
+  `select_tree_2` text DEFAULT NULL,
+  `select_tree_3` text DEFAULT NULL,
+  `select_tree_4` text DEFAULT NULL,
+  `select_tree_5` text DEFAULT NULL,
+  `select_tree_6` text DEFAULT NULL,
+  `select_requestUpdate_1` text DEFAULT NULL,
+  `category_11` int(10) unsigned NOT NULL DEFAULT 0,
+  `category_1n` longtext DEFAULT NULL,
+  `category_mm` int(10) unsigned NOT NULL DEFAULT 0,
+  `flex_1` longtext DEFAULT NULL,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_elements_select`
+--
+
+LOCK TABLES `tx_styleguide_elements_select` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_elements_select` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_elements_select` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_elements_select_flex_1_multiplesidebyside_2_mm`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_elements_select_flex_1_multiplesidebyside_2_mm`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_elements_select_flex_1_multiplesidebyside_2_mm` (
+  `uid_local` int(10) unsigned NOT NULL DEFAULT 0,
+  `uid_foreign` int(10) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(10) unsigned NOT NULL DEFAULT 0,
+  `sorting_foreign` int(10) unsigned NOT NULL DEFAULT 0,
+  KEY `uid_local` (`uid_local`),
+  KEY `uid_foreign` (`uid_foreign`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_elements_select_flex_1_multiplesidebyside_2_mm`
+--
+
+LOCK TABLES `tx_styleguide_elements_select_flex_1_multiplesidebyside_2_mm` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_elements_select_flex_1_multiplesidebyside_2_mm` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_elements_select_flex_1_multiplesidebyside_2_mm` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_elements_select_multiplesidebyside_8_mm`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_elements_select_multiplesidebyside_8_mm`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_elements_select_multiplesidebyside_8_mm` (
+  `uid_local` int(10) unsigned NOT NULL DEFAULT 0,
+  `uid_foreign` int(10) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(10) unsigned NOT NULL DEFAULT 0,
+  `sorting_foreign` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid_local`,`uid_foreign`),
+  KEY `uid_local` (`uid_local`),
+  KEY `uid_foreign` (`uid_foreign`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_elements_select_multiplesidebyside_8_mm`
+--
+
+LOCK TABLES `tx_styleguide_elements_select_multiplesidebyside_8_mm` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_elements_select_multiplesidebyside_8_mm` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_elements_select_multiplesidebyside_8_mm` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_elements_select_single_12_foreign`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_elements_select_single_12_foreign`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_elements_select_single_12_foreign` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `fal_1` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_elements_select_single_12_foreign`
+--
+
+LOCK TABLES `tx_styleguide_elements_select_single_12_foreign` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_elements_select_single_12_foreign` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_elements_select_single_12_foreign` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_elements_select_single_15_mm`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_elements_select_single_15_mm`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_elements_select_single_15_mm` (
+  `uid_local` int(10) unsigned NOT NULL DEFAULT 0,
+  `uid_foreign` int(10) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(10) unsigned NOT NULL DEFAULT 0,
+  `sorting_foreign` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid_local`,`uid_foreign`),
+  KEY `uid_local` (`uid_local`),
+  KEY `uid_foreign` (`uid_foreign`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_elements_select_single_15_mm`
+--
+
+LOCK TABLES `tx_styleguide_elements_select_single_15_mm` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_elements_select_single_15_mm` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_elements_select_single_15_mm` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_elements_slugs`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_elements_slugs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_elements_slugs` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `input_1` text DEFAULT NULL,
+  `input_2` text DEFAULT NULL,
+  `input_3` text DEFAULT NULL,
+  `slug_1` varchar(2048) DEFAULT NULL,
+  `slug_2` varchar(2048) DEFAULT NULL,
+  `slug_4` varchar(2048) DEFAULT NULL,
+  `slug_5` varchar(2048) DEFAULT NULL,
+  `slug_3` varchar(2048) DEFAULT NULL,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_elements_slugs`
+--
+
+LOCK TABLES `tx_styleguide_elements_slugs` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_elements_slugs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_elements_slugs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_elements_t3editor`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_elements_t3editor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_elements_t3editor` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `t3editor_reload_1` int(11) NOT NULL DEFAULT 0,
+  `t3editor_flex_1` longtext DEFAULT NULL,
+  `t3editor_1` longtext DEFAULT NULL,
+  `t3editor_2` longtext DEFAULT NULL,
+  `t3editor_inline_1` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_elements_t3editor`
+--
+
+LOCK TABLES `tx_styleguide_elements_t3editor` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_elements_t3editor` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_elements_t3editor` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_elements_t3editor_flex_1_inline_1_child`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_elements_t3editor_flex_1_inline_1_child`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_elements_t3editor_flex_1_inline_1_child` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `parentid` int(11) NOT NULL DEFAULT 0,
+  `parenttable` text DEFAULT NULL,
+  `t3editor_1` longtext DEFAULT NULL,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_elements_t3editor_flex_1_inline_1_child`
+--
+
+LOCK TABLES `tx_styleguide_elements_t3editor_flex_1_inline_1_child` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_elements_t3editor_flex_1_inline_1_child` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_elements_t3editor_flex_1_inline_1_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_elements_t3editor_inline_1_child`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_elements_t3editor_inline_1_child`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_elements_t3editor_inline_1_child` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `parentid` int(10) unsigned NOT NULL DEFAULT 0,
+  `parenttable` varchar(255) NOT NULL DEFAULT '',
+  `t3editor_1` longtext DEFAULT NULL,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_elements_t3editor_inline_1_child`
+--
+
+LOCK TABLES `tx_styleguide_elements_t3editor_inline_1_child` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_elements_t3editor_inline_1_child` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_elements_t3editor_inline_1_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_file`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_file`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_file` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `file_1` int(10) unsigned NOT NULL DEFAULT 0,
+  `file_2` int(10) unsigned NOT NULL DEFAULT 0,
+  `file_3` int(10) unsigned NOT NULL DEFAULT 0,
+  `file_4` int(10) unsigned NOT NULL DEFAULT 0,
+  `file_5` int(10) unsigned NOT NULL DEFAULT 0,
+  `file_flex_1` longtext DEFAULT NULL,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_file`
+--
+
+LOCK TABLES `tx_styleguide_file` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_file` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_file` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_flex`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_flex`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_flex` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `flex_file_1` longtext DEFAULT NULL,
+  `flex_5` longtext DEFAULT NULL,
+  `flex_1` longtext DEFAULT NULL,
+  `flex_2` longtext DEFAULT NULL,
+  `flex_3` longtext DEFAULT NULL,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_flex`
+--
+
+LOCK TABLES `tx_styleguide_flex` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_flex` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_flex` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_flex_flex_3_inline_1_child`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_flex_flex_3_inline_1_child`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_flex_flex_3_inline_1_child` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `parentid` int(11) NOT NULL DEFAULT 0,
+  `parenttable` text DEFAULT NULL,
+  `input_1` text DEFAULT NULL,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_flex_flex_3_inline_1_child`
+--
+
+LOCK TABLES `tx_styleguide_flex_flex_3_inline_1_child` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_flex_flex_3_inline_1_child` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_flex_flex_3_inline_1_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_11`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_11`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_11` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `inline_1` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_11`
+--
+
+LOCK TABLES `tx_styleguide_inline_11` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_11` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_11` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_11_child`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_11_child`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_11_child` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `input_1` text DEFAULT NULL,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_11_child`
+--
+
+LOCK TABLES `tx_styleguide_inline_11_child` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_11_child` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_11_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_1n`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_1n`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_1n` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `inline_1` int(10) unsigned NOT NULL DEFAULT 0,
+  `inline_2` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_1n`
+--
+
+LOCK TABLES `tx_styleguide_inline_1n` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_1n` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_1n` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_1n1n`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_1n1n`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_1n1n` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `inline_1` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_1n1n`
+--
+
+LOCK TABLES `tx_styleguide_inline_1n1n` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_1n1n` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_1n1n` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_1n1n_child`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_1n1n_child`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_1n1n_child` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `parentid` int(10) unsigned NOT NULL DEFAULT 0,
+  `parenttable` varchar(255) NOT NULL DEFAULT '',
+  `inline_1` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_1n1n_child`
+--
+
+LOCK TABLES `tx_styleguide_inline_1n1n_child` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_1n1n_child` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_1n1n_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_1n1n_childchild`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_1n1n_childchild`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_1n1n_childchild` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `input_1` text DEFAULT NULL,
+  `parentid` int(10) unsigned NOT NULL DEFAULT 0,
+  `parenttable` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_1n1n_childchild`
+--
+
+LOCK TABLES `tx_styleguide_inline_1n1n_childchild` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_1n1n_childchild` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_1n1n_childchild` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_1n_inline_1_child`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_1n_inline_1_child`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_1n_inline_1_child` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `disable` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `input_1` text DEFAULT NULL,
+  `input_3` text DEFAULT NULL,
+  `select_tree_1` text DEFAULT NULL,
+  `parentid` int(10) unsigned NOT NULL DEFAULT 0,
+  `parenttable` varchar(255) NOT NULL DEFAULT '',
+  `group_db_1` longtext DEFAULT NULL,
+  `color_1` varchar(7) NOT NULL DEFAULT '',
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`disable`),
+  KEY `translation_source` (`l10n_source`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_1n_inline_1_child`
+--
+
+LOCK TABLES `tx_styleguide_inline_1n_inline_1_child` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_1n_inline_1_child` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_1n_inline_1_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_1n_inline_2_child`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_1n_inline_2_child`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_1n_inline_2_child` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `input_1` text DEFAULT NULL,
+  `select_tree_1` text DEFAULT NULL,
+  `parentid` int(10) unsigned NOT NULL DEFAULT 0,
+  `parenttable` varchar(255) NOT NULL DEFAULT '',
+  `file_1` int(10) unsigned NOT NULL DEFAULT 0,
+  `rte_1` longtext DEFAULT NULL,
+  `t3editor_1` longtext DEFAULT NULL,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_1n_inline_2_child`
+--
+
+LOCK TABLES `tx_styleguide_inline_1n_inline_2_child` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_1n_inline_2_child` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_1n_inline_2_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_1nnol10n`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_1nnol10n`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_1nnol10n` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `inline_1` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_1nnol10n`
+--
+
+LOCK TABLES `tx_styleguide_inline_1nnol10n` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_1nnol10n` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_1nnol10n` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_1nnol10n_child`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_1nnol10n_child`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_1nnol10n_child` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `disable` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `input_1` text DEFAULT NULL,
+  `parentid` int(10) unsigned NOT NULL DEFAULT 0,
+  `parenttable` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`disable`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_1nnol10n_child`
+--
+
+LOCK TABLES `tx_styleguide_inline_1nnol10n_child` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_1nnol10n_child` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_1nnol10n_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_1nreusabletable`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_1nreusabletable`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_1nreusabletable` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `inline_1` int(10) unsigned NOT NULL DEFAULT 0,
+  `inline_2` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_1nreusabletable`
+--
+
+LOCK TABLES `tx_styleguide_inline_1nreusabletable` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_1nreusabletable` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_1nreusabletable` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_1nreusabletable_child`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_1nreusabletable_child`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_1nreusabletable_child` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `disable` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `role` text DEFAULT NULL,
+  `parentid` int(10) unsigned NOT NULL DEFAULT 0,
+  `parenttable` varchar(255) NOT NULL DEFAULT '',
+  `email` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`disable`),
+  KEY `translation_source` (`l10n_source`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_1nreusabletable_child`
+--
+
+LOCK TABLES `tx_styleguide_inline_1nreusabletable_child` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_1nreusabletable_child` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_1nreusabletable_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_expand`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_expand`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_expand` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `inline_1` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_expand`
+--
+
+LOCK TABLES `tx_styleguide_inline_expand` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_expand` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_expand` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_expand_inline_1_child`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_expand_inline_1_child`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_expand_inline_1_child` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `dummy_1` text DEFAULT NULL,
+  `select_tree_1` text DEFAULT NULL,
+  `parentid` int(10) unsigned NOT NULL DEFAULT 0,
+  `parenttable` varchar(255) NOT NULL DEFAULT '',
+  `file_1` int(10) unsigned NOT NULL DEFAULT 0,
+  `rte_1` longtext DEFAULT NULL,
+  `t3editor_1` longtext DEFAULT NULL,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_expand_inline_1_child`
+--
+
+LOCK TABLES `tx_styleguide_inline_expand_inline_1_child` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_expand_inline_1_child` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_expand_inline_1_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_expandsingle`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_expandsingle`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_expandsingle` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `inline_1` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_expandsingle`
+--
+
+LOCK TABLES `tx_styleguide_inline_expandsingle` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_expandsingle` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_expandsingle` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_expandsingle_child`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_expandsingle_child`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_expandsingle_child` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `input_1` text DEFAULT NULL,
+  `parentid` int(10) unsigned NOT NULL DEFAULT 0,
+  `parenttable` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_expandsingle_child`
+--
+
+LOCK TABLES `tx_styleguide_inline_expandsingle_child` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_expandsingle_child` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_expandsingle_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_foreignrecorddefaults`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_foreignrecorddefaults`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_foreignrecorddefaults` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `inline_1` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_foreignrecorddefaults`
+--
+
+LOCK TABLES `tx_styleguide_inline_foreignrecorddefaults` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_foreignrecorddefaults` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_foreignrecorddefaults` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_foreignrecorddefaults_child`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_foreignrecorddefaults_child`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_foreignrecorddefaults_child` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `input_1` text DEFAULT NULL,
+  `parentid` int(10) unsigned NOT NULL DEFAULT 0,
+  `parenttable` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_foreignrecorddefaults_child`
+--
+
+LOCK TABLES `tx_styleguide_inline_foreignrecorddefaults_child` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_foreignrecorddefaults_child` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_foreignrecorddefaults_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_mm`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_mm`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_mm` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `title` tinytext DEFAULT NULL,
+  `inline_1` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_mm`
+--
+
+LOCK TABLES `tx_styleguide_inline_mm` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mm` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mm` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_mm_child`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_mm_child`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_mm_child` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `title` tinytext DEFAULT NULL,
+  `parents` int(10) unsigned NOT NULL DEFAULT 0,
+  `inline_2` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_mm_child`
+--
+
+LOCK TABLES `tx_styleguide_inline_mm_child` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mm_child` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mm_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_mm_child_childchild_rel`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_mm_child_childchild_rel`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_mm_child_childchild_rel` (
+  `uid_local` int(10) unsigned NOT NULL DEFAULT 0,
+  `uid_foreign` int(10) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(10) unsigned NOT NULL DEFAULT 0,
+  `sorting_foreign` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid_local`,`uid_foreign`),
+  KEY `uid_local` (`uid_local`),
+  KEY `uid_foreign` (`uid_foreign`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_mm_child_childchild_rel`
+--
+
+LOCK TABLES `tx_styleguide_inline_mm_child_childchild_rel` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mm_child_childchild_rel` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mm_child_childchild_rel` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_mm_child_rel`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_mm_child_rel`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_mm_child_rel` (
+  `uid_local` int(10) unsigned NOT NULL DEFAULT 0,
+  `uid_foreign` int(10) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(10) unsigned NOT NULL DEFAULT 0,
+  `sorting_foreign` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid_local`,`uid_foreign`),
+  KEY `uid_local` (`uid_local`),
+  KEY `uid_foreign` (`uid_foreign`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_mm_child_rel`
+--
+
+LOCK TABLES `tx_styleguide_inline_mm_child_rel` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mm_child_rel` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mm_child_rel` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_mm_childchild`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_mm_childchild`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_mm_childchild` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `title` tinytext DEFAULT NULL,
+  `parents` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_mm_childchild`
+--
+
+LOCK TABLES `tx_styleguide_inline_mm_childchild` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mm_childchild` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mm_childchild` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_mn`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_mn`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_mn` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `input_1` tinytext DEFAULT NULL,
+  `inline_1` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_mn`
+--
+
+LOCK TABLES `tx_styleguide_inline_mn` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mn` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mn` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_mn_child`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_mn_child`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_mn_child` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `input_1` tinytext DEFAULT NULL,
+  `parents` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_mn_child`
+--
+
+LOCK TABLES `tx_styleguide_inline_mn_child` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mn_child` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mn_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_mn_mm`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_mn_mm`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_mn_mm` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `parentid` int(11) NOT NULL DEFAULT 0,
+  `childid` int(11) NOT NULL DEFAULT 0,
+  `parentsort` int(11) NOT NULL DEFAULT 0,
+  `childsort` int(11) NOT NULL DEFAULT 0,
+  `check_1` smallint(5) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_mn_mm`
+--
+
+LOCK TABLES `tx_styleguide_inline_mn_mm` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mn_mm` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mn_mm` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_mngroup`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_mngroup`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_mngroup` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `input_1` tinytext DEFAULT NULL,
+  `inline_1` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_mngroup`
+--
+
+LOCK TABLES `tx_styleguide_inline_mngroup` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mngroup` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mngroup` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_mngroup_child`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_mngroup_child`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_mngroup_child` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `input_1` tinytext DEFAULT NULL,
+  `parents` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_mngroup_child`
+--
+
+LOCK TABLES `tx_styleguide_inline_mngroup_child` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mngroup_child` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mngroup_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_mngroup_mm`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_mngroup_mm`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_mngroup_mm` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `parentsort` int(11) NOT NULL DEFAULT 0,
+  `childsort` int(11) NOT NULL DEFAULT 0,
+  `check_1` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `parentid` longtext DEFAULT NULL,
+  `childid` longtext DEFAULT NULL,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_mngroup_mm`
+--
+
+LOCK TABLES `tx_styleguide_inline_mngroup_mm` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mngroup_mm` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mngroup_mm` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_mnsymmetric`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_mnsymmetric`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_mnsymmetric` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `input_1` tinytext DEFAULT NULL,
+  `branches` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_mnsymmetric`
+--
+
+LOCK TABLES `tx_styleguide_inline_mnsymmetric` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mnsymmetric` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mnsymmetric` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_mnsymmetric_mm`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_mnsymmetric_mm`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_mnsymmetric_mm` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `hotelid` int(11) NOT NULL DEFAULT 0,
+  `branchid` int(11) NOT NULL DEFAULT 0,
+  `hotelsort` int(11) NOT NULL DEFAULT 0,
+  `branchsort` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_mnsymmetric_mm`
+--
+
+LOCK TABLES `tx_styleguide_inline_mnsymmetric_mm` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mnsymmetric_mm` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mnsymmetric_mm` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_mnsymmetricgroup`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_mnsymmetricgroup`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_mnsymmetricgroup` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `input_1` tinytext DEFAULT NULL,
+  `branches` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_mnsymmetricgroup`
+--
+
+LOCK TABLES `tx_styleguide_inline_mnsymmetricgroup` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mnsymmetricgroup` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mnsymmetricgroup` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_mnsymmetricgroup_mm`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_mnsymmetricgroup_mm`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_mnsymmetricgroup_mm` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `hotelid` int(11) NOT NULL DEFAULT 0,
+  `branchid` int(11) NOT NULL DEFAULT 0,
+  `hotelsort` int(11) NOT NULL DEFAULT 0,
+  `branchsort` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_mnsymmetricgroup_mm`
+--
+
+LOCK TABLES `tx_styleguide_inline_mnsymmetricgroup_mm` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mnsymmetricgroup_mm` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_mnsymmetricgroup_mm` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_parentnosoftdelete`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_parentnosoftdelete`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_parentnosoftdelete` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `text_1` text DEFAULT NULL,
+  `file_1` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_parentnosoftdelete`
+--
+
+LOCK TABLES `tx_styleguide_inline_parentnosoftdelete` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_parentnosoftdelete` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_parentnosoftdelete` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_usecombination`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_usecombination`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_usecombination` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `inline_1` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_usecombination`
+--
+
+LOCK TABLES `tx_styleguide_inline_usecombination` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_usecombination` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_usecombination` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_usecombination_child`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_usecombination_child`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_usecombination_child` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `input_1` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_usecombination_child`
+--
+
+LOCK TABLES `tx_styleguide_inline_usecombination_child` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_usecombination_child` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_usecombination_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_usecombination_mm`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_usecombination_mm`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_usecombination_mm` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `select_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `select_child` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_usecombination_mm`
+--
+
+LOCK TABLES `tx_styleguide_inline_usecombination_mm` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_usecombination_mm` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_usecombination_mm` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_usecombinationbox`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_usecombinationbox`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_usecombinationbox` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `inline_1` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_usecombinationbox`
+--
+
+LOCK TABLES `tx_styleguide_inline_usecombinationbox` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_usecombinationbox` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_usecombinationbox` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_usecombinationbox_child`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_usecombinationbox_child`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_usecombinationbox_child` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `input_1` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_usecombinationbox_child`
+--
+
+LOCK TABLES `tx_styleguide_inline_usecombinationbox_child` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_usecombinationbox_child` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_usecombinationbox_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_inline_usecombinationbox_mm`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_inline_usecombinationbox_mm`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_inline_usecombinationbox_mm` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `select_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `select_child` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_inline_usecombinationbox_mm`
+--
+
+LOCK TABLES `tx_styleguide_inline_usecombinationbox_mm` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_inline_usecombinationbox_mm` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_inline_usecombinationbox_mm` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_l10nreadonly`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_l10nreadonly`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_l10nreadonly` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `input` text DEFAULT NULL,
+  `none` text DEFAULT NULL,
+  `language` int(11) NOT NULL DEFAULT 0,
+  `select_single` text DEFAULT NULL,
+  `select_single_box` text DEFAULT NULL,
+  `select_checkbox` text DEFAULT NULL,
+  `select_tree` text DEFAULT NULL,
+  `select_tree_mm` text DEFAULT NULL,
+  `select_multiplesidebyside` text DEFAULT NULL,
+  `select_multiplesidebyside_mm` text DEFAULT NULL,
+  `category_11` int(10) unsigned NOT NULL DEFAULT 0,
+  `category_1n` longtext DEFAULT NULL,
+  `category_mm` int(10) unsigned NOT NULL DEFAULT 0,
+  `datetime` int(11) NOT NULL DEFAULT 0,
+  `slug` varchar(2048) DEFAULT NULL,
+  `folder` longtext DEFAULT NULL,
+  `checkbox` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_toggle` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_labeled_toggle` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `image_manipulation` longtext DEFAULT NULL,
+  `group` longtext DEFAULT NULL,
+  `group_mm` int(10) unsigned NOT NULL DEFAULT 0,
+  `group_file` longtext DEFAULT NULL,
+  `flex` longtext DEFAULT NULL,
+  `text` longtext DEFAULT NULL,
+  `text_rte` longtext DEFAULT NULL,
+  `text_belayoutwizard` longtext DEFAULT NULL,
+  `text_t3editor` longtext DEFAULT NULL,
+  `text_table` longtext DEFAULT NULL,
+  `color` varchar(7) NOT NULL DEFAULT '',
+  `radio` smallint(6) NOT NULL DEFAULT 0,
+  `link` varchar(2048) NOT NULL DEFAULT '',
+  `inline` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_l10nreadonly`
+--
+
+LOCK TABLES `tx_styleguide_l10nreadonly` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_l10nreadonly` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_l10nreadonly` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_l10nreadonly_group_mm`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_l10nreadonly_group_mm`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_l10nreadonly_group_mm` (
+  `uid_local` int(10) unsigned NOT NULL DEFAULT 0,
+  `uid_foreign` int(10) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(10) unsigned NOT NULL DEFAULT 0,
+  `sorting_foreign` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid_local`,`uid_foreign`),
+  KEY `uid_local` (`uid_local`),
+  KEY `uid_foreign` (`uid_foreign`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_l10nreadonly_group_mm`
+--
+
+LOCK TABLES `tx_styleguide_l10nreadonly_group_mm` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_l10nreadonly_group_mm` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_l10nreadonly_group_mm` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_l10nreadonly_inline_child`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_l10nreadonly_inline_child`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_l10nreadonly_inline_child` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `input` text DEFAULT NULL,
+  `parentid` int(10) unsigned NOT NULL DEFAULT 0,
+  `parenttable` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_l10nreadonly_inline_child`
+--
+
+LOCK TABLES `tx_styleguide_l10nreadonly_inline_child` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_l10nreadonly_inline_child` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_l10nreadonly_inline_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_l10nreadonly_select_multiplesidebyside_mm`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_l10nreadonly_select_multiplesidebyside_mm`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_l10nreadonly_select_multiplesidebyside_mm` (
+  `uid_local` int(10) unsigned NOT NULL DEFAULT 0,
+  `uid_foreign` int(10) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(10) unsigned NOT NULL DEFAULT 0,
+  `sorting_foreign` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid_local`,`uid_foreign`),
+  KEY `uid_local` (`uid_local`),
+  KEY `uid_foreign` (`uid_foreign`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_l10nreadonly_select_multiplesidebyside_mm`
+--
+
+LOCK TABLES `tx_styleguide_l10nreadonly_select_multiplesidebyside_mm` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_l10nreadonly_select_multiplesidebyside_mm` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_l10nreadonly_select_multiplesidebyside_mm` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_l10nreadonly_select_tree_mm`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_l10nreadonly_select_tree_mm`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_l10nreadonly_select_tree_mm` (
+  `uid_local` int(10) unsigned NOT NULL DEFAULT 0,
+  `uid_foreign` int(10) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(10) unsigned NOT NULL DEFAULT 0,
+  `sorting_foreign` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid_local`,`uid_foreign`),
+  KEY `uid_local` (`uid_local`),
+  KEY `uid_foreign` (`uid_foreign`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_l10nreadonly_select_tree_mm`
+--
+
+LOCK TABLES `tx_styleguide_l10nreadonly_select_tree_mm` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_l10nreadonly_select_tree_mm` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_l10nreadonly_select_tree_mm` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_palette`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_palette`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_palette` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `palette_2_1` text DEFAULT NULL,
+  `palette_3_1` text DEFAULT NULL,
+  `palette_3_2` text DEFAULT NULL,
+  `palette_4_1` text DEFAULT NULL,
+  `palette_4_2` text DEFAULT NULL,
+  `palette_4_3` text DEFAULT NULL,
+  `palette_4_4` text DEFAULT NULL,
+  `palette_5_1` text DEFAULT NULL,
+  `palette_5_2` text DEFAULT NULL,
+  `palette_6_1` text DEFAULT NULL,
+  `palette_7_1` text DEFAULT NULL,
+  `palette_1_1` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `palette_1_3` smallint(5) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_palette`
+--
+
+LOCK TABLES `tx_styleguide_palette` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_palette` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_palette` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_required`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_required`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_required` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `notrequired_1` text DEFAULT NULL,
+  `input_1` text DEFAULT NULL,
+  `select_1` text DEFAULT NULL,
+  `select_2` text DEFAULT NULL,
+  `select_3` text DEFAULT NULL,
+  `select_4` text DEFAULT NULL,
+  `select_5` text DEFAULT NULL,
+  `rte_1` text DEFAULT NULL,
+  `palette_input_1` text DEFAULT NULL,
+  `palette_input_2` text DEFAULT NULL,
+  `input_2` int(11) NOT NULL DEFAULT 0,
+  `group_1` longtext DEFAULT NULL,
+  `group_2` longtext DEFAULT NULL,
+  `flex_1` longtext DEFAULT NULL,
+  `flex_2` longtext DEFAULT NULL,
+  `text_1` longtext DEFAULT NULL,
+  `link_1` varchar(2048) NOT NULL DEFAULT '',
+  `rte_2` int(10) unsigned NOT NULL DEFAULT 0,
+  `inline_1` int(10) unsigned NOT NULL DEFAULT 0,
+  `inline_2` int(10) unsigned NOT NULL DEFAULT 0,
+  `inline_3` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_required`
+--
+
+LOCK TABLES `tx_styleguide_required` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_required` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_required` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_required_flex_2_inline_1_child`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_required_flex_2_inline_1_child`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_required_flex_2_inline_1_child` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `parentid` int(11) NOT NULL DEFAULT 0,
+  `parenttable` text DEFAULT NULL,
+  `input_1` text DEFAULT NULL,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_required_flex_2_inline_1_child`
+--
+
+LOCK TABLES `tx_styleguide_required_flex_2_inline_1_child` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_required_flex_2_inline_1_child` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_required_flex_2_inline_1_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_required_inline_1_child`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_required_inline_1_child`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_required_inline_1_child` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `input_1` text DEFAULT NULL,
+  `parentid` int(10) unsigned NOT NULL DEFAULT 0,
+  `parenttable` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_required_inline_1_child`
+--
+
+LOCK TABLES `tx_styleguide_required_inline_1_child` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_required_inline_1_child` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_required_inline_1_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_required_inline_2_child`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_required_inline_2_child`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_required_inline_2_child` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `input_1` text DEFAULT NULL,
+  `parentid` int(10) unsigned NOT NULL DEFAULT 0,
+  `parenttable` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_required_inline_2_child`
+--
+
+LOCK TABLES `tx_styleguide_required_inline_2_child` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_required_inline_2_child` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_required_inline_2_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_required_inline_3_child`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_required_inline_3_child`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_required_inline_3_child` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `input_1` text DEFAULT NULL,
+  `parentid` int(10) unsigned NOT NULL DEFAULT 0,
+  `parenttable` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_required_inline_3_child`
+--
+
+LOCK TABLES `tx_styleguide_required_inline_3_child` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_required_inline_3_child` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_required_inline_3_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_required_rte_2_child`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_required_rte_2_child`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_required_rte_2_child` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `parentid` int(10) unsigned NOT NULL DEFAULT 0,
+  `parenttable` varchar(255) NOT NULL DEFAULT '',
+  `rte_1` longtext DEFAULT NULL,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_required_rte_2_child`
+--
+
+LOCK TABLES `tx_styleguide_required_rte_2_child` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_required_rte_2_child` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_required_rte_2_child` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_staticdata`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_staticdata`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_staticdata` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `value_1` tinytext DEFAULT NULL,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_staticdata`
+--
+
+LOCK TABLES `tx_styleguide_staticdata` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_staticdata` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_staticdata` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_type`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_type` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `record_type` text DEFAULT NULL,
+  `input_1` text DEFAULT NULL,
+  `text_1` longtext DEFAULT NULL,
+  `color_1` varchar(7) NOT NULL DEFAULT '',
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_type`
+--
+
+LOCK TABLES `tx_styleguide_type` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_type` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_typeforeign`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_typeforeign`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_typeforeign` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `foreign_table` int(11) NOT NULL DEFAULT 0,
+  `input_1` text DEFAULT NULL,
+  `text_1` longtext DEFAULT NULL,
+  `color_1` varchar(7) NOT NULL DEFAULT '',
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_typeforeign`
+--
+
+LOCK TABLES `tx_styleguide_typeforeign` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_typeforeign` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_typeforeign` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tx_styleguide_valuesdefault`
+--
+
+DROP TABLE IF EXISTS `tx_styleguide_valuesdefault`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tx_styleguide_valuesdefault` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT 0,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT 0,
+  `crdate` int(10) unsigned NOT NULL DEFAULT 0,
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `sorting` int(11) NOT NULL DEFAULT 0,
+  `sys_language_uid` int(11) NOT NULL DEFAULT 0,
+  `l10n_parent` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_source` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_state` text DEFAULT NULL,
+  `t3_origuid` int(10) unsigned NOT NULL DEFAULT 0,
+  `l10n_diffsource` mediumblob DEFAULT NULL,
+  `t3ver_oid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_wsid` int(10) unsigned NOT NULL DEFAULT 0,
+  `t3ver_state` smallint(6) NOT NULL DEFAULT 0,
+  `t3ver_stage` int(11) NOT NULL DEFAULT 0,
+  `input_1` text DEFAULT NULL,
+  `select_1` text DEFAULT NULL,
+  `select_2` text DEFAULT NULL,
+  `input_2` int(11) NOT NULL DEFAULT 0,
+  `checkbox_1` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_2` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_3` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `checkbox_4` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `text_1` longtext DEFAULT NULL,
+  `radio_1` smallint(6) NOT NULL DEFAULT 0,
+  `radio_2` varchar(255) NOT NULL DEFAULT '',
+  `radio_3` varchar(255) NOT NULL DEFAULT '',
+  `number_1` int(10) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`,`deleted`,`hidden`),
+  KEY `translation_source` (`l10n_source`),
+  KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tx_styleguide_valuesdefault`
+--
+
+LOCK TABLES `tx_styleguide_valuesdefault` WRITE;
+/*!40000 ALTER TABLE `tx_styleguide_valuesdefault` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tx_styleguide_valuesdefault` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -2671,4 +6092,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-14  9:13:17
+-- Dump completed on 2023-11-03  9:52:37

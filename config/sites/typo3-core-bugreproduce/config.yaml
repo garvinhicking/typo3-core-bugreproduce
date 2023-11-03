@@ -11,7 +11,7 @@ languages:
     hreflang: ''
     websiteTitle: ''
   -
-    title: Deutsch
+    title: German
     enabled: true
     languageId: 1
     base: /de/
@@ -23,25 +23,25 @@ languages:
     fallbackType: fallback
     fallbacks: '0'
   -
-    title: Französisch
+    title: French
     enabled: true
     languageId: 2
     base: /fr/
     locale: fr_FR.UTF-8
-    navigationTitle: Französisch
+    navigationTitle: Francaise
     flag: fr
     hreflang: ''
     websiteTitle: ''
     fallbackType: fallback
     fallbacks: '0'
   -
-    title: Dänisch
+    title: Danish
     enabled: true
     locale: da_DK
     hreflang: ''
     base: /dk/
     websiteTitle: ''
-    navigationTitle: Dänisch
+    navigationTitle: Dansk
     fallbackType: fallback
     fallbacks: '0'
     flag: im

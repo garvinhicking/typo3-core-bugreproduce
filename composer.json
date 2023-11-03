@@ -15,10 +15,19 @@
     ],
     "scripts": {
         "pre-install-cmd": "@tdk:clone",
-        "post-root-package-install": "@tdk:setup",
+        "post-root-package-install": "@tdk:install",
         "post-create-project-cmd": [
+            "@tdk:post-vanilla"
+        ],
+        "tdk:post-vanilla": [
+        ],
+        "tdk:post": [
             "@tdk:help",
             "Ochorocho\\Tdk\\Scripts\\MessageScript::done"
+        ],
+        "tdk:install": [
+            "@tdk:clone",
+            "cp htaccess-template public/.htaccess"
         ],
         "tdk:setup": [
             "@tdk:clone",
@@ -49,6 +58,11 @@
         "local-packages": {
             "type": "path",
             "url": "packages/*"
+        },
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.org",
+            "exclude": ["typo3/cms-styleguide"]
         }
     },
     "autoload-dev": {
@@ -89,13 +103,13 @@
         "typo3/cms-seo": "@dev",
         "typo3/cms-setup": "@dev",
         "typo3/cms-sys-note": "@dev",
+        "typo3/cms-styleguide": "@dev",
         "typo3/cms-t3editor": "@dev",
         "typo3/cms-tstemplate": "@dev",
         "typo3/cms-viewpage": "@dev",
         "typo3/cms-workspaces": "@dev",
-        
-        "typo3/cms-styleguide": "@dev",
-        "bk2k/bootstrap-package": "@dev"
+        "bk2k/bootstrap-package": "@dev",
+        "gilbertsoft/typo3-core-patches": "^0.4.0"
     },
     "require-dev": {
         "codeception/codeception": "*",
@@ -110,7 +124,9 @@
     "config": {
         "allow-plugins": {
             "typo3/class-alias-loader": true,
-            "typo3/cms-composer-installers": true
+            "typo3/cms-composer-installers": true,
+            "cweagans/composer-patches": true,
+            "gilbertsoft/typo3-core-patches": true
         }
     }
 }

@@ -21,8 +21,11 @@ The patch is applied via composer-patches already.
 After checkout out the repository perform these steps:
 
 * ddev start
+* ddev composer tdk:install
 * ddev composer install
+* ddev "cd typo3-core && composer install"
 * ddev import-db --file=db.sql
+* ddev composer typo3:patch:apply 71374
 * ddev launch (opens https://typo3-impexp-94616.ddev.site/)
 * You can log into the backend with "admin:TYPO3-core-bugreproduce"
 
