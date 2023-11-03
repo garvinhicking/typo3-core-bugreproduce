@@ -1,10 +1,17 @@
-From a8f8808e7bfdbda94fa30e715e476991e69c447d Mon Sep 17 00:00:00 2001
+From cf18a810e5e4d4910000b0ced04cff61f6aec064 Mon Sep 17 00:00:00 2001
 From: Nikita Hovratov <nikita.h@live.de>
 Date: Wed, 29 Sep 2021 19:55:51 +0200
 Subject: [PATCH] [BUGFIX] Enable Export/Import of page translations
 
 The impexp system extension is now able to export translated pages. This
 essential functionality has not been implemented up until now.
+
+Also, specific language variants can be exported, that will only
+contain records matching the requested language. This "hidden
+feature" can be accessed by right-clicking on a page's icon in the
+translation overview and selecting "export". This feature was
+available before, but the export never included actual records
+before.
 
 In addition the relation field "l10n_source" is taken care of while
 exporting/importing. Normally this would happen automatically, if there
@@ -13,6 +20,8 @@ the tables "pages" and "tt_content". This seems to be another bug and
 should be fixed in another patch. After this, some code can be cleaned
 up.
 
+TODO: Add missing tests.
+
 Resolves: #93470
 Resolves: #94616
 Releases: main, 12.4, 11.5
@@ -20,7 +29,7 @@ Change-Id: I6f8ab179c524b161dd7cf083cdc89b8cc05bf8b0
 ---
 
 diff --git a/Classes/Export.php b/Classes/Export.php
-index 192f1f1..ac30d0c 100644
+index 192f1f1..9d26faa 100644
 --- a/Classes/Export.php
 +++ b/Classes/Export.php
 @@ -17,6 +17,7 @@
@@ -39,7 +48,7 @@ index 192f1f1..ac30d0c 100644
  use TYPO3\CMS\Core\Database\Query\Restriction\WorkspaceRestriction;
  use TYPO3\CMS\Core\Database\ReferenceIndex;
  use TYPO3\CMS\Core\Exception;
-@@ -257,6 +259,20 @@
+@@ -257,6 +259,29 @@
                      $record = BackendUtility::getRecord('pages', $pageUid);
                      if (is_array($record)) {
                          $this->exportAddRecord('pages', $record);
@@ -57,10 +66,19 @@ index 192f1f1..ac30d0c 100644
 +                                $this->dat['header']['pagetree'][(int)$pageTranslation['uid']] = ['uid' => (int)$pageTranslation['uid']];
 +                            }
 +                        }
++
++                        // Translated pages can also be directly exported; in that case the pageList may
++                        // point to the UID of a translated page, and not the root page. Since tt_content
++                        // records are bound to the default page UID, those records would be missing.
++                        // So we use the page ID of the default language, and then attach all records
++                        // for that page ID, which also match the selected page's language.
++                        if (($record['l10n_parent'] ?? 0) > 0) {
++                            $this->addRecordsForPid((int)$record['l10n_parent'], $this->tables, [$record['sys_language_uid']]);
++                        }
                      }
                      $this->addRecordsForPid((int)$pageUid, $this->tables);
                  }
-@@ -277,6 +293,50 @@
+@@ -277,6 +302,50 @@
      }
  
      /**
@@ -111,7 +129,34 @@ index 192f1f1..ac30d0c 100644
       * Initialize all settings for the export
       */
      protected function initializeExport(): void
-@@ -533,6 +593,12 @@
+@@ -428,18 +497,25 @@
+      *
+      * @param int $pid Page id for which to select records to add
+      * @param array $tables Array of table names to select from
++     * @param array $restrictToLanguageIds Array of sys_language_uid IDs to allow records for.
+      */
+-    protected function addRecordsForPid(int $pid, array $tables): void
++    protected function addRecordsForPid(int $pid, array $tables, array $restrictToLanguageIds = []): void
+     {
++        $isRestrictToLanguageIds = count($restrictToLanguageIds) > 0;
+         foreach ($GLOBALS['TCA'] as $table => $value) {
+             if ($table !== 'pages'
+                 && (in_array($table, $tables, true) || in_array('_ALL', $tables, true))
+                 && $this->getBackendUser()->check('tables_select', $table)
+                 && !($GLOBALS['TCA'][$table]['ctrl']['is_static'] ?? false)
+             ) {
++                $languageField = $GLOBALS['TCA'][$table]['ctrl']['languageField'] ?? null;
+                 $statement = $this->execListQueryPid($pid, $table);
+                 while ($record = $statement->fetchAssociative()) {
+                     if (is_array($record)) {
++                        // Skip the record, when languageId restrictions are enabled, and the record's language is not requested
++                        if ($isRestrictToLanguageIds && $languageField && isset($record[$languageField]) && !in_array($record[$languageField], $restrictToLanguageIds, true)) {
++                            continue;
++                        }
+                         $this->exportAddRecord($table, $record);
+                     }
+                 }
+@@ -533,6 +609,12 @@
                  $this->dat['records'][$table . ':' . $row['uid']] = [];
                  $this->dat['records'][$table . ':' . $row['uid']]['data'] = $row;
                  $this->dat['records'][$table . ':' . $row['uid']]['rels'] = $relations;
