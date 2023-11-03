@@ -1,4 +1,4 @@
-base: 'https://typo3-core-bugreproduce-base.ddev.site/'
+base: 'https://typo3-impexp-94616.ddev.site/'
 languages:
   -
     title: English
@@ -8,5 +8,43 @@ languages:
     locale: en_US.UTF-8
     navigationTitle: English
     flag: us
+    hreflang: ''
+    websiteTitle: ''
+  -
+    title: Deutsch
+    enabled: true
+    languageId: 1
+    base: /de/
+    locale: de_DE.UTF-8
+    navigationTitle: Deutsch
+    flag: de
+    hreflang: ''
+    websiteTitle: ''
+    fallbackType: fallback
+    fallbacks: '0'
+  -
+    title: Französisch
+    enabled: true
+    languageId: 2
+    base: /fr/
+    locale: fr_FR.UTF-8
+    navigationTitle: Französisch
+    flag: fr
+    hreflang: ''
+    websiteTitle: ''
+    fallbackType: fallback
+    fallbacks: '0'
+  -
+    title: Dänisch
+    enabled: true
+    locale: da_DK
+    hreflang: ''
+    base: /dk/
+    websiteTitle: ''
+    navigationTitle: Dänisch
+    fallbackType: fallback
+    fallbacks: '0'
+    flag: im
+    languageId: 3
 rootPageId: 1
-websiteTitle: 'New TYPO3 website'
+websiteTitle: 'TYPO3 ImpExp multilingual (issue 94616)'

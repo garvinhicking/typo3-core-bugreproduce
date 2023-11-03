@@ -1,5 +1,5 @@
 {
-    "name": "garvinhicking/typo3-core-reproduce",
+    "name": "garvinhicking/typo3-core-reproduce-94616",
     "description": "TYPO3 Composer Development Kit",
     "type": "project",
     "license": "GPL-2.0-or-later",
@@ -7,6 +7,10 @@
         {
             "name": "Jochen Roth",
             "email": "jochen.roth@b13.com"
+        },
+        {
+            "name": "Garvin Hicking",
+            "email": "blog@garv.in"
         }
     ],
     "scripts": {
@@ -91,9 +95,7 @@
         "typo3/cms-workspaces": "@dev",
         
         "typo3/cms-styleguide": "@dev",
-        "bk2k/bootstrap-package": "@dev",
-        
-        "garvinhicking/reproduce-assets": "@dev"
+        "bk2k/bootstrap-package": "@dev"
     },
     "require-dev": {
         "codeception/codeception": "*",
