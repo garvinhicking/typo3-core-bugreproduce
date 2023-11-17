@@ -1,4 +1,4 @@
-From cf18a810e5e4d4910000b0ced04cff61f6aec064 Mon Sep 17 00:00:00 2001
+From d94aa5bd54b46aa1fd590e7bc9c645f03c402200 Mon Sep 17 00:00:00 2001
 From: Nikita Hovratov <nikita.h@live.de>
 Date: Wed, 29 Sep 2021 19:55:51 +0200
 Subject: [PATCH] [BUGFIX] Enable Export/Import of page translations
@@ -10,17 +10,17 @@ Also, specific language variants can be exported, that will only
 contain records matching the requested language. This "hidden
 feature" can be accessed by right-clicking on a page's icon in the
 translation overview and selecting "export". This feature was
-available before, but the export never included actual records
-before.
+available before, but the export never included actual translated
+records before.
 
-In addition the relation field "l10n_source" is taken care of while
+In addition, the relation field "l10n_source" is taken care of while
 exporting/importing. Normally this would happen automatically, if there
 was a refindex entry for that. However, no references are saved for
 the tables "pages" and "tt_content". This seems to be another bug and
 should be fixed in another patch. After this, some code can be cleaned
 up.
 
-TODO: Add missing tests.
+Functional tests have been added to verify the exported data.
 
 Resolves: #93470
 Resolves: #94616
@@ -29,7 +29,7 @@ Change-Id: I6f8ab179c524b161dd7cf083cdc89b8cc05bf8b0
 ---
 
 diff --git a/Classes/Export.php b/Classes/Export.php
-index 192f1f1..9d26faa 100644
+index 192f1f1..94bb828 100644
 --- a/Classes/Export.php
 +++ b/Classes/Export.php
 @@ -17,6 +17,7 @@
@@ -78,7 +78,7 @@ index 192f1f1..9d26faa 100644
                      }
                      $this->addRecordsForPid((int)$pageUid, $this->tables);
                  }
-@@ -277,6 +302,50 @@
+@@ -277,6 +302,51 @@
      }
  
      /**
@@ -118,6 +118,7 @@ index 192f1f1..9d26faa 100644
 +            ->select('*')
 +            ->from('pages')
 +            ->where(...$constraints)
++            ->orderBy('uid', 'ASC')
 +            ->executeQuery();
 +
 +        while ($row = $result->fetchAssociative()) {
@@ -129,7 +130,7 @@ index 192f1f1..9d26faa 100644
       * Initialize all settings for the export
       */
      protected function initializeExport(): void
-@@ -428,18 +497,25 @@
+@@ -428,18 +498,25 @@
       *
       * @param int $pid Page id for which to select records to add
       * @param array $tables Array of table names to select from
@@ -156,7 +157,7 @@ index 192f1f1..9d26faa 100644
                          $this->exportAddRecord($table, $record);
                      }
                  }
-@@ -533,6 +609,12 @@
+@@ -533,6 +610,12 @@
                  $this->dat['records'][$table . ':' . $row['uid']] = [];
                  $this->dat['records'][$table . ':' . $row['uid']]['data'] = $row;
                  $this->dat['records'][$table . ':' . $row['uid']]['rels'] = $relations;
