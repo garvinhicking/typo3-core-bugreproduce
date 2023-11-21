@@ -1,4 +1,4 @@
-From d94aa5bd54b46aa1fd590e7bc9c645f03c402200 Mon Sep 17 00:00:00 2001
+From f64b80a8728689f4d9aec5514b50763d986f3676 Mon Sep 17 00:00:00 2001
 From: Nikita Hovratov <nikita.h@live.de>
 Date: Wed, 29 Sep 2021 19:55:51 +0200
 Subject: [PATCH] [BUGFIX] Enable Export/Import of page translations
@@ -24,12 +24,12 @@ Functional tests have been added to verify the exported data.
 
 Resolves: #93470
 Resolves: #94616
-Releases: main, 12.4, 11.5
+Releases: main, 12.4
 Change-Id: I6f8ab179c524b161dd7cf083cdc89b8cc05bf8b0
 ---
 
 diff --git a/Classes/Export.php b/Classes/Export.php
-index 192f1f1..94bb828 100644
+index 192f1f1..87a76a1 100644
 --- a/Classes/Export.php
 +++ b/Classes/Export.php
 @@ -17,6 +17,7 @@
@@ -48,7 +48,14 @@ index 192f1f1..94bb828 100644
  use TYPO3\CMS\Core\Database\Query\Restriction\WorkspaceRestriction;
  use TYPO3\CMS\Core\Database\ReferenceIndex;
  use TYPO3\CMS\Core\Exception;
-@@ -257,6 +259,29 @@
+@@ -253,10 +255,33 @@
+                 $this->removeExcludedPagesFromPageTree($pageTree);
+                 $this->setPageTree($pageTree);
+                 $this->flatInversePageTree($pageTree, $pageList);
++                $pagesFieldnameLanguage = ($GLOBALS['TCA']['pages']['ctrl']['languageField'] ?? 'sys_language_uid');
++                $pagesFieldnameLanguageParent = ($GLOBALS['TCA']['pages']['ctrl']['transOrigPointerField'] ?? 'l10n_parent');
++
+                 foreach ($pageList as $pageUid => $_) {
                      $record = BackendUtility::getRecord('pages', $pageUid);
                      if (is_array($record)) {
                          $this->exportAddRecord('pages', $record);
@@ -60,11 +67,8 @@ index 192f1f1..94bb828 100644
 +                            $this->exportAddRecord('pages', $pageTranslation);
 +
 +                            // Be sure to not overwrite existing parts of the pagetree
-+                            if (isset($this->dat['header']['pagetree'][(int)$pageTranslation['uid']])) {
-+                                $this->dat['header']['pagetree'][(int)$pageTranslation['uid']]['uid'] = (int)$pageTranslation['uid'];
-+                            } else {
-+                                $this->dat['header']['pagetree'][(int)$pageTranslation['uid']] = ['uid' => (int)$pageTranslation['uid']];
-+                            }
++                            // Integrate the extra record into the internal pagetree array
++                            $this->dat['header']['pagetree'][(int)$pageTranslation['uid']]['uid'] = (int)$pageTranslation['uid'];
 +                        }
 +
 +                        // Translated pages can also be directly exported; in that case the pageList may
@@ -72,13 +76,13 @@ index 192f1f1..94bb828 100644
 +                        // records are bound to the default page UID, those records would be missing.
 +                        // So we use the page ID of the default language, and then attach all records
 +                        // for that page ID, which also match the selected page's language.
-+                        if (($record['l10n_parent'] ?? 0) > 0) {
-+                            $this->addRecordsForPid((int)$record['l10n_parent'], $this->tables, [$record['sys_language_uid']]);
++                        if (($record[$pagesFieldnameLanguageParent] ?? 0) > 0) {
++                            $this->addRecordsForPid((int)$record[$pagesFieldnameLanguageParent], $this->tables, [$record[$pagesFieldnameLanguage]]);
 +                        }
                      }
                      $this->addRecordsForPid((int)$pageUid, $this->tables);
                  }
-@@ -277,6 +302,51 @@
+@@ -277,6 +302,59 @@
      }
  
      /**
@@ -97,20 +101,28 @@ index 192f1f1..94bb828 100644
 +        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('pages');
 +        $queryBuilder->getRestrictions()
 +            ->removeAll()
++            ->add(GeneralUtility::makeInstance(WorkspaceRestriction::class, 0))
 +            ->add(GeneralUtility::makeInstance(DeletedRestriction::class));
 +        if (!$considerHiddenPages) {
 +            $queryBuilder->getRestrictions()->add(GeneralUtility::makeInstance(HiddenRestriction::class));
 +        }
 +        $constraints = [
 +            $queryBuilder->expr()->eq(
-+                'l10n_parent',
++                ($GLOBALS['TCA']['pages']['ctrl']['transOrigPointerField'] ?? 'l10n_parent'),
 +                $queryBuilder->createNamedParameter($currentPage, Connection::PARAM_INT)
 +            ),
 +        ];
 +        if (!empty($limitToLanguageIds)) {
 +            $constraints[] = $queryBuilder->expr()->in(
-+                'sys_language_uid',
++                ($GLOBALS['TCA']['pages']['ctrl']['languageField'] ?? 'sys_language_uid'),
 +                $queryBuilder->createNamedParameter($limitToLanguageIds, ArrayParameterType::INTEGER)
++            );
++        } else {
++            // Ensure consistency by only fetching pages where not only l10n_parent matches, but also a
++            // sys_language_uid > 0 exists.
++            $constraints[] = $queryBuilder->expr()->gt(
++                $GLOBALS['TCA']['pages']['ctrl']['languageField'] ?? 'sys_language_uid',
++                0
 +            );
 +        }
 +
@@ -130,7 +142,7 @@ index 192f1f1..94bb828 100644
       * Initialize all settings for the export
       */
      protected function initializeExport(): void
-@@ -428,18 +498,25 @@
+@@ -428,18 +506,25 @@
       *
       * @param int $pid Page id for which to select records to add
       * @param array $tables Array of table names to select from
@@ -139,7 +151,7 @@ index 192f1f1..94bb828 100644
 -    protected function addRecordsForPid(int $pid, array $tables): void
 +    protected function addRecordsForPid(int $pid, array $tables, array $restrictToLanguageIds = []): void
      {
-+        $isRestrictToLanguageIds = count($restrictToLanguageIds) > 0;
++        $isRestrictToLanguageIds = $restrictToLanguageIds !== [];
          foreach ($GLOBALS['TCA'] as $table => $value) {
              if ($table !== 'pages'
                  && (in_array($table, $tables, true) || in_array('_ALL', $tables, true))
@@ -157,21 +169,27 @@ index 192f1f1..94bb828 100644
                          $this->exportAddRecord($table, $record);
                      }
                  }
-@@ -533,6 +610,12 @@
+@@ -533,6 +618,18 @@
                  $this->dat['records'][$table . ':' . $row['uid']] = [];
                  $this->dat['records'][$table . ':' . $row['uid']]['data'] = $row;
                  $this->dat['records'][$table . ':' . $row['uid']]['rels'] = $relations;
 +                // There are no refindex entries for l10n_source of pages and tt_content, so we have to add them here manually for now.
 +                // @todo can be removed, when this can come from ReferenceIndex.
-+                if (($table === 'pages' || $table === 'tt_content') && isset($row['l10n_source']) && ((int)$row['l10n_source']) > 0) {
-+                    $this->dat['records'][$table . ':' . $row['uid']]['rels']['l10n_source']['type'] = 'db';
-+                    $this->dat['records'][$table . ':' . $row['uid']]['rels']['l10n_source']['itemArray'][0] = ['id' => $row['l10n_source'], 'table' => $table];
++                if (($table === 'pages' || $table === 'tt_content')) {
++                    $fieldNameTranslationSource = ($GLOBALS['TCA'][$table]['ctrl']['translationSource'] ?? 'l10n_source');
++                    if (isset($row[$fieldNameTranslationSource]) && ((int)$row[$fieldNameTranslationSource]) > 0) {
++                        $this->dat['records'][$table . ':' . $row['uid']]['rels'][$fieldNameTranslationSource]['type'] = 'db';
++                        $this->dat['records'][$table . ':' . $row['uid']]['rels'][$fieldNameTranslationSource]['itemArray'][0] = [
++                            'id' => $row[$fieldNameTranslationSource],
++                            'table' => $table,
++                        ];
++                    }
 +                }
                  // Add information about the relations in the record in the header:
                  $this->dat['header']['records'][$table][$row['uid']]['rels'] = $this->flatDbRelations($this->dat['records'][$table . ':' . $row['uid']]['rels']);
                  // Add information about the softrefs to header:
 diff --git a/Classes/Import.php b/Classes/Import.php
-index 109f244..b7b2240 100644
+index 109f244..a1eea9e 100644
 --- a/Classes/Import.php
 +++ b/Classes/Import.php
 @@ -1051,6 +1051,10 @@
@@ -179,7 +197,7 @@ index 109f244..b7b2240 100644
                              $importData[$table][$ID][$field] = $this->getReferenceDefaultValue($GLOBALS['TCA'][$table]['columns'][$field]['config']);
                          }
 +                        // Set to "0" for integer fields, or else we will get a db error in DataHandler persistence.
-+                        if ($field === 'l10n_source') {
++                        if ($field === ($GLOBALS['TCA'][$table]['ctrl']['translationSource'] ?? 'l10n_source')) {
 +                            $importData[$table][$ID][$field] = 0;
 +                        }
                          break;
