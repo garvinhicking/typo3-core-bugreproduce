@@ -1,0 +1,39 @@
+<p>Plugin: SVG crop</p>
+
+<h1>Via FlexForm</h1>
+<div style="border: 1px solid red; margin: 5px; padding: 5px">
+    <f:for each="{images}" as="imageObject">
+        Show uid#{imageObject.uid}<br />
+        <f:image image="{imageObject}" /><br />
+
+        <f:comment>
+            <h1>SrcSet</h1>
+            <source srcset="{f:image.srcset(image: imageObject, srcset: '1000w, 1200w, 1400w', cropVariant: 'desktop')}" media="(min-width: 1000px)" sizes="100vw" />
+            <source srcset="{f:image.srcset(image: imageObject, srcset: {0: '999w', 1: '1111w', 2: '1222w'}, cropVariant: 'desktop')}" media="(min-width: 1000px)" sizes="100vw" />
+            <source srcset="{f:image.srcset(image: imageObject, srcset: {0: 888, 1: 777, 2: 666}, cropVariant: 'desktop')}" media="(min-width: 1000px)" sizes="100vw" />
+            <source srcset="{f:image.srcset(image: imageObject, srcset: '1x, 2x', referenceWidth: 500, cropVariant: 'desktop')}" media="(min-width: 1000px)" />
+            <source srcset="{f:image.srcset(image: imageObject, srcset: '1.5x, 2x', referenceWidth: 500, cropVariant: 'desktop')}" media="(min-width: 1000px)" />
+
+            <source srcset="{f:image.srcset(fileExtension: 'gif', image: imageObject, srcset: '1000w, 1200w, 1400w', cropVariant: 'desktop')}" media="(min-width: 1000px)" sizes="100vw" />
+            <source srcset="{f:image.srcset(absolute: 'true', fileExtension: 'jpg', image: imageObject, srcset: '1000w, 1200w, 1400w', cropVariant: 'desktop')}" media="(min-width: 1000px)" sizes="100vw" />
+        </f:comment>
+    </f:for>
+</div>
+
+<h1>Via {f:image}</h1>
+<div style="border: 1px solid blue; margin: 5px; padding: 5px">
+    <f:image src="EXT:gh_svg_crop/Resources/Public/Images/use.svg" cropVariant="square" width="60" height="60" crop="0,0,64,64" />
+</div>
+
+<h1>Via {f:image}, cast as PNG</h1>
+<div style="border: 1px solid yellow; margin: 5px; padding: 5px">
+    <f:image src="EXT:gh_svg_crop/Resources/Public/Images/use2.svg" cropVariant="square" width="60" height="60" crop="0,0,128,128" />
+</div>
+
+
+<h1>Via {f:image}, cast as PNG</h1>
+<div style="border: 1px solid yellow; margin: 5px; padding: 5px">
+    <f:image src="EXT:gh_svg_crop/Resources/Public/Images/use2.svg" cropVariant="square" width="60" height="60" crop="0,0,64,64" fileExtension="png" />
+</div>
+
+LINK: {link}

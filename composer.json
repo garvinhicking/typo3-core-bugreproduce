@@ -1,5 +1,5 @@
 {
-    "name": "garvinhicking/typo3-core-reproduce-94616",
+    "name": "garvinhicking/typo3-core-reproduce-80617",
     "description": "TYPO3 Composer Development Kit",
     "type": "project",
     "license": "GPL-2.0-or-later",
@@ -109,6 +109,7 @@
         "typo3/cms-viewpage": "@dev",
         "typo3/cms-workspaces": "@dev",
         "bk2k/bootstrap-package": "@dev",
+        "garvinhicking/svg-crop": "@dev",
         "gilbertsoft/typo3-core-patches": "^0.4.0"
     },
     "require-dev": {
@@ -131,18 +132,8 @@
     },
     "extra": {
         "patches": {
-            "typo3/cms-impexp": {
-                "Enable Export/Import of page translations": "patches/typo3-cms-impexp-review-71374.patch"
-            }
         },
         "gilbertsoft/typo3-core-patches": {
-            "applied-changes": {
-                "71374": {
-                    "packages": [
-                        "typo3/cms-impexp"
-                    ]
-                }
-            }
         }
     }
 }

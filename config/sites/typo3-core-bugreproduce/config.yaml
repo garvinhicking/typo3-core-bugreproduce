@@ -1,4 +1,4 @@
-base: 'https://typo3-impexp-94616.ddev.site/'
+base: 'https://typo3-impexp-80617.ddev.site/'
 languages:
   -
     title: English
@@ -47,4 +47,4 @@ languages:
     flag: im
     languageId: 3
 rootPageId: 1
-websiteTitle: 'TYPO3 ImpExp multilingual (issue 94616)'
+websiteTitle: 'TYPO3 SVG crop (issue 80617)'
