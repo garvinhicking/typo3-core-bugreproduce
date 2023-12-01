@@ -14,7 +14,6 @@ languages:
     title: German
     enabled: true
     languageId: 1
-    typo3Language: de
     base: /de/
     locale: de_DE.utf8
     navigationTitle: Deutsch
