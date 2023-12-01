@@ -34,6 +34,7 @@ After checkout out of the repository perform these steps:
 * `ddev launch` (opens https://typo3-impexp-80617.ddev.site/)
 * You can log into the backend with `admin:TYPO3-core-bugreproduce`
 
-Now you can to try export/importing the pages.
+You can copy the `assets/` directory to `public/fileadmin/` and then import
+them to the TYPO3 filelist (via indexing or opening the filelist)
 
 
