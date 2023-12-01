@@ -5,7 +5,7 @@ languages:
     enabled: true
     languageId: 0
     base: /
-    locale: en_US.UTF-8
+    locale: en_US.UTF8
     navigationTitle: English
     flag: us
     hreflang: ''
@@ -14,8 +14,9 @@ languages:
     title: German
     enabled: true
     languageId: 1
+    typo3Language: de
     base: /de/
-    locale: de_DE.UTF-8
+    locale: de_DE.utf8
     navigationTitle: Deutsch
     flag: de
     hreflang: ''
@@ -29,6 +30,7 @@ languages:
     base: /fr/
     locale: fr_FR.UTF-8
     navigationTitle: Francaise
+    typo3Language: fr
     flag: fr
     hreflang: ''
     websiteTitle: ''
@@ -41,6 +43,7 @@ languages:
     hreflang: ''
     base: /dk/
     websiteTitle: ''
+    typo3Language: dk
     navigationTitle: Dansk
     fallbackType: fallback
     fallbacks: '0'
