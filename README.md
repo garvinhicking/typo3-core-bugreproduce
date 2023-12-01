@@ -37,4 +37,6 @@ After checkout out of the repository perform these steps:
 You can copy the `assets/` directory to `public/fileadmin/` and then import
 them to the TYPO3 filelist (via indexing or opening the filelist)
 
+*IMPORTANT*
 
+Remember when you do changes, CLEAR YOUR PROCESSED FILES.

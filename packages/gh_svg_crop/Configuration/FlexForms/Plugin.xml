@@ -6,55 +6,25 @@
                 <sheetTitle>Optionen</sheetTitle>
                 <type>array</type>
                 <el>
-                    <settings.maintitle>
-                        <label>MAintitle (fresh)</label>
-                        <config>
-                            <type>input</type>
-                            <default>Hi garvin</default>
-                        </config>
-                    </settings.maintitle>
-
-                    <subtitle>
-                        <label>Subtitle (fresh)</label>
-                        <config>
-                            <type>input</type>
-                            <default>Hi garvin</default>
-                        </config>
-                    </subtitle>
-
                     <settings.cropImage>
                         <label>Crop Image(s)</label>
                         <config>
                             <type>file</type>
-                            <maxitems>3</maxitems>
+                            <maxitems>99</maxitems>
                             <allowed>common-image-types</allowed>
                         </config>
                     </settings.cropImage>
-
-                    <settings.title>
-                        <label>Subtitle (fresh)</label>
+                    <settings.showDemo>
+                        <label>Enable showing cropping demos</label>
                         <config>
-                            <type>input</type>
-                            <default>Hi garvin</default>
+                            <type>check</type>
+                            <renderType>checkboxToggle</renderType>
+                            <numIndex index="0" type="array">
+                                <label>Enable</label>
+                                <value>1</value>
+                            </numIndex>
                         </config>
-                    </settings.title>
-
-                    <settings.subtitle>
-                        <label>Subtitle (realfresh)</label>
-                        <config>
-                            <type>input</type>
-                            <default>Hi garvin</default>
-                        </config>
-                    </settings.subtitle>
-
-                    <settings.subTitle>
-                        <label>SubTitle (REAL realfresh)</label>
-                        <config>
-                            <type>input</type>
-                            <default>Hi garvin</default>
-                        </config>
-                    </settings.subTitle>
-
+                    </settings.showDemo>
                 </el>
             </ROOT>
         </sDEF>

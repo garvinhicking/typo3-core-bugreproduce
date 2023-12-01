@@ -1,28 +1,43 @@
 <p>Plugin: SVG crop</p>
 
+<f:debug title="Defined images" inline="true">{images}</f:debug>
+
 <h1>Via FlexForm</h1>
 <div style="border: 1px solid red; margin: 5px; padding: 5px">
-<f:for each="{images}" as="imageObject">
-    Show uid#{imageObject.uid}<br />
-    <f:image image="{imageObject}" /><br />
-
-</f:for>
+    <f:for each="{images}" as="imageObject">
+        Show uid#{imageObject.uid}, use internal crop<br />
+        <f:image image="{imageObject}" /><br />
+    </f:for>
 </div>
 
-<h1>Via {f:image}</h1>
+<f:if condition="{settings.showDemo}">
+<h1>First image, with specific width/height, without crop</h1>
 <div style="border: 1px solid blue; margin: 5px; padding: 5px">
-    <f:image src="EXT:gh_svg_crop/Resources/Public/Images/use.svg" cropVariant="square" width="60" height="60" crop="0,0,64,64" />
+    <f:image image="{images.0}" width="200" height="200" />
+</div>
+
+<h1>First image, without specific width/height, with specific crop</h1>
+<div style="border: 1px solid blue; margin: 5px; padding: 5px">
+    <f:image image="{images.0}" crop="30,30,128,128" />
+</div>
+
+<h1>First image, without specific width/height, with cropvariant</h1>
+<div style="border: 1px solid blue; margin: 5px; padding: 5px">
+    <f:image image="{images.0}" cropVariant="square" />
+</div>
+
+<h1>First image, with specific width/height, with crop</h1>
+<div style="border: 1px solid blue; margin: 5px; padding: 5px">
+    <f:image image="{images.0}" width="180" height="180" crop="30,30,128,128" />
+</div>
+
+<h1>First image, with specific width/height, with cropvariant</h1>
+<div style="border: 1px solid blue; margin: 5px; padding: 5px">
+    <f:image image="{images.0}" width="150" height="150" cropVariant="square" />
 </div>
 
 <h1>Via {f:image}, cast as PNG</h1>
 <div style="border: 1px solid yellow; margin: 5px; padding: 5px">
-    <f:image src="EXT:gh_svg_crop/Resources/Public/Images/use2.svg" cropVariant="square" width="60" height="60" crop="0,0,128,128" />
+    <f:image image="{images.0}" width="150" height="150" fileExtension="png" />
 </div>
-
-
-<h1>Via {f:image}, cast as PNG</h1>
-<div style="border: 1px solid yellow; margin: 5px; padding: 5px">
-    <f:image src="EXT:gh_svg_crop/Resources/Public/Images/use2.svg" cropVariant="square" width="60" height="60" crop="0,0,64,64" fileExtension="png" />
-</div>
-
-LINK: {link}
+</f:if>
