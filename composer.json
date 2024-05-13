@@ -88,12 +88,9 @@
         "typo3/cms-tstemplate": "@dev",
         "typo3/cms-viewpage": "@dev",
         "typo3/cms-workspaces": "@dev",
-        "doctrine/dbal":"4.0.0-RC2@rc",
         
         "typo3/cms-styleguide": "@dev",
-        "bk2k/bootstrap-package": "@dev",
-        
-        "garvinhicking/reproduce-assets": "@dev"
+        "bk2k/bootstrap-package": "@dev"
     },
     "require-dev": {
         "codeception/codeception": "*",

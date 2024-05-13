@@ -1,4 +1,4 @@
-name: typo3-core-bugreproduce-base
+name: typo3-v12-bugreproduce-base
 type: typo3
 docroot: public
 php_version: "8.2"
