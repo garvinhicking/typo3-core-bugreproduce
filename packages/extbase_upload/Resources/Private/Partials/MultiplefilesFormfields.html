@@ -1,0 +1,45 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<div>
+    Title: <f:form.textfield property="title" />
+</div>
+
+<div>
+    <f:if condition="{item.file1}">
+        Existing Filename: {item.file1.originalResource.name}
+    </f:if>
+    <div>
+        <f:form.upload property="file1" />
+    </div>
+    <div>
+        <f:if condition="{item.file1}">
+            <f:form.uploadDeleteCheckbox id="file1" property="file1" fileReference="{item.file1}" />
+            <label for="file1">Delete file</label>
+        </f:if>
+    </div>
+</div>
+
+<div>
+    <f:if condition="{item.file2}">
+        Existing Filename: {item.file2.originalResource.name}
+    </f:if>
+    <div>
+        <f:form.upload property="file2" />
+    </div>
+    <div>
+        <f:if condition="{item.file2}">
+            <f:form.uploadDeleteCheckbox id="file2" property="file2" fileReference="{item.file2}" />
+            <label for="file2">Delete file</label>
+        </f:if>
+    </div>
+</div>
+
+<div>
+    <p>We leave out file3 property, to test it is not possible to upload a file for this property</p>
+</div>
+
+<div>
+    <f:form.submit value="Save" />
+</div>
+
+</html>

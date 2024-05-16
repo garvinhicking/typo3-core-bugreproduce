@@ -1,0 +1,9 @@
+plugin.tx_extbaseupload {
+  persistence.updateReferenceIndex = 1
+  settings {
+    inlineTestUploadPid = 94
+    multiFileUploadPid = 92
+    multipleFilesUploadPid = 93
+    singleFileUploadPid = 88
+  }
+}
