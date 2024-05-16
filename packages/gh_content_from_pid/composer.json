@@ -1,0 +1,25 @@
+{
+  "version": "1.0.1",
+  "name": "garvinhicking/content-from-pid",
+  "type": "typo3-cms-extension",
+  "description": "",
+  "authors": [
+    {
+      "name": "Garvin Hicking",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "typo3/cms-core": "^13.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "GarvinHicking\\ContentFromPid\\": "Classes"
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "gh_content_from_pid"
+    }
+  }
+}
