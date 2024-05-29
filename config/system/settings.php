@@ -125,8 +125,6 @@ return [
     ],
     'GFX' => [
         'processor' => 'GraphicsMagick',
-        'processor_allowTemporaryMasksAsPng' => false,
-        'processor_colorspace' => 'RGB',
         'processor_effects' => false,
         'processor_enabled' => true,
         'processor_path' => '/usr/bin/',
@@ -185,9 +183,7 @@ return [
         'displayErrors' => 1,
         'encryptionKey' => '56aed59224469dcd93a236b3a3a83890faf325b4d0ba051363380d7ae7304c3d022529051fb61aa81c3e8b9b679508bb',
         'exceptionalErrors' => 12290,
-        'features' => [
-            'security.usePasswordPolicyForFrontendUsers' => true,
-        ],
+        'features' => [],
         'sitename' => 'New TYPO3 site',
         'systemMaintainers' => [
             1,
