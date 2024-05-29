@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "911b6b9e1e76fa9873073f883c9c0bf6",
+    "content-hash": "ce4b5f72a11248bdb665b005b87ed373",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -960,6 +960,56 @@
                 "source": "https://github.com/firebase/php-jwt/tree/v6.10.0"
             },
             "time": "2023-12-01T16:26:39+00:00"
+        },
+        {
+            "name": "garvinhicking/gh-validationdummy",
+            "version": "0.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/garvinhicking/gh_validationdummy.git",
+                "reference": "7931ba97e49e97834413f56dd4311096a81c406f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/garvinhicking/gh_validationdummy/zipball/7931ba97e49e97834413f56dd4311096a81c406f",
+                "reference": "7931ba97e49e97834413f56dd4311096a81c406f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">= 8.1.0, <= 8.3.99",
+                "typo3/cms-core": "^12.4 || ^13.0"
+            },
+            "replace": {
+                "garvinhicking/gh_validationdummy": "self.version"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "gh_validationdummy"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GarvinHicking\\ValidationDummy\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Garvin Hicking",
+                    "homepage": "https://garv.in",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Validation example",
+            "support": {
+                "issues": "https://github.com/garvinhicking/gh_validationdummy/issues",
+                "source": "https://github.com/garvinhicking/gh_validationdummy/tree/0.2.2"
+            },
+            "time": "2024-05-29T12:44:06+00:00"
         },
         {
             "name": "garvinhicking/reproduce-assets",

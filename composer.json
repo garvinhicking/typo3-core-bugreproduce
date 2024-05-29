@@ -93,7 +93,8 @@
         "bk2k/bootstrap-package": "@dev",
         
         "garvinhicking/reproduce-assets": "@dev",
-        "derhansen/extbase-upload": "@dev"
+        "derhansen/extbase-upload": "@dev",
+        "garvinhicking/gh-validationdummy": "^0.2.2"
     },
     "require-dev": {
         "codeception/codeception": "*",
