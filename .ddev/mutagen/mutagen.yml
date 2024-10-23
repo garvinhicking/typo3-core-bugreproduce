@@ -24,7 +24,7 @@ sync:
         - "/public/fileadmin"
         - "/typo3-core/.cache"
         - "/typo3-core/typo3temp"
-        #- "/public/typo3temp"
+        - "/public/typo3temp"
 
         # You can also exclude other directories from mutagen-syncing
         # For example /var/www/html/var does not need to sync in TYPO3

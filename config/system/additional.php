@@ -26,6 +26,8 @@ if (getenv('IS_DDEV_PROJECT') == 'true') {
             'MAIL' => [
                 'transport' => 'smtp',
                 'transport_smtp_encrypt' => false,
+                #'transport_spool_type' => 'memory',
+                'defaultMailFromAddress' => 'nobody@example.com',
                 'transport_smtp_server' => 'localhost:1025',
             ],
             'SYS' => [
@@ -36,3 +38,11 @@ if (getenv('IS_DDEV_PROJECT') == 'true') {
         ]
     );
 }
+
+/*
+if (isset($GLOBALS['TYPO3_CONF_VARS']['BE']['fileDenyPattern'])) {
+    $GLOBALS['TYPO3_CONF_VARS']['BE']['fileDenyPattern'] .= '|\.zip$';
+    $GLOBALS['TYPO3_CONF_VARS']['BE']['fileDenyPattern'] .= '|\.xls$';
+    $GLOBALS['TYPO3_CONF_VARS']['BE']['fileDenyPattern'] .= '|\.jpg$';
+}
+*/

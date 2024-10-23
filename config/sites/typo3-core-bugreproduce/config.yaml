@@ -1,12 +1,32 @@
 base: 'https://typo3-core-bugreproduce-base.ddev.site/'
+errorHandling:
+  -
+    errorCode: 403
+    errorHandler: LoginRedirect
+    loginRedirectTarget: 't3://page?uid=2736'
+    loginRedirectParameter: return_url
 languages:
   -
     title: English
     enabled: true
     languageId: 0
-    base: /
+    base: /en
     locale: en_US.UTF-8
     navigationTitle: English
     flag: us
+    hreflang: ''
+    websiteTitle: ''
+  -
+    title: Dütsch
+    enabled: true
+    locale: de_AT
+    hreflang: ''
+    base: /de/
+    websiteTitle: ''
+    navigationTitle: ''
+    fallbackType: strict
+    fallbacks: ''
+    flag: global
+    languageId: 22
 rootPageId: 1
 websiteTitle: 'New TYPO3 website'

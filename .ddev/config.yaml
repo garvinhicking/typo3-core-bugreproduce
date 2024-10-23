@@ -6,6 +6,7 @@ webserver_type: apache-fpm
 xdebug_enabled: false
 additional_hostnames: []
 additional_fqdns: []
+performance_mode: none
 database:
     type: mysql
     version: "8.0"

@@ -1,0 +1,17 @@
+active: false
+
+report:
+      inheritDefault: false
+      mutations:
+       - mode: extend
+         directive: img-src
+         sources:
+          - https://*.reight1typo3.org
+          
+enforce:
+      inheritDefault: false
+      mutations:
+       - mode: extend
+         directive: img-src
+         sources:
+          - https://*.bad2typo3.org

@@ -45,6 +45,10 @@
         "local-packages": {
             "type": "path",
             "url": "packages/*"
+        },
+        "github": {
+              "type": "vcs",
+              "url": "https://github.com/garvinhicking/bootstrap_package.git"
         }
     },
     "autoload-dev": {
@@ -90,11 +94,7 @@
         "typo3/cms-workspaces": "@dev",
         
         "typo3/cms-styleguide": "@dev",
-        "bk2k/bootstrap-package": "@dev",
-        
-        "garvinhicking/reproduce-assets": "@dev",
-        "derhansen/extbase-upload": "@dev",
-        "garvinhicking/gh-validationdummy": "^0.2.2"
+        "bk2k/bootstrap-package": "@dev-v14"
     },
     "require-dev": {
         "codeception/codeception": "*",

@@ -2,7 +2,8 @@
 return [
     'BE' => [
         'debug' => true,
-        'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$VE9WUTlPT3dmMXRoR1dQOQ$LFW+DiEKirUVmn9UxKjYl71/xg1GbdWGBJbm5nYo5+Y',
+        'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$L2RmbkZqaDd2eXVJWTJtTQ$FFF5M8krFtVv9K6ONgROM3jZWcuzO2irsyhWMV0XG7w',
+        'lockBackendFile' => 'var/lock/BLARG_LOCK',
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
@@ -11,7 +12,7 @@ return [
     'DB' => [
         'Connections' => [
             'Default' => [
-                'charset' => 'utf8',
+                'charset' => 'utf8mb4',
                 'driver' => 'mysqli',
             ],
         ],
@@ -42,7 +43,6 @@ return [
         ],
         'indexed_search' => [
             'catdoc' => '/usr/bin/',
-            'debugMode' => '0',
             'deleteFromIndexAfterEditing' => '1',
             'disableFrontendIndexing' => '0',
             'enableMetaphoneSearch' => '1',
@@ -69,6 +69,9 @@ return [
             'maxLifetime' => '1440',
         ],
         'styleguide' => [
+            'backendFavicon' => '',
+            'bar' => '0',
+            'baz' => '0',
             'boolean_1' => '0',
             'boolean_2' => '1',
             'boolean_3' => '',
@@ -81,6 +84,8 @@ return [
             'compat_default_2' => '',
             'compat_input_1' => 'value',
             'compat_input_2' => '',
+            'garvin_1' => 'garvin_1',
+            'garvin_2' => 'garvin_2',
             'int_1' => '1',
             'int_2' => '',
             'int_3' => '-100',
@@ -107,9 +112,25 @@ return [
             'small_2' => '',
             'string_1' => 'value',
             'string_2' => '',
+            'test' => [
+                'color' => 'orange',
+            ],
+            'testbroken' => [
+                'color' => 'orange',
+            ],
+            'testworking' => [
+                'color' => 'orange',
+            ],
+            'undefined2_input_1' => 'value',
+            'undefined2_input_2' => '',
+            'undefined_input_1' => 'value',
+            'undefined_input_2' => '',
             'user_1' => '0',
             'wrap_1' => 'value',
             'wrap_2' => '',
+            'zeroorder_input_1' => 'value',
+            'zeroorder_input_2' => '',
+            'zeroorder_input_3' => '',
         ],
     ],
     'FE' => [
@@ -154,6 +175,13 @@ return [
     ],
     'SYS' => [
         'UTF8filesystem' => true,
+        'allowedPhpDisableFunctions' => [
+            'nothing',
+            'everything',
+            'allatOnce',
+            'huddle',
+            'cuddle',
+        ],
         'caching' => [
             'cacheConfigurations' => [
                 'hash' => [
@@ -183,7 +211,10 @@ return [
         'displayErrors' => 1,
         'encryptionKey' => '56aed59224469dcd93a236b3a3a83890faf325b4d0ba051363380d7ae7304c3d022529051fb61aa81c3e8b9b679508bb',
         'exceptionalErrors' => 12290,
-        'features' => [],
+        'features' => [
+            'security.frontend.enforceContentSecurityPolicy' => true,
+            'security.frontend.reportContentSecurityPolicy' => false,
+        ],
         'sitename' => 'New TYPO3 site',
         'systemMaintainers' => [
             1,
