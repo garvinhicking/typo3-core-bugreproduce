@@ -48,7 +48,7 @@
         },
         "github": {
               "type": "vcs",
-              "url": "https://github.com/garvinhicking/bootstrap_package.git"
+              "url": "https://github.com/garvinhicking/bootstrap_package"
         }
     },
     "autoload-dev": {
@@ -94,7 +94,7 @@
         "typo3/cms-workspaces": "@dev",
         
         "typo3/cms-styleguide": "@dev",
-        "bk2k/bootstrap-package": "@dev-v14"
+        "bk2k/bootstrap-package": "@dev"
     },
     "require-dev": {
         "codeception/codeception": "*",
