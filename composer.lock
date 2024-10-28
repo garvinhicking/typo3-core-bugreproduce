@@ -66,12 +66,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/garvinhicking/bootstrap_package.git",
-                "reference": "93fa020e5ea6aa701ad59fffb48df233285833f3"
+                "reference": "3c235e9b73e8eb8fbe4395863b400e1df04f7615"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/garvinhicking/bootstrap_package/zipball/93fa020e5ea6aa701ad59fffb48df233285833f3",
-                "reference": "93fa020e5ea6aa701ad59fffb48df233285833f3",
+                "url": "https://api.github.com/repos/garvinhicking/bootstrap_package/zipball/3c235e9b73e8eb8fbe4395863b400e1df04f7615",
+                "reference": "3c235e9b73e8eb8fbe4395863b400e1df04f7615",
                 "shasum": ""
             },
             "require": {
@@ -84,18 +84,18 @@
                 "ext-simplexml": "*",
                 "php": ">=8.1.0",
                 "scssphp/scssphp": "^1.13",
-                "typo3/cms-backend": "^12.4 || ^13.4 || 13.*.*@dev || 14.*.*@dev || 14.*.*",
-                "typo3/cms-core": "^12.4 || ^13.4 || 13.*.*@dev || 14.*.*@dev || 14.*.*",
-                "typo3/cms-extbase": "^12.4 || ^13.4 || 13.*.*@dev || 14.*.*@dev || 14.*.*",
-                "typo3/cms-extensionmanager": "^12.4 || ^13.4 || 13.*.*@dev || 14.*.*@dev || 14.*.*",
-                "typo3/cms-fluid": "^12.4 || ^13.4 || 13.*.*@dev || 14.*.*@dev || 14.*.*",
-                "typo3/cms-frontend": "^12.4 || ^13.4 || 13.*.*@dev || 14.*.*@dev || 14.*.*",
-                "typo3/cms-install": "^12.4 || ^13.4 || 13.*.*@dev || 14.*.*@dev || 14.*.*",
-                "typo3/cms-rte-ckeditor": "^12.4 || ^13.4 || 13.*.*@dev || 14.*.*@dev || 14.*.*",
-                "typo3/cms-seo": "^12.4 || ^13.4 || 13.*.*@dev  || 14.*.*@dev || 14.*.*"
+                "typo3/cms-backend": "^13.4 || 13.*.*@dev || 14.*.*@dev || 14.*.*",
+                "typo3/cms-core": "^13.4 || 13.*.*@dev || 14.*.*@dev || 14.*.*",
+                "typo3/cms-extbase": "^13.4 || 13.*.*@dev || 14.*.*@dev || 14.*.*",
+                "typo3/cms-extensionmanager": "^13.4 || 13.*.*@dev || 14.*.*@dev || 14.*.*",
+                "typo3/cms-fluid": "^13.4 || 13.*.*@dev || 14.*.*@dev || 14.*.*",
+                "typo3/cms-frontend": "^13.4 || 13.*.*@dev || 14.*.*@dev || 14.*.*",
+                "typo3/cms-install": "^13.4 || 13.*.*@dev || 14.*.*@dev || 14.*.*",
+                "typo3/cms-rte-ckeditor": "^13.4 || 13.*.*@dev || 14.*.*@dev || 14.*.*",
+                "typo3/cms-seo": "^13.4 || 13.*.*@dev  || 14.*.*@dev || 14.*.*"
             },
             "require-dev": {
-                "b13/container": "^2.3 || dev-task/dev-main",
+                "b13/container": "^3.0 || dev-master",
                 "bk2k/demo-package": "@dev",
                 "bk2k/extension-helper": "^2.1",
                 "friendsofphp/php-cs-fixer": "^3.64",
@@ -105,16 +105,16 @@
                 "phpstan/phpstan-deprecation-rules": "^1.1",
                 "phpstan/phpstan-phpunit": "^1.3",
                 "phpstan/phpstan-strict-rules": "^1.5",
-                "typo3/cms-belog": "^12.4 || ^13.4 || 13.*.*@dev",
-                "typo3/cms-felogin": "^12.4 || ^13.4 || 13.*.*@dev",
-                "typo3/cms-filelist": "^12.4 || ^13.4 || 13.*.*@dev",
-                "typo3/cms-form": "^12.4 || ^13.4 || 13.*.*@dev",
-                "typo3/cms-indexed-search": "^12.4 || ^13.4 || 13.*.*@dev",
-                "typo3/cms-info": "^12.4 || ^13.4 || 13.*.*@dev",
-                "typo3/cms-lowlevel": "^12.4 || ^13.4 || 13.*.*@dev",
-                "typo3/cms-tstemplate": "^12.4 || ^13.4 || 13.*.*@dev",
-                "typo3/cms-workspaces": "^12.4 || ^13.4 || 13.*.*@dev",
-                "typo3/testing-framework": "^8.2.3"
+                "typo3/cms-belog": "^13.4 || 13.*.*@dev || 14.*.*@dev",
+                "typo3/cms-felogin": "^13.4 || 13.*.*@dev || 14.*.*@dev",
+                "typo3/cms-filelist": "^13.4 || 13.*.*@dev || 14.*.*@dev",
+                "typo3/cms-form": "^13.4 || 13.*.*@dev || 14.*.*@dev",
+                "typo3/cms-indexed-search": "^13.4 || 13.*.*@dev || 14.*.*@dev",
+                "typo3/cms-info": "^13.4 || 13.*.*@dev || 14.*.*@dev",
+                "typo3/cms-lowlevel": "^13.4 || 13.*.*@dev || 14.*.*@dev",
+                "typo3/cms-tstemplate": "^13.4 || 13.*.*@dev || 14.*.*@dev",
+                "typo3/cms-workspaces": "^13.4 || 13.*.*@dev || 14.*.*@dev",
+                "typo3/testing-framework": "^9.0.0 || dev-main"
             },
             "type": "typo3-cms-extension",
             "extra": {
@@ -209,7 +209,7 @@
                     "url": "https://www.paypal.me/benjaminkott"
                 }
             ],
-            "time": "2024-10-23T07:50:50+00:00"
+            "time": "2024-10-24T20:46:22+00:00"
         },
         {
             "name": "christian-riesen/base32",
@@ -5255,7 +5255,7 @@
             "dist": {
                 "type": "path",
                 "url": "typo3-core/typo3/sysext/backend",
-                "reference": "70741559d087a66848ca7b64424070f037a19bb5"
+                "reference": "91639d38cc36e7ad98f3494b157fae031f243eff"
             },
             "require": {
                 "ext-intl": "*",
@@ -5292,11 +5292,6 @@
                         "partOfMinimalUsableSystem": true
                     },
                     "extension-key": "backend"
-                },
-                "typo3/class-alias-loader": {
-                    "class-alias-maps": [
-                        "Migrations/Code/ClassAliasMap.php"
-                    ]
                 }
             },
             "autoload": {
@@ -5543,7 +5538,7 @@
             "dist": {
                 "type": "path",
                 "url": "typo3-core/typo3/sysext/core",
-                "reference": "b463c8dc8c07fa494f19cd53559e5b5b8c457461"
+                "reference": "4e22f45aa37596c9652913e6418204f47438e8eb"
             },
             "require": {
                 "bacon/bacon-qr-code": "^3.0",
@@ -5640,11 +5635,6 @@
                         "partOfMinimalUsableSystem": true
                     },
                     "extension-key": "core"
-                },
-                "typo3/class-alias-loader": {
-                    "class-alias-maps": [
-                        "Migrations/Code/ClassAliasMap.php"
-                    ]
                 }
             },
             "autoload": {
@@ -5806,7 +5796,7 @@
             "dist": {
                 "type": "path",
                 "url": "typo3-core/typo3/sysext/extensionmanager",
-                "reference": "917d7e6ee8d58d4d820d3c7488766f40612f88ec"
+                "reference": "394c6a598822ad252e3ff3a7121d6f2016551597"
             },
             "require": {
                 "ext-libxml": "*",
@@ -5827,11 +5817,6 @@
                         "partOfMinimalUsableSystem": true
                     },
                     "extension-key": "extensionmanager"
-                },
-                "typo3/class-alias-loader": {
-                    "class-alias-maps": [
-                        "Migrations/Code/ClassAliasMap.php"
-                    ]
                 }
             },
             "autoload": {
@@ -6195,7 +6180,7 @@
             "dist": {
                 "type": "path",
                 "url": "typo3-core/typo3/sysext/frontend",
-                "reference": "6ae136ca6bbb577780477fa979f60571a26ac00b"
+                "reference": "d5d914bc2d9e56f8dfb162b64afbced1e9a830a7"
             },
             "require": {
                 "ext-libxml": "*",
@@ -6220,11 +6205,6 @@
                         "partOfMinimalUsableSystem": true
                     },
                     "extension-key": "frontend"
-                },
-                "typo3/class-alias-loader": {
-                    "class-alias-maps": [
-                        "Migrations/Code/ClassAliasMap.php"
-                    ]
                 }
             },
             "autoload": {

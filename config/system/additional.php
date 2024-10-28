@@ -7,6 +7,7 @@ if (getenv('IS_DDEV_PROJECT') == 'true') {
             'DB' => [
                 'Connections' => [
                     'Default' => [
+                        'charset' => 'utf8mb4',
                         'dbname' => 'db',
                         'driver' => 'mysqli',
                         'host' => 'db',
