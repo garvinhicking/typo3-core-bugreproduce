@@ -45,10 +45,6 @@
         "local-packages": {
             "type": "path",
             "url": "packages/*"
-        },
-        "github": {
-              "type": "vcs",
-              "url": "https://github.com/garvinhicking/bootstrap_package"
         }
     },
     "autoload-dev": {
@@ -80,6 +76,7 @@
         "typo3/cms-linkvalidator": "@dev",
         "typo3/cms-lowlevel": "@dev",
         "typo3/cms-opendocs": "@dev",
+        "typo3/cms-reactions": "@dev",
         "typo3/cms-recordlist": "@dev",
         "typo3/cms-recycler": "@dev",
         "typo3/cms-redirects": "@dev",
@@ -89,12 +86,15 @@
         "typo3/cms-seo": "@dev",
         "typo3/cms-setup": "@dev",
         "typo3/cms-sys-note": "@dev",
+        "typo3/cms-t3editor": "@dev",
         "typo3/cms-tstemplate": "@dev",
         "typo3/cms-viewpage": "@dev",
+        "typo3/cms-webhooks": "@dev",
         "typo3/cms-workspaces": "@dev",
         
         "typo3/cms-styleguide": "@dev",
         "bk2k/bootstrap-package": "@dev"
+        "symfony/validator": "^7.2",
     },
     "require-dev": {
         "codeception/codeception": "*",

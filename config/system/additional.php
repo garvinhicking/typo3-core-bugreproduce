@@ -8,11 +8,16 @@ if (getenv('IS_DDEV_PROJECT') == 'true') {
                 'Connections' => [
                     'Default' => [
                         'charset' => 'utf8mb4',
+                        'collation' => 'utf8mb4_unicode_ci',
                         'dbname' => 'db',
                         'driver' => 'mysqli',
                         'host' => 'db',
                         'password' => 'db',
                         'port' => '3306',
+                        'defaultTableOptions' => [
+                            'collation' => 'utf8mb4_unicode_ci',
+                            'charset' => 'utf8mb4',
+                        ],
                         'user' => 'db',
                     ],
                 ],

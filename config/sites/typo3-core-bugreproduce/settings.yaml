@@ -1,0 +1,17 @@
+redirects.redirectTTL: 900
+myExtension:
+  myKey:
+    myEntry: 2750
+plugin:
+  bootstrap_package:
+    settings:
+      scss:
+        something: 1.2
+plugin.bootstrap_package.settings.scss.min-contrast-ratio: 4.6
+plugin.bootstrap_package.settings.scss.font-family-sans-serif: '"#{$google-webfont}", sans-serif, arial'
+felogin.example.number.with.max.option: -1.5
+felogin.example.string.with.max.option: abc
+felogin.example.string.with.minmax.option: ass
+felogin.example.int.with.min.option: 13
+felogin.example.int.with.max.option: 2
+styles.content.textmedia.linkWrap.lightboxEnabled: true

@@ -13,9 +13,13 @@ return [
         'Connections' => [
             'Default' => [
                 'charset' => 'utf8mb4',
+                'collation' => 'utf8mb4_unicode_ci',
                 'driver' => 'mysqli',
             ],
         ],
+    ],
+    'EXTCONF' => [
+        'lang' => [],
     ],
     'EXTENSIONS' => [
         'backend' => [
@@ -24,8 +28,8 @@ return [
             'loginBackgroundImage' => '',
             'loginFootnote' => '',
             'loginHighlightColor' => '',
-            'loginLogo' => '',
-            'loginLogoAlt' => '',
+            'loginLogo' => 'EXT:backend/Resources/Public/Images/typo3_logo_orange.svg',
+            'loginLogoAlt' => 'Custom Logo',
         ],
         'bootstrap_package' => [
             'disableCssProcessing' => '0',
@@ -149,6 +153,19 @@ return [
         'processor_effects' => false,
         'processor_enabled' => true,
         'processor_path' => '/usr/bin/',
+    'LANG' => [
+        'availableLocales' => [
+            'de',
+            'en',
+            'fr',
+        ],
+        'loader' => [
+            'xlf' => 'TYPO3\\CMS\\Core\\Localization\\Loader\\XliffLoader',
+        ],
+        'resourceOverrides' => [
+            'ext:path',
+            'no:path',
+        ],
     ],
     'LOG' => [
         'TYPO3' => [
@@ -213,11 +230,12 @@ return [
         'exceptionalErrors' => 12290,
         'features' => [
             'security.frontend.enforceContentSecurityPolicy' => true,
-            'security.frontend.reportContentSecurityPolicy' => false,
+            'security.frontend.reportContentSecurityPolicy' => true,
+            'security.system.enforceAllowedFileExtensions' => true,
         ],
         'sitename' => 'New TYPO3 site',
         'systemMaintainers' => [
-            1,
+            '1',
         ],
     ],
 ];

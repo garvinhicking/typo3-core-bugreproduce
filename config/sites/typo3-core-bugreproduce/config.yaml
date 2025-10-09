@@ -1,4 +1,15 @@
 base: 'https://typo3-core-bugreproduce-base.ddev.site/'
+dependencies:
+  - bootstrap-package/content-elements
+  - bootstrap-package/full
+  - typo3/felogin
+  - typo3/styleguide
+  - typo3/seo-sitemap
+  - typo3/indexed-search
+  - typo3/redirects
+  - typo3/fluid-styled-content-css
+  - typo3/form
+  - typo3/fluid-styled-content
 errorHandling:
   -
     errorCode: 403
@@ -28,5 +39,6 @@ languages:
     fallbacks: ''
     flag: global
     languageId: 22
+myNewField: customfield
 rootPageId: 1
 websiteTitle: 'New TYPO3 website'
