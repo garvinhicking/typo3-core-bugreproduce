@@ -52,3 +52,20 @@ if (isset($GLOBALS['TYPO3_CONF_VARS']['BE']['fileDenyPattern'])) {
     $GLOBALS['TYPO3_CONF_VARS']['BE']['fileDenyPattern'] .= '|\.jpg$';
 }
 */
+
+#$GLOBALS['TYPO3_CONF_VARS']['SYS']['FileInfo']['mimeTypeCompatibility']['text/vcard']['vcf'] = 'text/x-vcard';
+
+$GLOBALS['TYPO3_CONF_VARS']['GFX']['processor'] = 'GraphicsMagick';
+##$GLOBALS['TYPO3_CONF_VARS']['SYS']['textfile_ext'] = 'txt';
+#$GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext'] = 'jpg,pdf,ico,jpeg';
+#$GLOBALS['TYPO3_CONF_VARS']['SYS']['miscfile_ext'] = 'zip';
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['features']['security.system.enforceAllowedFileExtensions'] = true;
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['features']['security.system.enforceFileExtensionMimeTypeConsistency'] = true;
+#$GLOBALS['TYPO3_CONF_VARS']['SYS']['cookieDomain'] = '/(ddev.site|ddev.localhost)$/';
+
+/*
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['fal']['processors']['watermarkService'] = [
+    'className' => \TYPO3\CMS\Core\Resource\OnlineMedia\Processing\WatermarkProcessing::class,
+    'after' => ['LocalImageProcessor']
+];
+*/

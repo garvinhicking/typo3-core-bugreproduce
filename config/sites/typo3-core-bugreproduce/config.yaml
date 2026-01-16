@@ -42,3 +42,6 @@ languages:
 myNewField: customfield
 rootPageId: 1
 websiteTitle: 'New TYPO3 website'
+settings:
+  redirects:
+    autoCreateRedirects: 0

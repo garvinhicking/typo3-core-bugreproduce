@@ -1,9 +1,9 @@
 <?php
 return [
     'BE' => [
+        'contentSecurityPolicyReportingUrl' => '0',
         'debug' => true,
         'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$L2RmbkZqaDd2eXVJWTJtTQ$FFF5M8krFtVv9K6ONgROM3jZWcuzO2irsyhWMV0XG7w',
-        'lockBackendFile' => 'var/lock/BLARG_LOCK',
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
@@ -156,7 +156,6 @@ return [
     'LANG' => [
         'availableLocales' => [
             'de',
-            'en',
             'fr',
         ],
         'loader' => [

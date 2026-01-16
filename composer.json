@@ -38,6 +38,10 @@
         "ddev:export-db": "ddev export-db --gzip=false --file ./db.sql"
     },
     "repositories": {
+        "github-garvin": {
+          "type": "vcs",
+          "url": "https://github.com/garvinhicking/bootstrap_package.git"
+        },
         "typo3-core-packages": {
             "type": "path",
             "url": "typo3-core/typo3/sysext/*"
@@ -93,7 +97,7 @@
         "typo3/cms-workspaces": "@dev",
         
         "typo3/cms-styleguide": "@dev",
-        "bk2k/bootstrap-package": "@dev"
+        "bk2k/bootstrap-package": "dev-fluid5",
         "symfony/validator": "^7.2",
     },
     "require-dev": {
