@@ -3,7 +3,7 @@ return [
     'BE' => [
         'contentSecurityPolicyReportingUrl' => '0',
         'debug' => true,
-        'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$L2RmbkZqaDd2eXVJWTJtTQ$FFF5M8krFtVv9K6ONgROM3jZWcuzO2irsyhWMV0XG7w',
+        'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$dzRlWWtYa0lDUEpoQ0JuVw$YKoxWMHyGdGsuQL5BJvMCXuJkjmC+jYm79EMyC7gT44',
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
@@ -40,6 +40,21 @@ return [
             'disablePageTsTCADefaults' => '0',
             'disablePageTsTCEFORM' => '0',
             'disablePageTsTCEMAIN' => '0',
+        ],
+        'cf_cookiemanager' => [
+            'CF_CONSENTMODAL_TEMPLATE' => 'EXT:cf_cookiemanager/Resources/Static/consentmodal.html',
+            'CF_SCRIPTBLOCKER' => 'EXT:cf_cookiemanager/Resources/Static/scriptblocker.html',
+            'CF_SETTINGSMODAL_CATEGORY_TEMPLATE' => 'EXT:cf_cookiemanager/Resources/Static/settingsmodal_category.html',
+            'CF_SETTINGSMODAL_TEMPLATE' => 'EXT:cf_cookiemanager/Resources/Static/settingsmodal.html',
+            'clientId' => '',
+            'clientSecret' => '',
+            'disablePlugin' => '0',
+            'endPoint' => 'https://cookieapi.coding-freaks.com/api/',
+            'scanApiKey' => 'scantoken',
+            'scriptBlocking' => '0',
+            'thumbnailApiEnabled' => '1',
+            'trackingEnabled' => '0',
+            'trackingObfuscate' => '0',
         ],
         'extensionmanager' => [
             'automaticInstallation' => '1',
@@ -149,21 +164,30 @@ return [
         ],
     ],
     'GFX' => [
-        'processor' => 'GraphicsMagick',
-        'processor_effects' => false,
+        'avif_quality' => '90',
+        'imageFileConversionFormats' => [
+            'gif' => 'gif',
+            'jpeg' => 'jpeg',
+            'jpg' => 'jpg',
+            'png' => 'png',
+            'svg' => 'svg',
+            'webp' => 'jpg',
+        ],
+        'processor' => 'ImageMagick',
+        'processor_effects' => true,
         'processor_enabled' => true,
         'processor_path' => '/usr/bin/',
+        'processor_stripColorProfileByDefault' => true,
+        'processor_stripColorProfileParameters' => [
+            '+profile',
+            '*',
+        ],
+    ],
     'LANG' => [
         'availableLocales' => [
             'de',
             'fr',
-        ],
-        'loader' => [
-            'xlf' => 'TYPO3\\CMS\\Core\\Localization\\Loader\\XliffLoader',
-        ],
-        'resourceOverrides' => [
-            'ext:path',
-            'no:path',
+            'pl',
         ],
     ],
     'LOG' => [
@@ -190,6 +214,7 @@ return [
         'transport_smtp_username' => '',
     ],
     'SYS' => [
+        'SystemResources' => [],
         'UTF8filesystem' => true,
         'allowedPhpDisableFunctions' => [
             'nothing',
@@ -235,6 +260,7 @@ return [
         'sitename' => 'New TYPO3 site',
         'systemMaintainers' => [
             '1',
+            103,
         ],
     ],
 ];
