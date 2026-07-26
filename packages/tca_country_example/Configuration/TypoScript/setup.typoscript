@@ -1,0 +1,5 @@
+plugin.tx_tcacountryexample {
+	persistence {
+	    # For example purposes, setRespectStoragePage() is set on Repository-level
+	}
+}

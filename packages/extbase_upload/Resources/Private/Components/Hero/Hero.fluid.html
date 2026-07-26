@@ -1,0 +1,11 @@
+<html
+    data-namespace-typo3-fluid="true"
+>
+
+<f:argument name="title" type="string" />
+<f:argument name="link" type="string" />
+
+<a href="{link}" class="teaserCard">
+    <div class="teaserCard__title">{title}</div>
+    <div class="teaserCard__content"><f:slot /></div>
+</a>

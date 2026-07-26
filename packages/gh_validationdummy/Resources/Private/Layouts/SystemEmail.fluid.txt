@@ -1,0 +1,8 @@
+<f:spaceless><f:render section="Title" optional="true" />
+<f:render section="Main" /></f:spaceless>
+
+Meine extension email!
+
+<f:debug inline="1" plainText="1">{typo3}</f:debug>
+
+<f:render section="Main" />

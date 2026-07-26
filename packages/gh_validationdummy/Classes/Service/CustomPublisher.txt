@@ -1,0 +1,56 @@
+<?php
+
+declare(strict_types=1);
+
+namespace GarvinHicking\ValidationDummy\Service;
+
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\UriInterface;
+use Symfony\Component\DependencyInjection\Attribute\AsAlias;
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
+use TYPO3\CMS\Core\Http\Uri;
+use TYPO3\CMS\Core\Messaging\FlashMessageQueue;
+use TYPO3\CMS\Core\Package\PackageInterface;
+use TYPO3\CMS\Core\SystemResource\Publishing\DefaultSystemResourcePublisher;
+use TYPO3\CMS\Core\SystemResource\Publishing\SystemResourcePublisherInterface;
+use TYPO3\CMS\Core\SystemResource\Publishing\UriGenerationOptions;
+use TYPO3\CMS\Core\SystemResource\Type\PublicPackageFile;
+use TYPO3\CMS\Core\SystemResource\Type\PublicResourceInterface;
+
+#[Autoconfigure(public: true), AsAlias(SystemResourcePublisherInterface::class, public: true)]
+final readonly class CustomPublisher implements SystemResourcePublisherInterface
+{
+    private const CDN_URL = 'https://my.awsome.cdn/files/';
+
+    public function __construct(private DefaultSystemResourcePublisher $defaultSystemResourcePublisher)
+    {}
+
+    public function publishResources(PackageInterface $package): FlashMessageQueue
+    {
+        // There could be some additional logic here to public files to a CDN
+        // For this example we assume the CDN loads the assets from the source
+        // automatically, so we publish as usual
+        echo $package->getPackageKey() . " PUBLISHING!\n";
+        return $this->defaultSystemResourcePublisher->publishResources($package);
+    }
+
+    public function generateUri(
+        PublicResourceInterface $publicResource,
+        ?ServerRequestInterface $request,
+        ?UriGenerationOptions $options = null
+    ): UriInterface {
+        $defaultUri = $this->defaultSystemResourcePublisher->generateUri(
+            $publicResource,
+            $request,
+            new UriGenerationOptions(
+                uriPrefix: '',
+                absoluteUri: false,
+                cacheBusting: false,
+            ),
+        );
+        if ($publicResource instanceof PublicPackageFile) {
+            return new Uri(self::CDN_URL . $defaultUri);
+        }
+        return $defaultUri;
+    }
+}

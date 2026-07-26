@@ -1,0 +1,61 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true">
+
+    <f:if condition="{licenses}">
+        <f:then>
+            <ul>
+                <f:for each="{licenses}" as="license">
+                    <li>
+                        {license.title}, price {license.price}
+                        <f:if condition="{license.country}">
+                            <f:then>
+                                for {license.localizedCountry}
+                            </f:then>
+                            <f:else>
+                                without a country
+                            </f:else>
+                        </f:if>
+
+                        <f:link.action action="edit" arguments="{license: license}">edit</f:link.action>
+                        <f:link.action action="show" arguments="{license: license}">show</f:link.action>
+                    </li>
+                </f:for>
+            </ul>
+        </f:then>
+        <f:else>
+            <p>No data records found. Create one in any storage page either here or in the backend via FormEngine / TCA.</p>
+        </f:else>
+    </f:if>
+
+    <f:if condition="{germanLicenses}">
+    <h3>In germany</h3>
+        <ul>
+            <f:for each="{germanLicenses}" as="license">
+                <li>#{license.uid} {license.title} ({license.country.name})</li>
+            </f:for>
+        </ul>
+    </f:if>
+
+    <f:if condition="{germanMarketLicenses}">
+        <h3>In german markets</h3>
+        <ul>
+            <f:for each="{germanMarketLicenses}" as="license">
+                <li>#{license.uid} {license.title} ({license.country.name})</li>
+            </f:for>
+        </ul>
+    </f:if>
+
+    <h3>Known countries by CountryProvider</h3>
+
+    <ol>
+    <f:for each="{countries}" as="country">
+        <li>{country.name}</li>
+    </f:for>
+    </ol>
+
+    <f:link.action action="new">
+        <p>Create new license</p>
+    </f:link.action>
+
+</html>

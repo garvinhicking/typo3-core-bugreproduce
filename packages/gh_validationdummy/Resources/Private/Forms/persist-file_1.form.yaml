@@ -1,0 +1,17 @@
+
+identifier: persist-file_1
+type: Form
+label: persist-file-me
+prototypeName: standard
+renderingOptions:
+  submitButtonLabel: 'Submit me'
+finishers: {  }
+renderables:
+  -
+    renderingOptions:
+      previousButtonLabel: 'Previous step'
+      nextButtonLabel: 'Next step'
+    type: Page
+    identifier: page-1
+    label: Step
+variants: {  }

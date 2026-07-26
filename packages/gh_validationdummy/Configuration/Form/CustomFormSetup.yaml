@@ -1,0 +1,7 @@
+persistenceManager:
+  allowedExtensionPaths:
+    10: 'EXT:gh_validationdummy/Resources/Private/Forms/'
+  allowedFileMounts:
+    10: '1:/forms2'
+    20: '1:/form_definitions'
+  allowSaveToExtensionPaths: true
