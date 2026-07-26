@@ -76,7 +76,7 @@
         "typo3/cms-impexp": "@dev",
         "typo3/cms-indexed-search": "@dev",
         "typo3/cms-info": "@dev",
-        "typo3/cms-install": "@dev",
+        "typo3/cms-install": "@dev",      
         "typo3/cms-linkvalidator": "@dev",
         "typo3/cms-lowlevel": "@dev",
         "typo3/cms-opendocs": "@dev",
@@ -85,7 +85,6 @@
         "typo3/cms-recycler": "@dev",
         "typo3/cms-redirects": "@dev",
         "typo3/cms-reports": "@dev",
-        "typo3/cms-rte-ckeditor": "@dev",
         "typo3/cms-scheduler": "@dev",
         "typo3/cms-seo": "@dev",
         "typo3/cms-setup": "@dev",
@@ -95,11 +94,20 @@
         "typo3/cms-viewpage": "@dev",
         "typo3/cms-webhooks": "@dev",
         "typo3/cms-workspaces": "@dev",
-        "typo3/cms-theme-camino": "@dev",
+        "typo3/theme-camino": "@dev",
         
         "typo3/cms-styleguide": "@dev",
-        "bk2k/bootstrap-package": "dev-fluid5",
-        "symfony/validator": "^7.2"
+        "typo3/cms-rte-ckeditor": "@dev",
+
+        "bk2k/bootstrap-package": "v15.x-dev",
+        "garvinhicking/tca-country-example": "@dev",
+        "garvinhicking/gh-validationdummy": "@dev",
+        "typo3tests/blog-example": "@dev",
+        "garvinhicking/t3dd-upload": "@dev",
+        "symfony/validator": "^7.2",
+        "garvinhicking/gh-sitepackage": "@dev",
+        "garvinhicking/theme-garvino": "@dev",
+        "garvinhicking/camino-override": "dev-main"
     },
     "require-dev": {
         "codeception/codeception": "*",
@@ -114,7 +122,9 @@
     "config": {
         "allow-plugins": {
             "typo3/class-alias-loader": true,
-            "typo3/cms-composer-installers": true
+            "typo3/cms-composer-installers": true,
+            "cweagans/composer-patches": false,
+            "gilbertsoft/typo3-core-patches": false
         }
     }
 }
