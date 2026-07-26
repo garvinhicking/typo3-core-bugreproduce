@@ -1,0 +1,30 @@
+base: '%env(TYPO3_CAMINO_BASE)%'
+dependencies:
+  - typo3/theme-camino
+languages:
+  -
+    title: English
+    enabled: true
+    languageId: 0
+    base: /
+    locale: en_US.UTF-8
+    navigationTitle: English
+    flag: us
+  -
+    title: deutsch
+    enabled: true
+    locale: de_DE.utf8
+    hreflang: ''
+    base: /de/
+    websiteTitle: 'ENV: %env(DDEV_HOSTNAME)%'
+    navigationTitle: ''
+    fallbackType: strict
+    fallbacks: ''
+    flag: de
+    languageId: 35
+myNewField: '%env(DDEV_HOSTNAME)%'
+rootPageId: '%env(TYPO3_CAMINO_PID)%'
+settings:
+  felogin.emailFromName: 'ENV: %env(DDEV_HOSTNAME)%'
+  mycustomKey: nothing
+websiteTitle: 'XENV: %env(DDEV_HOSTNAME)%'

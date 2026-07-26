@@ -1,0 +1,14 @@
+xxxcustom = xxxcustom
+
+#myconstant.myCaminoOverlay := getEnv(TYPO3_TEST_ENV)
+#myconstant.myCaminoOverlayNoEnv = /fileadmin/file1.js
+
+# customsubcategory=sitemap=Nomino
+
+plugin.nomino {
+  envies {
+    # cat=plugin.nomino/file; type=string; label=Some test constant
+    withEnv := getEnv(TYPO3_TEST_ENV)
+    #withoutEnv = /fileadmin/file1.js
+  }
+}

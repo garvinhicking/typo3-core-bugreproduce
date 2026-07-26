@@ -1,0 +1,10 @@
+categories:
+  mysite: ~
+  mysite.templates:
+    parent: mysite
+
+settings:
+  mysite.myasset:
+    default: 'none'
+    type: string
+    category:

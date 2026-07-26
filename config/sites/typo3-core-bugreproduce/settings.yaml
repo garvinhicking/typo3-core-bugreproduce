@@ -15,3 +15,5 @@ felogin.example.string.with.minmax.option: ass
 felogin.example.int.with.min.option: 13
 felogin.example.int.with.max.option: 2
 styles.content.textmedia.linkWrap.lightboxEnabled: true
+when@Development:
+  garvin1: garvin2

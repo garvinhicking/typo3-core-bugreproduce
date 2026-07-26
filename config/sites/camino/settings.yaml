@@ -1,0 +1,12 @@
+felogin.password: '###ENCRYPTED###eyJub25jZSI6IjBLSkJXTHNIajlJY1dXeTctTEdSaFRZNTZQX1BxQk1DIiwiY2lwaGVyIjoiZkJOOTBKUG5tbWIzTk92SWFJVXAwMFdTUWxNIn0'
+felogin.pid: '18'
+felogin.emailFrom: '18'
+felogin.pidShouldResolveTo: 18
+felogin.emailFromName: typo3-core-bugreproduce-base.ddev.site
+camino.colorScheme: theme-ocean-breeze
+felogin.replyToEmail: supergarv@example.com
+email.format: plain
+email.templateRootPaths:
+  - 'EXT:gh_validationdummy/Resources/Private/Templates/Email'
+email.layoutRootPaths:
+  - 'EXT:gh_validationdummy/Resources/Private/Layout/'

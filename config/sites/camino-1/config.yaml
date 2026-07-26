@@ -1,0 +1,18 @@
+base: /camino-1/
+dependencies:
+  - typo3/theme-camino
+  - typo3/email
+languages:
+  -
+    title: English
+    enabled: '1'
+    locale: en-US
+    hreflang: en-US
+    base: /
+    websiteTitle: Camino
+    navigationTitle: English
+    flag: global
+    languageId: 0
+myNewField: ooiou
+rootPageId: 7241
+websiteTitle: Camino

@@ -1,0 +1,14 @@
+base: /sporf/
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    locale: de_DE.utf8
+    hreflang: ''
+    base: /
+    websiteTitle: ''
+    navigationTitle: Deutsch
+    flag: eu
+    languageId: 0
+rootPageId: 3
+websiteTitle: ''

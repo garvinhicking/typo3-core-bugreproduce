@@ -1,0 +1,9 @@
+xxxcustom2 = xxxcustom2
+
+page.includeJS {
+   #myCaminoOverlay := getEnv(TYPO3_TEST_ENV)
+   #myCaminoConstantOverlay = {$myconstant.myCaminoOverlay}
+   #myCaminoConstantOverlay2 = /fileadmin/file1.js
+   #myCaminoConstantOverlay3 = {$myconstant.myCaminoOverlayNoEnv}
+}
+

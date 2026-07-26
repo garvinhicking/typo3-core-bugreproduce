@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="EXT:mysite/Configuration/Sets/Sitemap/labels.xlf" date="2018-09-04T12:30:00Z" product-name="mysite">
+    <header/>
+    <body>
+      <trans-unit id="label">
+        <source>MySite</source>
+      </trans-unit>
+      <trans-unit id="categories.mysite">
+        <source>MySite</source>
+      </trans-unit>
+      <trans-unit id="categories.mysite.templates">
+        <source>MySiteTemplate Paths</source>
+      </trans-unit>
+      <trans-unit id="settings.mysite.myasset">
+        <source>My Asset</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

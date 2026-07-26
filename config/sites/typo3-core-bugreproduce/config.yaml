@@ -45,3 +45,5 @@ websiteTitle: 'New TYPO3 website'
 settings:
   redirects:
     autoCreateRedirects: 0
+  when@Development:
+    garvin3: garvin4

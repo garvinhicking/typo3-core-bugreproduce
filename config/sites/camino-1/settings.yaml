@@ -1,0 +1,7 @@
+email.templateRootPaths:
+  - some
+  - list
+email.partialRootPaths:
+  - '3'
+  - '2'
+  - '1'

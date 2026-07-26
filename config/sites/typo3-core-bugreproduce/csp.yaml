@@ -1,9 +1,14 @@
+behavior:
+  useHash: true
+  useNonce: false
 enforce:
   inheritDefault: true
   # for disabling the reporting endpoint for a particular site
   #reportingUrl: false
   # for using a different external reporting endpoint
-  reportingUrl: '1'
+  #reportingUrl: '1'
   # for using the default local reporting endpoint (default)
   #reportingUrl: true
+  useHash: true
+  useNonce: false
   
