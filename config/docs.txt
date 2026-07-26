@@ -1,0 +1,89 @@
++--Area----------------+--Storage-------------+--Output---------------+
+|======================|======================|=======================|
+| Site config          |                      |                       |
+| config/sites/xxx/    |                      |                       |
+| config.yaml          |                      |                       |
+|                      |                      |                       |
+|                      |                      |                       |
+|                      |                      |                       |
+|                      |                      |                       |
++----------------------+----------------------+-----------------------+
+| Site settings        |                      | YAML export keeps     |
+| config/sites/xxx/    |                      | %ENV(...)% syntax     |
+| settings.yaml        |                      | intact.               |
+|                      |                      | Saving without changes|
+|                      |                      | keeps %ENV(...)%      |
+|                      |                      | intact.               |
+|                      |                      | Values are not exposed|
+|                      |                      | in the GUI.           |
+|                      |                      |                       |
+|                      |                      |                       |
++----------------------+----------------------+-----------------------+
+| Site settings defs   |                      |                       |
+| config/sites/xxx/    |                      |                       |
+| settings.definitions.|                      |                       |
+| yaml                 |                      |                       |
+|                      |                      |                       |
+|                      |                      |                       |
++----------------------+----------------------+-----------------------+
+| System config (PHP)  | getEnv() assignments | Resolved via PHP to   |
+| config/system/       | in variables can be  | contents of ENV vars. |
+| settings.php         | saved inside the     |                       |
+|                      | settings.php, but    |                       |
+|                      | will be reverted once|                       |
+|                      | system config is     |                       |
+|                      | saved in GUI.        |                       |
+|                      |                      |                       |
+|                      | Values like %env(x)% |                       |
+|                      | not converted.       |                       |
++----------------------+----------------------+-----------------------+
+| System additional    | getEnv() assignments | Resolved via PHP to   |
+| config (PHP)         | in variables can be  | contents of ENV vars. |
+| config/system/       | saved inside the     |                       |
+| additional.php       | additional.php, will |                       |
+|                      | not be reverted as   |                       |
+|                      | the GUI does not     |                       |
+|                      | manage these files.  |                       |
+|                      |                      |                       |
+|                      | Values like %env(x)% |                       |
+|                      | not converted.       |                       |
++----------------------+----------------------+-----------------------+
+| Extension config     | Same as regular      | Resolved via PHP to   |
+| config/system/       | settings.php: Rever- | contents of ENV vars. |
+| settings.php@EXTCONF | ted on GUI save,     |                       |
+|                      | values like %env(x)% |                       |
+|                      | not converted.       |                       |
+|                      |                      |                       |
+|                      |                      |                       |
++----------------------+----------------------+-----------------------+
+| TypoScript constants | conf.x := getEnv(X)  | Resolved to values    |
+|                      | is valid enterable   | when accessed in      |
+|                      | syntax, can be used  | Setup.                |
+|                      | in setup via         | Resolved to values    |
+|                      | {$conf.x}.           | when revealed in      |
+|                      | When saved in        | Constant Editor.      |
+|                      | Constant Editor,     |                       |
+|                      | converted values     |                       |
+|                      | are persisted to     |                       |
+|                      | sys_template.        |                       |
++----------------------+----------------------+-----------------------+
+| TypoScript setup     | Direct usage of      | Resolved to values    |
+|                      | conf.x := getEnv(X)  | when shown in Template|
+|                      | is valid enterable   | Analyser / Setup.     |
+|                      | syntax.              |                       |
+|                      |                      |                       |
+
+Introducing placeholder %env(BASE_DOMAIN)% for base is not allowed
+
+
+
+Output:
+- Frontend
+- Config GUI
+- Backend modules (e.g. Template Analyzer, Constant Editor)
+
+|                      |                      |                       |
+
+https://review.typo3.org/c/Packages/TYPO3.CMS/+/77103
+https://review.typo3.org/c/Packages/TYPO3.CMS/+/91912
+https://review.typo3.org/c/Packages/TYPO3.CMS/+/91925
