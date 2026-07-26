@@ -4,11 +4,20 @@ declare(strict_types=1);
 
 namespace GarvinHicking\TcaCountryExample\Domain\Model\Enum;
 
-enum AvailableCountries: string
+// Using an ENUM for this helps to re-use this for both TCA and Extbase
+// (of course it can be configured independently, too)
+enum PrioritizedCountries: string
 {
     case DE = 'DE';
-    case AT = 'AT';
     case CH = 'CH';
-    case FR = 'FR';
-    case IT = 'IT';
+    case AT = 'AT';
+
+    public static function values(): array
+    {
+        $items = [];
+        foreach (PrioritizedCountries::cases() as $case) {
+            $items[] = $case->value;
+        }
+        return $items;
+    }
 }

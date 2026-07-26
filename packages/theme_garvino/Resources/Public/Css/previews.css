@@ -1,0 +1,86 @@
+:root {
+    --garvino-preview-color-error-text: var(--typo3-badge-danger-color);
+    --garvino-preview-color-error-bg: var(--typo3-badge-danger-bg);
+    --garvino-preview-color-warning-text: var(--typo3-badge-warning-color);
+    --garvino-preview-color-warning-bg: var(--typo3-badge-warning-bg);
+
+    --garvino-preview-tiles-width: 300px;
+    --garvino-preview-opacity-hidden: 0.5;
+    --garvino-preview-spacing-image: 10px;
+    --garvino-preview-spacing-warning: 10px;
+}
+
+[class^="garvino_preview_"][class$="--hidden"],
+[class*="garvino_preview_"][class*="--hidden "] {
+    opacity: var(--garvino-preview-opacity-hidden);
+}
+
+[class^="garvino_preview_"][class$="--section"],
+[class*="garvino_preview_"][class*="--section "] {
+    margin-top: .5em;
+}
+
+.garvino_preview_label {
+    font-weight: bold;
+}
+
+.garvino_preview_header {
+    font-weight: bold;
+}
+
+.garvino_preview_image {
+    margin-inline-end: var(--garvino-preview-spacing-image);
+    margin-top: var(--garvino-preview-spacing-image);
+}
+
+.garvino_preview_tiles {
+    width: var(--garvino-preview-tiles-width);
+    display: inline-block;
+    vertical-align: top;
+}
+
+.garvino_preview_warning {
+    margin-top: var(--garvino-preview-spacing-warning);
+    background-color: var(--garvino-preview-color-warning-bg);
+    color: var(--garvino-preview-color-warning-text);
+    padding: 3px;
+}
+
+.garvino_preview_warning--error {
+    background-color: var(--garvino-preview-color-error-bg);
+    color: var(--garvino-preview-color-error-text);
+}
+
+.garvino_preview_ul {
+    padding-inline-start: 1.5em;
+    margin-bottom: 0;
+}
+
+.garvino_preview_images + * {
+    margin-top: var(--garvino-preview-spacing-image);
+}
+
+.garvino_preview_listgroup {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    grid-gap: 30px 20px;
+}
+
+.garvino_preview_listgroup:first-child:last-child {
+    margin-top: 0;
+}
+
+.garvino_preview_text ul, .garvino_preview_text li {
+    padding-inline-start: 1.5em;
+    margin-bottom: 0;
+}
+
+.garvino_preview_text li {
+    padding-left: 0;
+}
+
+.garvino_preview_text ul ~ br, .garvino_preview_text ol ~ br {
+    display: none;
+}

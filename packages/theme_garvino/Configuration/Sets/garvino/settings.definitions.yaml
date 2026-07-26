@@ -1,0 +1,17 @@
+categories:
+  garvino: ~
+
+settings:
+  garvino.colorScheme:
+    default: theme-caramel-cream
+    type: string
+    enum:
+      theme-caramel-cream: 'Caramel Cream'
+      theme-ocean-breeze: 'Ocean Breeze'
+      theme-forest-mist: 'Forest Mist'
+      theme-violet-velvet: 'Violet Velvet'
+    category: garvino
+  garvino.header.fixedPosition:
+    default: false
+    type: bool
+    category: garvino

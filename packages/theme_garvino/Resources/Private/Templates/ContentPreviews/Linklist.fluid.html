@@ -1,0 +1,37 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+
+<f:asset.css identifier="theme_garvino_backend_previews" href="EXT:theme_garvino/Resources/Public/Css/previews.css"/>
+
+<f:if condition="{record.tx_themegarvino_list_elements}">
+    <ul class="garvino_preview_ul">
+        <f:for each="{record.tx_themegarvino_list_elements}" as="item">
+            <li><f:render section="Link" arguments="{linklabel: item.link_label, link: item.link}"/></li>
+        </f:for>
+    </ul>
+</f:if>
+
+<f:section name="Link">
+    <f:if condition="{link}">
+        <div class="garvino_preview_link">
+            <span class="garvino_preview_label">{f:translate(key: 'link.label', domain: 'theme_garvino.backend_previews')}: </span>{linklabel}
+            <f:if condition="{f:uri.typolink(parameter: link, language: language)}">
+                <f:then>
+                    ({f:uri.typolink(parameter: link, language: language)})
+                </f:then>
+                <f:else>
+                    <span class="garvino_preview_warning garvino_preview_warning--error">
+                        <f:translate key="warnings.linkTargetError" domain="theme_garvino.backend_previews"/>
+                    </span>
+                </f:else>
+            </f:if>
+            <f:if condition="{config}">
+                [{f:translate(key: 'link.config', domain: 'theme_garvino.backend_previews')}: {config}]
+            </f:if>
+        </div>
+    </f:if>
+</f:section>
+
+</html>

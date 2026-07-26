@@ -1,0 +1,37 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+
+<f:page.meta property="viewport">width=device-width, initial-scale=1.0</f:page.meta>
+<f:asset.css href="EXT:theme_garvino/Resources/Public/Css/main.css" identifier="garvino-main" media="all" />
+<f:asset.script src="EXT:theme_garvino/Resources/Public/JavaScript/main.js" identifier="garvino-main" type="module" />
+
+<f:render partial="Pages/Header" arguments="{_all}"/>
+
+<f:render section="Stage" optional="true">
+    <f:render.contentArea contentArea="{content.stage}"/>
+</f:render>
+
+<main class="page__content {f:if(condition: '{site.configuration.settings.garvino.header.fixedPosition}', then: 'page__content--fixed')}">
+    <f:render section="Main" optional="true">
+        <f:render.contentArea contentArea="{content.content}"/>
+    </f:render>
+</main>
+
+
+<f:if condition="{site.identifier == 'enw'}">
+    <f:then>
+        <f:variable name="oppositeRoot" value="{site.configuration.swbRoot}" />
+    </f:then>
+    <f:else>
+        <f:variable name="oppositeRoot" value="{site.configuration.enwRoot}" />
+    </f:else>
+</f:if>
+
+<p>Mein Root: </p>
+<p>Ich zeige die Hauptnavi und meine Rootseite ist {site.settings.rootpagePid}</p>
+
+<f:render partial="Pages/Footer" arguments="{_all}"/>
+
+</html>

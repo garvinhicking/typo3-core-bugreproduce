@@ -1,0 +1,53 @@
+{
+	"name": "garvinhicking/theme-garvino",
+	"type": "typo3-cms-extension",
+	"description": "TYPO3 Theme: \"Garvino\"",
+	"homepage": "https://typo3.community/",
+	"funding": [
+		{
+			"type": "membership",
+			"url": "https://typo3.org/membership"
+		}
+	],
+	"license": [
+		"GPL-2.0-or-later"
+	],
+	"authors": [
+		{
+			"name": "TYPO3 Core Team",
+			"email": "typo3cms@typo3.org",
+			"role": "Developer"
+		}
+	],
+	"support": {
+		"issues": "https://forge.typo3.org/issues/",
+		"forum": "https://talk.typo3.org/",
+		"source": "https://github.com/TYPO3/typo3/",
+		"docs": "https://docs.typo3.org/",
+		"rss": "https://news.typo3.com/rss/",
+		"chat": "https://typo3.community/meet/slack/",
+		"security": "https://typo3.org/security/"
+	},
+	"config": {
+		"sort-packages": true
+	},
+	"require": {
+		"typo3/cms-core": "14.2.*@dev || 14.3.*@dev || 15.*.*@dev"
+	},
+	"conflict": {
+		"typo3/cms": "*"
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-main": "14.2.x-dev"
+		},
+		"typo3/cms": {
+			"extension-key": "theme_garvino"
+		}
+	},
+	"autoload": {
+		"psr-4": {
+			"GarvinHicking\\ThemeGarvino\\": "Classes/"
+		}
+	}
+}

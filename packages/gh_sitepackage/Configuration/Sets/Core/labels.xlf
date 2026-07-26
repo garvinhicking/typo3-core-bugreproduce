@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="EXT:felogin/Configuration/Sets/Felogin/labels.xlf" date="2024-09-05T08:00:00Z" product-name="felogin">
+    <header/>
+    <body>
+      <trans-unit id="label">
+        <source>Common Sitepackage</source>
+      </trans-unit>
+      <trans-unit id="categories.commonsitepackage">
+        <source>Common sitepackage settings</source>
+      </trans-unit>
+      <trans-unit id="settings.commonsitepackage.pid">
+        <source>Setting X</source>
+      </trans-unit>
+      <trans-unit id="settings.description.commonsitepackage.pid">
+        <source>This is a dummy option</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

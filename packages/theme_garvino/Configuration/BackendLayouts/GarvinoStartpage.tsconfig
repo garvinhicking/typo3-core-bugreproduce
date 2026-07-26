@@ -1,0 +1,83 @@
+mod {
+  web_layout {
+    BackendLayouts {
+      GarvinoStartpage {
+        title = LLL:theme_garvino.backend_layouts:backend_layout.garvino_startpage.title
+        config {
+          backend_layout {
+            colCount = 4
+            rowCount = 4
+            rows {
+              1 {
+                columns {
+                  1 {
+                    name = LLL:theme_garvino.backend_layouts:backend_layout.colPos.2.name
+                    colPos = 2
+                    colspan = 4
+                    identifier = stage
+                    allowedContentTypes = garvino_hero, garvino_hero_small, garvino_hero_text_only
+                  }
+                }
+              }
+              2 {
+                columns {
+                  1 {
+                    name = LLL:theme_garvino.backend_layouts:backend_layout.colPos.0.name
+                    colPos = 0
+                    colspan = 4
+                    identifier = content
+                    disallowedContentTypes = garvino_hero, garvino_hero_small, garvino_hero_text_only, garvino_sociallinks, garvino_linklist, garvino_testimonial, garvino_textmedia_teaser
+                  }
+                }
+              }
+              3 {
+                columns {
+                  1 {
+                    name = LLL:theme_garvino.backend_layouts:backend_layout.colPos.11.name
+                    colPos = 11
+                    identifier = footer-left
+                    allowedContentTypes = garvino_sociallinks,garvino_linklist
+                    slideMode = slide
+                  }
+                  2 {
+                    name = LLL:theme_garvino.backend_layouts:backend_layout.colPos.12.name
+                    colPos = 12
+                    identifier = footer-col-2
+                    allowedContentTypes = garvino_linklist
+                    slideMode = slide
+                  }
+                  3 {
+                    name = LLL:theme_garvino.backend_layouts:backend_layout.colPos.13.name
+                    colPos = 13
+                    identifier = footer-col-3
+                    allowedContentTypes = garvino_linklist
+                    slideMode = slide
+                  }
+                  4 {
+                    name = LLL:theme_garvino.backend_layouts:backend_layout.colPos.14.name
+                    colPos = 14
+                    identifier = footer-col-4
+                    allowedContentTypes = garvino_linklist
+                    slideMode = slide
+                  }
+                }
+              }
+              4 {
+                columns {
+                  1 {
+                    name = LLL:theme_garvino.backend_layouts:backend_layout.colPos.10.name
+                    colPos = 10
+                    colspan = 4
+                    identifier = footer-meta
+                    allowedContentTypes = garvino_linklist
+                    slideMode = slide
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

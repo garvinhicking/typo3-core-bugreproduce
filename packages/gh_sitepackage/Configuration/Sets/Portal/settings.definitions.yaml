@@ -1,0 +1,9 @@
+categories:
+  commonsitepackage: ~
+
+settings:
+  rootpagePid:
+    default: '0'
+    type: string
+    label: 'Bla'
+    category: commonsitepackage

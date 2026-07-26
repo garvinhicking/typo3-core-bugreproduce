@@ -1,0 +1,68 @@
+categories:
+  commonsitepackage: ~
+
+settings:
+  # NOTE: No dots here. I'm sorry. Otherwise we cannot access it easily.
+  # Workaround in Fluid would be to create a ViewHelper to access a key with dots, but that sucks.
+  #
+  # Examples:
+  # =========
+  #
+  # Fluid:
+  # ------
+  # <div>Output: {site.configuration.comon.\sdf.sdf}</div>
+  #
+  # TypoScript:
+  # -----------
+  #
+  # page.10 = TEXT
+  # page.10.data = site:commonsitepackagePid
+  # page.10.wrap = This is the configured pid:: |
+  #
+  # Conditions:
+  # ~~~~~~~~~~~
+  #
+  # [site("configuration")["commonsitepackageSomeFlag"] == "1"]
+  #   page.35.value = abc
+  # [GLOBAL]
+  #
+  # PHP:
+  # -----------
+  #
+  # Case 1, request centric (Extbase Controllers, ...)
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  #
+  # /** @var Site $site */
+  # $site = $this->request->getAttribute('site');
+  # $pid = $site->getConfiguration()['commonsitepackagePid'];
+  #
+  # Case 2, CLI / no Request:
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  #
+  # PLEASE use DI and not this makeInstance example here.
+  # The idea is to directly access the "commonbase" meta-site package here, and NOT
+  # create a "Site 1" or "Site 2" configuration import. That's not needed!
+  #
+  # /** @var SiteFinder $siteFinder */
+  # $siteFinder = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Site\SiteFinder::class);
+  # $conf = $siteFinder->getSiteByIdentifier('commonbase')->getSettings()->get('commonsitepackagePid');
+  #
+
+  # Actual settings:
+  commonsitepackagePid:
+    default: '0'
+    type: string
+    label: 'Bla'
+    category: commonsitepackage
+
+  enwRoot:
+    default: '0'
+    type: string
+    label: 'Bla'
+    category: commonsitepackage
+
+  swbRoot:
+    default: '0'
+    type: string
+    label: 'Bla'
+    category: commonsitepackage
